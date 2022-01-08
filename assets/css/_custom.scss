@@ -1,0 +1,25 @@
+
+
+.post-meta-line-item:not(:first-child)::before {
+    content: "\2022";
+    margin: 0 .35em;
+}
+
+article p {
+    font-family: Georgia, Times, serif;
+}
+
+pre > code {
+    overflow: scroll;
+}
+
+.single .featured-image {
+    width: 100vw;
+    margin-left: calc(-10vw - 18px);
+}
+
+.page.single {
+    max-width: initial;
+    width: calc(90vw - 20em);
+    margin-left: 10vw;
+}
