@@ -1,5 +1,5 @@
 ---
-title: Setup Neovim as Python IDE with virtualenvs
+title: Setup Neovim as Python IDE with virtualenvs -- Explanation of the steps necessary to install Neovim as a Python IDE (end of 2020)
 description: Explanation of the steps necessary to install Neovim as a Python IDE (end of 2020)
 date: '2020-10-01'
 aliases: 
@@ -12,12 +12,11 @@ tags:
     - vim
     - python
     - ide
+    - and one really long tag
+    - andAReallyLongOneWordTag
 original_post_medium_url: https://claude-e-e.medium.com/setup-neovim-as-python-ide-with-virtualenvs-e507190d2655
-resources:
-    - name: featured-image
-      src: vim-as-ide.png
-toc:
-    enable: true
+header:
+    image: vim-as-ide.png
 ---
 
 Every now and then you feel overconfident and decide that a full reinstall of your whole system is in order. It always takes way more time than you anticipated, but in the end you’re left with something better (in the computer), and you understand the world a little bit better yourself.
@@ -50,16 +49,16 @@ First thing is using homebrew to install the stuff you need (we need to install 
 
 Install python versions, and make 3.8.5 the default python version.
 
+```bash
+$ pyenv install 3.8.5
+....
+$ pyenv global 3.8.5
+....
 ```
-$ pyenv install 3.8.5  
-....  
-$ pyenv global 3.8.5  
-....  
-```  
 
 Make the virtual envs for `jedi`, `black`, `neovim` and `pylint` and install the tools (creating a `venv` directly activates it, so no need to separately activate it). Note that `pylint` does not behave well with virtual envs, and for instance when checking imports, it will check again the `pylint` virtual env, not the active virtualenv. In order to resolve that, we need an extra package: `pylint-venv`.
 
-```
+```console
 $ python -m venv ~/venvs/jedi && source ~/venvs/jedi/bin/activate && pip install jedi
 
 $ python -m venv ~/venvs/neovim && source ~/venvs/neovim/bin/activate && pip install neovim
