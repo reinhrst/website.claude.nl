@@ -20,6 +20,7 @@ Was this unworkable? No.
 But was it slightly annoying? Yes.
 So as I good nerd, I decided to create [a solution](https://show-on-map.claude-apps.com/).
 
+<!--begin-summary--> hel>lo <!--end-summary-->
 Last year I created [my first Safari Web Extension](https://apps.apple.com/nl/app/smart-keyword-search/id1541221580), Smart Keyword Search. Safari Web Extensions were launched at WWDC 2020 for Safari 14. Before this there were only Safari App Extensions (and before this Safari Extensions; this naming makes for great Googling, especially since sometimes even Apple doesn't use these names consistently).
 
 {{< note >}}
@@ -32,6 +33,7 @@ In hindsight, I should probably be happy that nobody downloaded the paid-for ver
 I just changed the settings back to make the app free again.
 {{< /note >}}
 
+<!--begin-summary-->
 {{< note >}}
 This post is one of those that I write mostly as a note to future-me.
 I include a lot of stuff that I learned over the process of doing something, and I know myself well enough to realise that I will forget some of the details.
@@ -40,6 +42,7 @@ It does not mean at all it's not useful for other people; actually [the most-rea
 If you came to this page looking for a walk-through of how to build an extension step by step, I'm sorry, this is not it.
 On the other hand, it is meant to be a more or less story from start to end (rather than just random statements) and there are many (I think useful) tidbits of information on this page, which I hope Google will serve up to those looking for it.
 {{< /note >}}
+<!--end-summary-->
 
 
 # Safari Web Extensions - the basics
