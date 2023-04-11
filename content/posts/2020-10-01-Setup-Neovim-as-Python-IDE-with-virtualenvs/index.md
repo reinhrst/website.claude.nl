@@ -15,8 +15,6 @@ tags:
     - and one really long tag
     - andAReallyLongOneWordTag
 original_post_medium_url: https://claude-e-e.medium.com/setup-neovim-as-python-ide-with-virtualenvs-e507190d2655
-header:
-    image: vim-as-ide.png
 ---
 
 Every now and then you feel overconfident and decide that a full reinstall of your whole system is in order. It always takes way more time than you anticipated, but in the end you’re left with something better (in the computer), and you understand the world a little bit better yourself.
@@ -24,7 +22,7 @@ Every now and then you feel overconfident and decide that a full reinstall of yo
 A large challenge every time is to get (neo)vim setup in _just_ the right way to work as a full fledged Python IDE (or, it should be noted that vim was never designed to be an IDE; however we want to at least set it up as a Python development system). One of the major things I struggle with is how to separate all the (python-)pieces. It’s very tempting to just install everything in global scope somewhere, but since in that case you’re using one scope for your tools _and_ the code that you’re writing, this is asking for problems (in addition, it’s generally a bad idea to put everything together in a global scope).
 
 {{< figure
-    src="vim-as-ide.png"
+    src="header-low.png"
     alt="Example of code completion in action"
     caption="Example of code completion in action"
 >}}

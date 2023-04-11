@@ -9,19 +9,21 @@ tags:
     - safari web extensions
     - safari
     - xcode
-toc: true
+toc:
+  enable: true
 header:
     image: teaser.jpg
 ---
 
+<!--begin-summary-->
 A couple of weeks ago I had to look for a company to rent some Nerf guns from, for a long weekend in the Ardennes with friends. There are several companies in The Netherlands and Belgium doing just that, but I wanted to find one that was on the route. I found myself copy-pasting city and village names into Google Maps to find where all these places were located.
 
 Was this unworkable? No.
 But was it slightly annoying? Yes.
 So as I good nerd, I decided to create [a solution](https://show-on-map.claude-apps.com/).
 
-<!--begin-summary--> hel>lo <!--end-summary-->
 Last year I created [my first Safari Web Extension](https://apps.apple.com/nl/app/smart-keyword-search/id1541221580), Smart Keyword Search. Safari Web Extensions were launched at WWDC 2020 for Safari 14. Before this there were only Safari App Extensions (and before this Safari Extensions; this naming makes for great Googling, especially since sometimes even Apple doesn't use these names consistently).
+<!--end-summary-->
 
 {{< note >}}
 It turns out that so far that either the need for this Safari Extension is not so large, or people don't know how to find it.
@@ -33,7 +35,6 @@ In hindsight, I should probably be happy that nobody downloaded the paid-for ver
 I just changed the settings back to make the app free again.
 {{< /note >}}
 
-<!--begin-summary-->
 {{< note >}}
 This post is one of those that I write mostly as a note to future-me.
 I include a lot of stuff that I learned over the process of doing something, and I know myself well enough to realise that I will forget some of the details.
@@ -42,14 +43,15 @@ It does not mean at all it's not useful for other people; actually [the most-rea
 If you came to this page looking for a walk-through of how to build an extension step by step, I'm sorry, this is not it.
 On the other hand, it is meant to be a more or less story from start to end (rather than just random statements) and there are many (I think useful) tidbits of information on this page, which I hope Google will serve up to those looking for it.
 {{< /note >}}
-<!--end-summary-->
 
 
+<!--begin-summary-->
 # Safari Web Extensions - the basics
 Safari Web Extensions (as launched at WWDC 2020) are based on the Browsers Extensions standard ([MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions); the terms Browsers Extension and Web Extension seem to be used interchangeably on MDN), written in HTML and JavaScript, which is also used in Firefox and Chrome extensions (whereas the older Safari App Extensions are written in Swift/Objective-C). But whereas Chrome and Firefox extensions are a standalone bundle of HTML/JS/etc, Safari Web Extensions always consist of three parts: An HTML/JS/etc part, a native part of the extension and a native app. Understanding these parts helps to understand the possibilities and limits of Safari Web Extensions.
 
 Note that in this context it might also be useful to read the [MDN description of the anatomy of a Web Extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), which explains how the part that we call the HTML/JS/etc part of a web extension looks.
 A certain knowledge of this is expected later in this post.
+<!--end-summary-->
 
 {{< note >}}
 I should mention that this description is true for Safari Web Extensions for MacOS. At WWDC 2021 Apple announced Safari Web Extensions for iOS 15; quite some things in this blog should apply to that as well, but I don't know (yet) exactly what is the same and what is different.
