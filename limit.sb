@@ -1,0 +1,26 @@
+; run `sandbox-exec -f limit.sb $program`
+(version 1)
+(debug deny)
+(deny default)
+(import "/System/Library/Sandbox/Profiles/bsd.sb")
+(allow process-fork)
+(allow process-exec*
+       (subpath "/opt/homebrew/")
+       (subpath "/usr/bin/")
+       (subpath "/bin/")
+       )
+(allow file-read*
+       (subpath "/Volumes/Work/website.claude.nl/")
+       (subpath "/opt/homebrew/")
+       (literal "/private/etc/ssl/cert.pem")
+       )
+(allow file*
+       (subpath "/Volumes/Work/website.claude.nl/public/")
+       (subpath "/Volumes/Work/website.claude.nl/resources/_gen/")
+       (subpath "/Volumes/Work/website.claude.nl/.hugo_build.lock")
+       (subpath "/private/tmp")
+       (subpath "/private/var/folders/m4/4cg87lg52z32n5sklkmgbg_c0000gn/T/")
+       )
+
+(allow network-inbound (local tcp "localhost:1313"))
+(allow file-ioctl (regex "^/dev/tty"))
