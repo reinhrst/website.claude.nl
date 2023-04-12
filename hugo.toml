@@ -3,6 +3,10 @@ languageCode = 'en-uk'
 title = 'BYOC'
 theme = 'ConciseShortStyle'
 
+[markup]
+  _merge = "deep"
+
+
 [params.footer]
     hugo = false
     copyright = false
