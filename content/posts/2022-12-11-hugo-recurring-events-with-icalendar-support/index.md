@@ -57,7 +57,7 @@ When writing your own parser, you would have to make a decision on what part of 
 Looking at the example below, you can see that the format may be hard to read and maintain by a non-expert.
 Considering all this, we dropped this idea.
 
-<figure markdown="1">
+{{<figure-with-caption caption="Example of how rules and exceptions look in OpenStreetMap OpeningHours">}}
 ```yaml
 opening_hours: >
     Fr[-1] 18:00-24:00;
@@ -66,30 +66,24 @@ opening_hours: >
     2023 Jan Fr[-1] off;
     2023 Jan Sa[-1] 18-24 "On Saturday for once"
 ```
-<figcaption markdown="1">
-Example of how rules and exceptions look in OpenStreetMap OpeningHours
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 
 ### iCalendar format
 A second option we looked at, was the iCalendar (RFC 5545) [RRule format](https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html).
 A quick look at the examples on that page, also shows why this format fails the "human readability" test (which meant that we didn't even spend time to check it against the other requirements).
 
-<figure markdown="1">
+{{<figure-with-caption caption="Example of an iCalendar Recurring Event Rule. The format was never meant to be human-readable, and indeed, it isn't.">}}
 ```
 DTSTART;TZID=America/New_York:19970902T090000
 RRULE:FREQ=WEEKLY;INTERVAL=2;WKST=SU
 ```
-<figcaption markdown="1">
-Example of an iCalendar Recurring Event Rule. The format was never meant to be human-readable, and indeed, it isn't.
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 ## Our own format
 Finally we settled for our own format, and just see how far we would get with implementing this into Pure Hugo (=Go Templates).
 
-<figure markdown="1">
+{{<figure-with-caption caption="Our custom recurring event format.">}}
 ```yaml
 eventDates:
     periodics:
@@ -111,10 +105,7 @@ eventDates:
       2023-04-28->19:00-01:00: "starting a bit later"
       2023-06-30->2023-06-29 19:00-21:00: moved a day earlier
 ```
-<figcaption markdown="1">
-Our custom recurring event format.
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 The format we've chosen is a simple dictionary with 4 keys, all optional.
 - `periodics`: a list of 0 or more rules to generate events. It has 4 required keys, and one optional one:
@@ -164,10 +155,10 @@ NOTE: all code shown in this article works on Hugo 0.106.0; it will probably wor
 {: .notice--warning}
 
 A *partial* can only be called in a *template* (not from markdown); which is (in our case) also exactly where we want it. In `/layouts/events/single.html` we include the following line (getting the `eventDates` from the page's front-matter):
-```go
-{% raw >}}{{$events := partial "getEventsFromEventDates" (dict
+```go-html-template
+{{$events := partial "getEventsFromEventDates" (dict
     "timezone" "Europe/Warsaw"
-    "eventDates" .Params.eventDates) }}{% endraw >}}
+    "eventDates" .Params.eventDates) }}
 ```
 This results is an `$events` variable with the following fields (note: boolean fields may be missing, in which case they should be assumed to be `false`):
 - `startDateTime`: Hugo `Time` object (containing both a date and a time)
@@ -197,8 +188,8 @@ outputs:
 This should be enough to generate an `index.ics` file in the same directory as the `index.html` file for this page.
 
 A link to this file can be made (in the `single.html` page) with this code: 
-```go
-{% raw >}}<a href="{{(.OutputFormats.Get "Calendar").RelPermalink | absURL}}">...</a>{% endraw %}
+```go-html-template
+<a href="{{(.OutputFormats.Get "Calendar").RelPermalink | absURL}}">...</a>
 ```
 
 Clicking this link downloads the `.ics` file, and opens it in your calendar app (giving you the option to import all events); I tested this in Apple Calendar, but supposedly also works in Microsoft Outlook (for Google Calendar [follow these instructions](https://support.google.com/calendar/answer/37118?hl=en&co=GENIE.Platform%3DDesktop)).
@@ -229,15 +220,15 @@ Subscribing to a calendar is (afaik) also possible in Outlook and Google Calenda
 Obviously on the `list` page we want a calendar overview with all events (*and* an `.ics` download file with all events).
 Getting all events is relatively easy:
 
-```go
-{% raw >}}{{ $allPages := where (where .Site.AllPages "Type" "==" $.Page.Type) "Kind" "page" }}
+```go-html-template
+{{ $allPages := where (where .Site.AllPages "Type" "==" $.Page.Type) "Kind" "page" }}
 {{ $s := newScratch }}
 {{ range $allPages }}
     {{if .Params.eventDates -}}
         {{- $events := partial "getEventsFromEventDates" (dict "timezone" "Europe/Warsaw" "eventDates" .Params.eventDates) }}
         {{ $s.Add "events" $events }}
     {{ end }}
-{{ end }}{% endraw >}}
+{{ end }}
 ```
 
 Obviously some more work will have to be done afterwards (like sorting, and then deciding how to show them), but that shouldn't be too hard.
@@ -255,9 +246,9 @@ There are a couple of things that we still have on our wishlist:
 ## Code
 
 ### Partial
-<figure markdown="1">
-```go
-{% raw >}}{{/*
+{{< figure-with-caption caption="The partial (`/layouts/partials/GetEventsFromEventsDates.html`) necessary to convert the `eventDates` dictionary into a list of event dates, ready for rendering. For License, [see below](#license)." max-height="80vh" >}}
+```go-html-template
+{{/*
 Wants a dict as context, with the following keys:
 - eventDates: The eventdates dict. This dict has 4 optional keys:
     - periodics: list of dicts with keys:
@@ -469,17 +460,14 @@ Known limitations:
     {{ $s.SetInMap "return" (.startDateTime.Format "2006-01-02T15:04:05") . }}
 {{end}}
 
-{{ return ($s.GetSortedMapValues "return") }}{% endraw >}}
+{{ return ($s.GetSortedMapValues "return") }}
 ```
-<figcaption markdown="1">
-The partial (`/layouts/partials/GetEventsFromEventsDates.html`) necessary to convert the `eventDates` dictionary into a list of event dates, ready for rendering. For License, [see below](#license).
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 ### HTML template
-<figure markdown="1">
-```go
-{% raw >}}{{if .Params.eventDates }}
+{{<figure-with-caption caption="The code in `layouts/events/single.html`, showing the events as seen in the example. Obviously this can be customized onto how you want it. For License, [see below](#license).">}}
+```go-html-template
+{{if .Params.eventDates }}
 {{$events := partial "GetEventsFromEventDates" (dict "timezone" "Europe/Warsaw" "eventDates" .Params.eventDates) }}
 <div id="eventDates">
 <ol>
@@ -507,17 +495,15 @@ The partial (`/layouts/partials/GetEventsFromEventsDates.html`) necessary to con
 </ol>
 <a href="{{(.OutputFormats.Get "Calendar").RelPermalink | absURL}}">Download this calendar</a>
 </div>
-{{ end }}{% endraw >}}
+{{ end }}
 ```
-<figcaption markdown="1">
-The code in `layouts/events/single.html`, showing the events as seen in the example. Obviously this can be customized onto how you want it. For License, [see below](#license).
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 ### iCalendar template
-<figure markdown="1">
-```
-{% raw >}}{{if .Params.eventDates -}}
+
+{{<figure-with-caption caption="The `/layouts/events/single.ics` file.  There is a whole bunch of information about timezones which should probably be different if you're not in Central European Time. Also it assumes that an `organiser` with a `name` and `email` object in the page's front-matter. For License, [see below](#license).">}}
+```go-text-template
+{{if .Params.eventDates -}}
 {{- $events := partial "getEventsFromEventDates" (dict "timezone" "Europe/Warsaw" "eventDates" .Params.eventDates) }}
 BEGIN:VCALENDAR
 VERSION:2.0
@@ -559,12 +545,9 @@ URL:{{.Permalink}}
 END:VEVENT
 {{end}}
 END:VCALENDAR
-{{end}}{% endraw >}}
+{{end}}
 ```
-<figcaption markdown="1">
-The `/layouts/events/single.ics` file.  There is a whole bunch of information about timezones which should probably be different if you're not in Central European Time. Also it assumes that an `organiser` with a `name` and `email` object in the page's front-matter. For License, [see below](#license).
-</figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 ## License
 All code on this page falls under the [Creative Commons Attribution 4.0 International licensed](https://creativecommons.org/licenses/by/4.0/).
