@@ -19,7 +19,7 @@ In the early days of 3D printers, I fired up [Blender](https://www.blender.org) 
 Don’t get me wrong — I very much appreciate all the work put into OpenSCAD and SolidPython, and for the time being I will probably keep using them for most of my 3D modelling needs. At the same time, why not try to get my hands dirty on something new. At the very least, I will get a better understanding of the complexities of 3d modelling software!
 
 {{< figure
-    src="/assets/images/2021/01/08/teaser.jpg"
+    src="teaser.jpg"
     alt="3d render of macpy3d mascotte on desk"
     caption="The MacPy3D mascotte “sitting” on my desk (note: this was made in Shapr3D on my iPad — it will be a goal of the project to design this in MacPy3D)"
 >}}

@@ -12,7 +12,7 @@ series: Making fzf available in the browser
 toc:
   enable: true
 header:
-    image: /assets/images/2021/08/10/header.svg
+    image: header.svg
 ---
 
 In this post I will describe how to compile a Go library for use in the browser.
@@ -887,7 +887,7 @@ Load `/tmp/lines.txt` | 225 | 222 | 218
 Total | 15'809 | 14'673 | 15'310
 
 {%include figure
-    src="/assets/images/2021/08/10/results-from-javascript.svg"
+    src="results-from-javascript.svg"
     alt="results chart"
     caption="It's clear to see that each method uses time in different parts of the code."
 >}}
@@ -910,7 +910,7 @@ Returning search result to JS callback | 1'908 | 1'378 | 416
 
 
 {%include figure
-    src="/assets/images/2021/08/10/results-js-and-go.svg"
+    src="results-js-and-go.svg"
     alt="results chart"
 >}}
 
@@ -958,8 +958,8 @@ Returning search result to JS callback | 1'173 (1'908) | - | 6'400 (416)
 Total | 8'685 (15'809) | - | 34'371 (15'310)
 
 
-{%include figure
-    src="/assets/images/2021/08/10/results-js-and-go-speedup.svg"
+{{< figure
+    src="results-js-and-go-speedup.svg"
     alt="results chart"
     caption="Go WebAssembly performs much better with the JSON patch, but GopherJS is much worse."
 >}}

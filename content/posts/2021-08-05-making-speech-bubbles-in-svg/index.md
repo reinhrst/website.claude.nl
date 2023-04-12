@@ -16,7 +16,7 @@ Have fun with it!
 {: .notice--warning}
 
 {{< figure
-    src="/assets/images/2021/08/05/interface.svg"
+    src="interface.svg"
     alt="Javascript engines and Go Gopher talking"
     caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/)."
 >}}

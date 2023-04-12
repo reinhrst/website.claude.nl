@@ -7,7 +7,7 @@ tags:
     - workouts
 
 header:
-    image: /assets/images/2021/09/27/running.jpg
+    image: running.jpg
 ---
 
 Ever since I got my first Apple Watch, I looked for apps to track workouts.
@@ -72,8 +72,8 @@ All customisation happens on the phone (where you have a bigger screen to config
 You define multiple screens for each workout type, and can easily switch between them on the watch.
 For instance, when running I have a screen with a large map, and small metrics (for when I run in an unknown area), a screen with large metrics (for when I'm killing myself in a run and cannot focus on small writing), and a screen with interval information (for the interval runs).
 
-{%include figure
-    src="/assets/images/2021/09/27/WatchStripOverview.png"
+{{<figure
+    src="WatchStripOverview.png"
     alt=""
     caption="Example screenshots from the [WorkOutDoors homepage](http://www.workoutdoors.net)"
 >}}
@@ -87,8 +87,8 @@ I have used it for pretty much everything I do: going for a run while on vacatio
 Rather than listing all the amazing features, I advice you to take a look at the [app's homepage](http://www.workoutdoors.net).
 
 <figure class="align-left half" style="width: 400px; margin-top: 7px;">
-    <img src="/assets/images/2021/09/27/route.png">
-    <img src="/assets/images/2021/09/27/route-zoom.png">
+    <img src="route.png">
+    <img src="route-zoom.png">
     <figcaption>Showing part of the route (zoomed out and zoomed in); note that I choose a light colour-scheme for the maps (talk about customization!). Normally you would see a blue arrow where you are, but I (obviously) forgot to take the screenshots when I was actually there....</figcaption>
 </figure>
 One of the (many) things that jump out for me is the ability to import GPX tracks as routes (and getting alerts if you go off route).

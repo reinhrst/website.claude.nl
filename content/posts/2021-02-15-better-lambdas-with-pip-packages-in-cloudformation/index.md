@@ -184,7 +184,7 @@ It creates a lambda function with an index.py with the string `# NOTE: this file
 Note that any update to the code will result in a new layer version being created, then the `TestLambda` function being updated to use the new layer version. In case of a single application consisting of 4 of 5 lambda functions, one could create a single layer with all the code, and each lambda function just pointing to a different entry point (`Handler`).
 
 {{< figure
-    src="/assets/images/2021/02/15/functionlayer.svg"
+    src="functionlayer.svg"
     alt="Schematic of function layer"
     caption="Single layer of code contains everything necessary for multiple lambda functions"
 >}}

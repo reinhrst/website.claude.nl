@@ -13,8 +13,8 @@ series: Making fzf available in the browser
 toc:
   enable: true
 header:
-    image: /assets/images/2021/08/05/header.svg
-    teaser: /assets/images/2021/08/05/teaser.svg
+    image: header.svg
+    teaser: teaser.svg
 ---
 Last month I [posted a story](../_posts/2021-07-08-making-fzf-into-a-golang-library-fzf-lib.md) about creating a stand-alone library from [Junegunn Choi's fzf](https://github.com/junegunn/fzf).
 This was the first step in an effort to produce a version of fzf that runs in the browser.
@@ -136,7 +136,7 @@ Go and JavaScript are different types of languages; an important difference in t
 This means that "stuff" has to happen on the boundary (and we cannot just call an exposed Go function from JavaScript).
 
 {{< figure
-    src="/assets/images/2021/08/05/interface.svg"
+    src="interface.svg"
     alt="Javascript engines and Go Gopher talking"
     caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/)."
 >}}

@@ -137,8 +137,8 @@ Many lessons were learned in the process, hardly any of which were useful for th
 The following section is mostly to document those lessons, in case someone finds them interesting (or in case I need them later).
 
 <figure class="half">
-    <img src="/assets/images/2021/12/05/mark-twain-example.jpg">
-    <img src="/assets/images/2021/12/05/longest-example.jpg">
+    <img src="mark-twain-example.jpg">
+    <img src="longest-example.jpg">
     <figcaption>Showing v0.5 in action, finding Mark Twain and Muckanaghederdauhaulia</figcaption>
 </figure>
 
@@ -1178,8 +1178,8 @@ It was developed on that same version, so I still don't know what went wrong; I 
 So version 1.0 would throw away all that work done for 0.5, and start again.
 
 <figure class="half">
-    <img src="/assets/images/2021/12/05/mark-twain-example-v1.jpg">
-    <img src="/assets/images/2021/12/05/giza-example-v1.jpg">
+    <img src="mark-twain-example-v1.jpg">
+    <img src="giza-example-v1.jpg">
     <figcaption>Showing v1 in action, finding Mark Twain (again) and the Pyramids in Giza</figcaption>
 </figure>
 
@@ -1356,7 +1356,7 @@ Note that we still need the `activeTab` permission.
 I do think that this is unfortunate, since it means that the user sees the following warning.
 
 {%include figure
-    src="/assets/images/2021/12/05/warning.png"
+    src="warning.png"
     alt="Warning shown on the extensions screen"
     caption="Warning shown on the Safari Settings &gt; extensions screen. (yes I know the other extensions are blurred-but-still-readable; I think they're good extensions (especially Smart Keyword Search &#x1F600;), so I have to problem with showing them)"
 >}}

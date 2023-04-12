@@ -11,8 +11,8 @@ series: Making fzf available in the browser
 toc:
   enable: true
 header:
-    image: /assets/images/2021/08/30/surfing.svg
-    og_image: /assets/images/2021/08/30/surfing.png
+    image: surfing.svg
+    og_image: surfing.png
 ---
 
 In past posts in this series, I looked at how to convert a Go library in order for it to work in the browser.
@@ -447,7 +447,7 @@ Data is also available in table-format (but hidden), click the "See memory usage
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/memory_per_straw.svg"
+    src="memory_per_straw.svg"
     alt="graph of memory usage"
     caption="Memory divided by haystack size (obviously) decreases with increasing haystack (since overhead is smaller percentage). Relative differences are interesting."
 >}}
@@ -473,7 +473,7 @@ The lighter blocks on top are for when the needle starts to be 2 words, so "hell
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/performance.svg"
+    src="performance.svg"
     alt="graph of execution time"
     caption="Execution time divided by haystack size. The Go (native) bars are so small as to be almost invisible."
 >}}
@@ -518,7 +518,7 @@ GopherJS may see a very small speedup, but the WebAssembly code should benefit a
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/performance-per-straw-no-interface.svg"
+    src="performance-per-straw-no-interface.svg"
     alt="graph of execution time for the core algorithm"
     caption="Execution time divided by haystack size (only the algorithm)"
 >}}
@@ -563,7 +563,7 @@ We again show only the time in the algorithm itself, not the time used for commu
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/performance-no-gc.svg"
+    src="performance-no-gc.svg"
     alt="graph of execution time for the core algorithm"
     caption="Execution time divided by haystack size (only the algorithm)"
 >}}
@@ -616,7 +616,7 @@ If we were (for instance) to do many more searches (especially many with large r
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/memory-no-gc.svg"
+    src="memory-no-gc.svg"
     alt="graph of memory usage"
     caption="Memory divided by haystack size"
 >}}
@@ -678,7 +678,7 @@ This obviously results in a whole lot of data, which I've tried to make understa
 </details>
 
 {%include figure
-    src="/assets/images/2021/08/30/performance-browsers.svg"
+    src="performance-browsers.svg"
     alt="graph of performance in browsers"
     caption="Execution time divided by haystack size for Node and browsers"
 >}}

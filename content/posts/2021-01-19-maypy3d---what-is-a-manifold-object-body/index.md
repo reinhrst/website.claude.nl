@@ -22,7 +22,7 @@ This is part 2 in the MacPy3D series. Check out the [MacPy3D tag](https://medium
 Let’s start by looking at the world in one dimension less. What are the objects we can find in lower dimensions. Both because it’s easier to show what’s going on (since you’re reading this on a 2D device) and because 2D objects are easier to imagine.
 
 {{< figure
-    src="/assets/images/2021/01/19/2d.svg"
+    src="2d.svg"
     alt="examples of different shapes"
     caption="Different objects with dimensions < 3. This is not an exhaustive list, and the naming is just to point to them in the text; other sources may use different names, or the same names for different objects."
 >}}
@@ -46,7 +46,7 @@ Important for the area above is to understand that there are different types of 
 Looking at the list of objects above, it should be noted that I could have made a completely different categorisation, that goes something like this: _straight line, square, triangle, parallelogram, etc_. This would make sense if we would want MacPy to deal with _shapes_.
 
 {{< figure
-    src="/assets/images/2021/01/19/house.svg"
+    src="house.svg"
     alt=""
     caption=""
 >}}
@@ -109,7 +109,7 @@ Personally I do feel that possibly some of the issues we’re going to run into 
 Let’s go back to the 2.2D objects we discussed: polygons. From a programmers point of view it’s tempting to say that a polygon is just a list of points. Draw a line from point A to B to C etc and back to A and the area in between is your polygon. However life is not that simple. There are lots of different types of polygons, some we like, some we don’t (but have to live with) and some we can disallow.
 
 {{< figure
-    src="/assets/images/2021/01/19/polygons.svg"
+    src="polygons.svg"
     alt=""
     caption=""
 >}}
@@ -220,7 +220,7 @@ After all this introduction, we can _finally_ talk about what this all means for
 Let’s revisit the shapes we defined before in 2D space, and see what happens in 3D space.
 
 {{< figure
-    src="/assets/images/2021/01/19/2d.svg"
+    src="2d.svg"
     alt="examples of different shapes"
     caption="The shapes from space < 3 dimensions. It’s hard to visualise for 3D, so I’m leaving that to your imaginations (I'm actualling looking on embedding X3D in this blog, that would solve the 3D visualisation problem)."
 >}}
@@ -252,7 +252,7 @@ Note that the edge of a body (the faces) form a 2.3D object (_mesh_) by itself, 
 #### Manifoldness
 
 {{< figure
-    src="/assets/images/2021/01/19/klein.png"
+    src="klein.png"
     alt=""
     caption=""
 >}}

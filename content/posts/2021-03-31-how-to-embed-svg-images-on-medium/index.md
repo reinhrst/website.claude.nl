@@ -25,7 +25,7 @@ Now obviously the foolproof way is to convert your SVG into a PNG image (you can
 #### So tell me already: how to embed an SVG in medium
 
 {{< figure
-    src="/assets/images/2021/03/31/heatpump.svg"
+    src="heatpump.svg"
     alt="Air air heatpump schematic (svg)"
     caption="Example: in SVG it’s easy to create an animation. This example of how a (very simple) air/water heat pump works, is only 20k in size. Note: SVG is licensed under CC BY-NC 4.0; Attribution-NonCommercial 4.0 International"
 >}}

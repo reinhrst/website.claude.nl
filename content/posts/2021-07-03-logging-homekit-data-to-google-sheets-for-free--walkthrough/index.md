@@ -98,7 +98,7 @@ We make use of the fact that all responses get saved in a Google Sheets document
 1. Start a new form (from the Blank template), and name it `Homekit Logger` (this is optional; you can also do this later or leave it unnamed).
 1. Change the type of the first question to "short answer" and where it says "Untitled Question", fill in the name of first metric you want to measure (e.g. "outside temperature").
 1. Now click the "duplicate" button on the question, and name the second question to the second metric (e.g. "outside humidity")
-![Screenshot of form create page](/assets/images/2021/07/03/forms-create.png)
+![Screenshot of form create page](forms-create.png)
 1. Keep repeating the last step, until you have 1 question for each metric.
 1. Once you have all the metrics, click "Settings" icon in the top right. Unselect anything under the "Requires sign in:" header; this action allows the form to be submitted without signing in to Goole. Note that (obviously) only the owner of the form can _see_ the responses; this setting just means that anyone can see the form and _give_ responses (don't worry, only people who have the link can do this, so if you don't share the link, nobody can post fake metrics to your system).
 1. Close the "Settings" box, and click the "Send" button in the right top. Click the link tab (second tab) on the "Send via" line. Here you'll find a link to the form.
@@ -111,7 +111,7 @@ Click on it, and on the tab "Headers".
     1. Secondly we're interested in the block at the bottom (you may need to scroll), called "Request Data". For me it looks like this.
   From this, we can surmise that the "outside temperature" field name is `entry.760868340`, and the outside humidity is `entry.1004504929`.
   Make a list of the names for all fields, we will need this later.
-![Screenshot with post URL and fieldnames in developertools](/assets/images/2021/07/03/developer-tools.png)
+![Screenshot with post URL and fieldnames in developertools](developer-tools.png)
 1. Now go back to the window where you created your Google Form (or open the Google Form again from [here](https://docs.google.com/forms/u/0/)).
 Click the "Responses" tab, and then the button on the top right that looks like a white cross on the green background.
 This button allows you to connect the form to a new Google Sheet, or connect it to an existing sheet.
@@ -126,7 +126,7 @@ This command will pretend to be a browser and submit the form with the values yo
 Lo and behold: the moment you press "enter", your terminal will submit the form, and your see the HTML/javscript code on your page for the "Thank you for your submission"-page.
 If you check now in the Google Sheet that collects your responses, you should see a line with "field1", "field2", etc in there (it may take a couple of seconds).
 This means that your Google Sheet is ready to receive data!
-![Screenshot of Google Sheet with 2 lines of data](/assets/images/2021/07/03/two-responses.png)
+![Screenshot of Google Sheet with 2 lines of data](two-responses.png)
 
 ## Create a HomeKit (home hub) Shortcut that posts your HomeKit data on a regular interval
 Ideally we would now make something that posts the data, test if this little program works, and then schedule it.
@@ -165,7 +165,7 @@ This is why the steps below maybe seem to jump all over the place; it's the only
 1. Download the [Eve app](https://apps.apple.com/us/app/eve-for-homekit/id917695792) for free.
 1. In the Eve app, go to the "Timers" tab and click "Add Timer".
 1. For now create a timer that repeats once a day, first execution in 1 hour.
-![Screenshot of creating timer in Eve](/assets/images/2021/07/03/create-timer.jpg)
+![Screenshot of creating timer in Eve](create-timer.jpg)
 1. Click "Next"; now choose a random scene. We will exchange a Shortcut for this scene soon, but this is not possible yet, so any scene will do.
 1. Click "Next" and give the timer a name, e.g. "LogTrigger"
 1. Click "Done". Your timer is created.
@@ -195,13 +195,13 @@ If you have to add a metric with a name you already had before (e.g. both indoor
     1. For the URL, fill in the post URL of the Google Form (the `https://docs.google.com/forms/d/e/1HjIGQqSdwTu-X83y_XXxxxxXXXXxxxxxXXXXX-xXXxxxXXXxxxXX/formResponse`). Note that if you try to post to something else than Google Form, make sure it's an HTTPS address with a valid certificate; in my tests, posts to HTTP (non HTTPS) addresses worked fine during test, but not as part of the automatic timer.
     1. Click "Show More"
     1. For "Method" choose "POST"
-![Screenshot of creating shortcut](/assets/images/2021/07/03/setup-shortcut-1.jpg)
+![Screenshot of creating shortcut](setup-shortcut-1.jpg)
     1. For "Request Body" choose "Form"
     1. Click "Add new field", type "Text". For Key use the field name that we discovered in the form before (in my case: `entry.760868340` for outside temperature), and Text choose the variable name ("outdoor temperature" in my case).
 _If you decided to ignore my warnings and do these steps in the Home app on the mac (at least on Big Sur), you're now stuck, because as far as I know there is no way to select a variable now.
 If so, just save the shortcut and open it on an iOS device, where you can add the correct variable._
     1. Repeat the previous step for all fields/metrics.
-![Screenshot of creating shortcut](/assets/images/2021/07/03/setup-shortcut-2.jpg)
+![Screenshot of creating shortcut](setup-shortcut-2.jpg)
 1. Test the shortcut by clicking the "play" button in the right bottom.
 If everything went right, you should see data appear in your Google Sheet!
 _Note: sometimes this gives an error on my iOS device "A server with the specified hostname could not be found", even though the URL is correct.
@@ -214,7 +214,7 @@ If we can manually run the automation and the data gets logged to our satisfacti
 1. Click the LogTrigger timer.
 1. Click on "Repeat" and select the repeat schedule you want. There seems to be a lower limit at repeating every 5 minuts.
 1. Click on "Start at" and select a time in the near future -- however not too near. As rule of thumb, choose a moment that is more than 1 minute away (to allow all syncing via iCloud to finish), and on a 5 minute boundary.
-![Screenshot of fixing the timer](/assets/images/2021/07/03/eve-fix-timer.jpg)
+![Screenshot of fixing the timer](eve-fix-timer.jpg)
 1. Click "Done", walk to the fridge (slowly), get yourself a beer, and when you come back check if the 5 minute mark has passed. If so, you should see new data in your Google Sheet.
 
 In my setup I'm logging 6 metrics to Google Sheets.
@@ -252,7 +252,7 @@ This means, for instance, that I have things like `18.4 °C` in the sheet; in or
 Follow this blog to stay informed!
 
 <div markdown="1" class="notice--success clearfix">
-![record measurement as a number](/assets/images/2021/07/03/measurement-as-number.png){: .align-left .width-half}Update: <a href="https://github.com/bartramakers" target="_blank">Bart Ramakers</a> found a solution to the problem of HomeKit logging the items as text including the ` °C`, below in the comments:
+![record measurement as a number](measurement-as-number.png){: .align-left .width-half}Update: <a href="https://github.com/bartramakers" target="_blank">Bart Ramakers</a> found a solution to the problem of HomeKit logging the items as text including the ` °C`, below in the comments:
 
 _I ran into the "values as text in the sheet" issue myself, but i noticed something you can do about it in the shortcut itself, without adding extra steps. In the form's Request body, where you specify the fields and values, if you tap the selected variable (i.e. where it says "Current Temperature", you will get a configuration sheet for that value. The type is specified as "Measurement" by default. When you change the value to "Number" this will send the value as a number into the Google Sheet._
 
@@ -260,7 +260,7 @@ _For Dutch users, don't forget to set the Sheet's document locale to Netherlands
 </div>
 
 {{< figure
-    src="/assets/images/2021/07/03/result.jpg"
+    src="result.jpg"
     alt="Google Sheets Graph of my homekit log"
     caption="With the data logged to Google Sheets, I can now make graphs, and look for irregularities"
 >}}
@@ -307,7 +307,7 @@ Doing this is a 3 step job:
 1. Send the result to Google Sheets.
 
 {{< figure
-    src="/assets/images/2021/07/03/external-api.png"
+    src="external-api.png"
     alt="Screenshots of the steps to access an external API"
     caption="Use an external API screenshots. Note that these screenshots only show step 1 and 2."
 >}}

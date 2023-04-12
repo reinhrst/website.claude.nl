@@ -30,7 +30,7 @@ Note that, depending on when you're reading this, the system as described in thi
 Obviously on the `/events` list page we also have a calendar of all events (so the dates for all event-types together), with the same iCalendar support, as well as on the `tags`-pages, but this is outside the scope of this post.
 {: .notice}
 {{< figure
-    src="/assets/images/2022/12/11/events.png"
+    src="events.png"
     alt="Example of events on hugo page"
     caption="Demo of an event page (note that most dates here are for demo purposes only ;))"
 >}}

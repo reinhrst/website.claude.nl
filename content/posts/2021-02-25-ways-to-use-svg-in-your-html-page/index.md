@@ -32,7 +32,7 @@ Since the blog moved since then, not all sidenotes below apply or make sense (no
 > Before going any further, I should also note that SVG support among browsers certainly still contains differences. Especially if you’re using more advanced SVG features, not all browsers may support them, or react the same. If you’re using advanced SVG features, and you want to make sure that your audience experiences it the way you intended, just export to PNG and include that, unfortunately…
 
 {{< figure
-    src="/assets/images/2021/02/25/differences-between-browsers.jpg"
+    src="differences-between-browsers.jpg"
     alt="SVG render differences between browsers"
     caption="Rendering differences for the same SVG file between Firefox and Chrome (using perspective and rotateX)"
 >}}
@@ -44,7 +44,7 @@ Since the blog moved since then, not all sidenotes below apply or make sense (no
 > **UPDATE:** I‘m back to searching for a good tool for this; it seem that with more complex SVGs, the screenshot tool does not match the screen 1-to-1 :(.
 
 {{< figure
-    src="/assets/images/2021/02/25/firefox-screenshot-tool.jpg"
+    src="firefox-screenshot-tool.jpg"
     alt="Showing firefox screenshot tool in action"
     caption="Firefox built in Screenshot tool allows grabbing of regions based on DOM elements — hence it’s trivial to grab exactly the SVG element. Make sure you’re opening an HTML file that contains an SVG file; it doesn’t work on just the SVG file."
 >}}
@@ -93,7 +93,7 @@ Another difference that peeps up between embedding methods, is how SVGs scale in
 In the table below I try to make make clear what embedding methods support what properties. It should be noted that this is a table with lots of (foot)notes, which I describe below.
 
 {{< figure
-    src="/assets/images/2021/02/25/results.png"
+    src="results.png"
     alt="Result table"
     caption="SVG \"features\" supported in different embedding methods. Note that the white areas at “export as PNG” mean that this depends on the tools you use to export — however any effects will be exported into the PNG, not applied by the browser when viewing. Also it should be noted that all embeds were done on the same domain (see below for cross domain), and that we used the simplest way to embed, without resorting to extra polyfills/javascript libraries."
 >}}
@@ -101,7 +101,7 @@ In the table below I try to make make clear what embedding methods support what 
 I made a test page, testing all the numbered properties — each number is only shown through the property that it describes; e.g., the ① is being shown by a scheduled animation changing the opacity. Every embed method I tried three times, in one the SVG is hosted on the same domain; in the second batch the svg is hosted on a different domain from the hosting page (note that in this case any external resources loaded _within_ the svg are from the same domain as the svg). In the final run the SVG is expressed as a data url: `data:image/svg+xml;charset=utf-8;base64,PD94bW...`. The code used for these tests can be [found on github](https://github.com/reinhrst/svgtest).
 
 {{< figure
-    src="/assets/images/2021/02/25/results-page.png"
+    src="results-page.png"
     alt="Screenshot of page of results"
     caption="Test page on Firefox 85.0.1. As far as I can tell, the results are the same on Safari/Chrome — with small rendering differences. Note that svg doesn’t make sense for cross domain and data url"
 >}}
@@ -117,7 +117,7 @@ In general, we can distinguish 4 ways of hosting an SVG:
 *   Hosting it as an image, either through the `<img>` tag or as a css `background-image:` command. Note that this mode is also used if hosting an external svg image inside an svg through the `<image href="..." />` tag. W3C [describes what we can expect an image to be](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element) (see screenhot below), and this is exactly what we find an image to be: static image, animation allowed however no interactive stuff or anything else fancy.
 
 {{< figure
-    src="/assets/images/2021/02/25/image-specification.png"
+    src="image-specification.png"
     alt="Excerpt from the img element page"
 >}}
 

@@ -264,7 +264,7 @@ items|time fzf-lib (ms)|time fzf cmdline (ms)
 33554432|33098|58230
 
 {%include figure
-    src="/assets/images/2021/07/08/results.svg"
+    src="results.svg"
     alt="results chart"
     caption="Results in double-log chart. `lib-fzf` seems faster than commandline fzf (although as mentioned before, it's not really fair to compare them). Performance scales linearly until 1at least 16.8M."
 >}}
