@@ -1,7 +1,6 @@
 ---
 title: Timing Morton code on Python on Apple Silicon
 description: Checking how fast the MacBook M1 really is, compared to intel, and in Rosetta mode
-date: '2020-12-08T11:56:38Z'
 categories:
     - tech
 tags:
