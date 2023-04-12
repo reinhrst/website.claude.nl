@@ -7,8 +7,6 @@ categories:
 tags:
     - katex
     - math
-header:
-  teaser: /assets/images/2021/07/01/teaser.png
 ---
 
 Every now and then I write a blog post with some math in it.

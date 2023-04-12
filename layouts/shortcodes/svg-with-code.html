@@ -1,0 +1,3 @@
+{{printf "```svg\n%s\n```" (trim .Inner " \n\t") | markdownify}}
+
+{{ .Inner | safeHTML }}

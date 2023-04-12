@@ -6,9 +6,6 @@ tags:
     - hugo
 toc:
   enable: true
-header:
-    image: /assets/images/2022/12/11/header.jpg
-    teaser: /assets/images/2022/12/11/teaser.jpg
 ---
 
 
