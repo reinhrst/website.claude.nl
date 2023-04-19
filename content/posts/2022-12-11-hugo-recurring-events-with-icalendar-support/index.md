@@ -246,7 +246,7 @@ There are a couple of things that we still have on our wishlist:
 ## Code
 
 ### Partial
-{{< figure-with-caption caption="The partial (`/layouts/partials/GetEventsFromEventsDates.html`) necessary to convert the `eventDates` dictionary into a list of event dates, ready for rendering. For License, [see below](#license)." max-height="80vh" >}}
+{{< figure-with-caption caption="The partial (`/layouts/partials/GetEventsFromEventsDates.html`) necessary to convert the `eventDates` dictionary into a list of event dates, ready for rendering. For License, [see below](#license)." >}}
 ```go-html-template
 {{/*
 Wants a dict as context, with the following keys:
