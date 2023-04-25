@@ -275,8 +275,8 @@ Since it's opened from within the iframe hosted in the extension, the outside pa
 ### Bringing it all together
 
 Bringing this version together, we have the following parts.
-<details markdown="1">
-<summary>All JavaScript is written in TypeScript; I use the following config (click to open this and other code blocks)</summary>
+
+{{< details summary="All JavaScript is written in TypeScript; I use the following config (click to open this and other code blocks)" >}}
 `tsconfig.json`
 ```json
 {
@@ -299,10 +299,10 @@ Bringing this version together, we have the following parts.
     ]
 }
 ```
-</details>
+{{< /details >}}
 
-<details markdown="1">
-<summary>The manifest configuring the plugin</summary>
+
+{{< details summary="The manifest configuring the plugin" >}}
 `manifest.json`
 ```json
 {
@@ -344,7 +344,7 @@ Bringing this version together, we have the following parts.
     ]
 }
 ```
-</details>
+{{< /details >}}
 
 A couple of quick words about the [manifest](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json).
 - I defined the background script as persistent.
@@ -367,9 +367,8 @@ In our case however, we exactly *want* this behaviour: we want the webpage to op
 So in order to make the `applemap.html` (which is the page we show in the iframe) accessible from another webpage, we have to add it to `web_accessible_resources`.
 Obviously MDN [also has a page describing `web_accessible_resources`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/web_accessible_resources).
 
-<details markdown="1">
-<summary markdown="1" class="MD-inline">A BrowserAction (`popup.*`) page with some settings. You could manually set your home location, or use the browser's current location whenever showing a map.
-</summary>
+
+{{< details summary="A BrowserAction (`popup.*`) page with some settings. You could manually set your home location, or use the browser's current location whenever showing a map." >}}
 
 `popup.html`
 ```html
@@ -659,7 +658,7 @@ export class Settings {
   }
 }
 ```
-</details>
+{{< /details >}}
 It might be beneficial to quickly describe what's going on here.
 Basically, this page shows 2 settings.
 The first determine if you always want to show your current location on the map as well (which influences zooming).
@@ -670,8 +669,8 @@ This was a simple work-around, later revisions could have been smarter about thi
 
 The `shared.ts` file simply defines some types and helper functions to deal with the settings.
 
-<details markdown="1">
-<summary>The background script</summary>
+
+{{< details summary="The background script" >}}
 
 `background.ts`
 ```typescript
@@ -700,7 +699,7 @@ browser.menus.onClicked.addListener(async function(info, tab) {
   }
 });
 ```
-</details>>
+{{< /details >}}
 
 The background script gets loaded when the browser starts, and stays active until the browser is closed (since we chose `persistent: true` in the manifest).
 It does 2 things: create a content menu item which is only shown if text is selected (note that right-clicking on a word always selects that word), with the text "Show map of XXXX", with XXXX being replaced by the selected text.
@@ -710,8 +709,8 @@ The second part is a listener for the menu item; it pings the ContentScript (wit
 Once the script is loaded, a message is sent with the URL that should be opened in the iframe.
 
 
-<details markdown="1">
-<summary>The content script</summary>
+
+{{< details summary="The content script" >}}
 `content.ts`
 ```typescript
 type ShowOverlayMessage = {
@@ -917,11 +916,11 @@ browser.runtime.onMessage.addListener((message: any, _sender: any, sendResponse:
   }
 })
 ```
-</details>
+{{< /details >}}
 It should be noted that the largest part of the ContentScript deals with drawing a nice overlay, moving it to a spot so that it doesn't occlude the selected words, draw a nice arrow to the selected words, and finally creating an iframe based on the message it received from the BackgroundScript.
 
-<details markdown="1">
-<summary>The content of the iframe</summary>
+
+{{< details summary="The content of the iframe" >}}
 `applemap.html`
 ```html
 <!DOCTYPE html>
@@ -977,7 +976,7 @@ window.onmessage = async (event) => {
 ```
 
 `shared.ts` source code can be found above in the BrowserAction section.
-</details>
+{{< /details >}}
 
 Nothing special here, within the iframe we just create another iframe tag (now not limited by the CSP settings of the parent page) where we show `https://show-on-map.claude-apps.com/applemap.html?....#.....`.
 This latter page will contain the map.
@@ -987,8 +986,8 @@ It will then wait for a message from this iframe, and when it receives one it wi
 
 I have to admit that it's a bit weird to send one piece of info (the search term) through the hash, and another piece through the messaging system; this was a version 0.5, and probably I would have chosen one or the other for a final version.
 
-<details markdown="1">
-<summary>Finally, the code hosted on show-on-map.claude-apps.com</summary>
+
+{{< details summary="Finally, the code hosted on show-on-map.claude-apps.com" >}}
 `applemap.html` (note that this is a different file from `applemap.html` that is part of the extension)
 ```html
 <!DOCTYPE html>
@@ -1160,7 +1159,7 @@ window.onmessage = async (event) => {
 }
 window.parent.postMessage("loaded", "*")
 ```
-</details>>
+{{< /details >}}
 
 These files are the ones doing the actual work interacting with MapKit JS and creating the map (you will have to replace the MapKit key with your own if you want to play with this).
 It talks to the parent iframe, gets the settings, retrieves the current location if necessary, converts the search text into geolocations and then shows the map.
@@ -1177,11 +1176,10 @@ Apple rejected v0.5, they said it didn't work for them on the newest Safari.
 It was developed on that same version, so I still don't know what went wrong; I did feel however that too many moving parts (a BackgroundScript that opens and sends messages to a ContentScript, which then opens an iframe with a script which opens another iframe, after which the iframes talk to each other as well) would be very hard to debug if users would start to complain.
 So version 1.0 would throw away all that work done for 0.5, and start again.
 
-<figure class="half">
-    <img src="mark-twain-example-v1.jpg">
-    <img src="giza-example-v1.jpg">
-    <figcaption>Showing v1 in action, finding Mark Twain (again) and the Pyramids in Giza</figcaption>
-</figure>
+{{< figure-with-caption caption="Showing v1 in action, finding Mark Twain (again) and the Pyramids in Giza" >}}
+    {{< child >}} ![](mark-twain-example-v1.jpg) {{< /child >}}
+    {{< child >}} ![](giza-example-v1.jpg) {{< /child >}}
+{{< /figure-with-caption >}}
 
 Version 1.0 takes a wholly other approach: there are no settings (somehow I've been unable to make the BrowserAction disappear altogether; it just shows a static HTML page now with a few instructions), and when the menu-item is selected the search-term is sent to the Apple Maps app (which, as far as I know, is installed on every mac).
 
@@ -1191,8 +1189,7 @@ However (as I'm sure you've noticed if you actually clicked the link above), it 
 So in order to fix this problem, I have the native part of the extension (go back to the top if you forgot by now what this is) open the Maps app, and voila, it fixes both problems!
 It did take me a long long time to get the communication between the native part of the extension and the HTML/JS part working (which I'm sure is due to my inexperience in Xcode and mac development), but once it works, it couldn't be easier!
 
-<details markdown="1">
-<summary>The native part of the extension: SafariWebExtensionHandler.swift</summary>
+{{< details summary="The native part of the extension: SafariWebExtensionHandler.swift" >}}
 `SafariWebExtensionHandler.swift`
 ```swift
 
@@ -1221,7 +1218,7 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     }
 }
 ```
-</details>
+{{< /details >}}
 
 The above file (Swift 5) is all the code necessary for the native part.
 Let me go through it:
@@ -1242,8 +1239,7 @@ It's still a shit way to develop (print statements and running....) but it's muc
 BTW, once you know where to look..... [This stack-overflow reply](https://stackoverflow.com/a/45957891/1207489) has all the answers.
 
 
-<details markdown="1">
-<summary>The BackgroundScript</summary>
+{{< details summary="The BackgroundScript" >}}
 `background.ts`
 ```typescript
 import { init, track, parameters} from "insights-js"
@@ -1291,7 +1287,7 @@ browser.menus.onClicked.addListener(async function(info, _tab) {
 </head>
 </html>
 ```
-</details>
+{{< /details >}}
 
 All the BackgroundScript does is set up the context menu item and once it's clicked, create a URL of the form `http://maps.apple.com/?q=XXXX` and send a message to the native part of the extension to open this URL (note: as far as I have been able to determine, all connections are secure, even though an `http://` URL is used; Apple Maps will intercept the URL and use secure connections to get the data).
 
@@ -1309,8 +1305,8 @@ Anyways, so far I'm getting useful data from them, even though I sometimes wish 
 I have to say that I'm still struggling with the ethics of releasing an update of the other extension which counts use; I feel I betray those people that installed the extension after reading the promise that I was not tracking them (and not reading through all the changes at an app update, as none of us do).
 </div>
 
-<details markdown="1">
-<summary>Finally, the manifest</summary>
+
+{{< details summary="Finally, the manifest" >}}
 `manifest.json`
 ```json
 {
@@ -1351,15 +1347,13 @@ I have to say that I'm still struggling with the ethics of releasing an update o
     ]
 }
 ```
-</details>
+{{< /details >}}
 Note that we still need the `activeTab` permission.
 I do think that this is unfortunate, since it means that the user sees the following warning.
 
-{%include figure
-    src="warning.png"
-    alt="Warning shown on the extensions screen"
-    caption="Warning shown on the Safari Settings &gt; extensions screen. (yes I know the other extensions are blurred-but-still-readable; I think they're good extensions (especially Smart Keyword Search &#x1F600;), so I have to problem with showing them)"
->}}
+{{<figure-with-caption caption="Warning shown on the Safari Settings &gt; extensions screen. (yes I know the other extensions are blurred-but-still-readable; I think they're good extensions (especially Smart Keyword Search &#x1F600;), so I have to problem with showing them)">}}
+  ![Warning shown on the extensions screen](warning.png)
+{{</figure-with-caption>}}
 
 The Extensions page in the Safari Settings explains that this extension "[c]an read and alter sensitive information on web pages, including passwords, phone numbers and credit cards, and see your browsing history **on the current tab's web page when you use the extension.**".
 This is absolutely correct, and I think these kinds of warnings can not be shown enough, however I would love to have a way to show that the extension never wants access to anything except the selected text when the menu item is clicked....
