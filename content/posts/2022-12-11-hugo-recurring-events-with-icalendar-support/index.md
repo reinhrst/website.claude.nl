@@ -29,11 +29,9 @@ Note that, depending on when you're reading this, the system as described in thi
 
 Obviously on the `/events` list page we also have a calendar of all events (so the dates for all event-types together), with the same iCalendar support, as well as on the `tags`-pages, but this is outside the scope of this post.
 {: .notice}
-{{< figure
-    src="events.png"
-    alt="Example of events on hugo page"
-    caption="Demo of an event page (note that most dates here are for demo purposes only ;))"
->}}
+{{<figure-with-caption caption="Demo of an event page (note that most dates here are for demo purposes only ;))">}}
+  ![Example of events on hugo page](events.png)
+{{< /figure-with-caption >}}
 
 Above you see what we want to display at the top of an event-page (note: for real-life use you probably want to limit which part of the list you show, make it scrollable, choose a different format or colours, etc).
 Final makeup is independent of the code generating the events (and so 100% custom).

@@ -21,11 +21,9 @@ This is part 2 in the MacPy3D series. Check out the [MacPy3D tag](https://medium
 
 Let’s start by looking at the world in one dimension less. What are the objects we can find in lower dimensions. Both because it’s easier to show what’s going on (since you’re reading this on a 2D device) and because 2D objects are easier to imagine.
 
-{{< figure
-    src="2d.svg"
-    alt="examples of different shapes"
-    caption="Different objects with dimensions < 3. This is not an exhaustive list, and the naming is just to point to them in the text; other sources may use different names, or the same names for different objects."
->}}
+{{<figure-with-caption caption="Different objects with dimensions < 3. This is not an exhaustive list, and the naming is just to point to them in the text; other sources may use different names, or the same names for different objects.">}}
+  ![examples of different shapes](2d.svg)
+{{< /figure-with-caption >}}
 
 The simplest object we can have is a point. It is 0-[dimensional](https://en.wikipedia.org/wiki/Dimension), has no length and no width. Things get more interesting if we have more than 1 point.
 
@@ -45,11 +43,9 @@ Important for the area above is to understand that there are different types of 
 
 Looking at the list of objects above, it should be noted that I could have made a completely different categorisation, that goes something like this: _straight line, square, triangle, parallelogram, etc_. This would make sense if we would want MacPy to deal with _shapes_.
 
-{{< figure
-    src="house.svg"
-    alt=""
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![](house.svg)
+{{< /figure-with-caption >}}
 
 For instance, if we have the drawing of a house, we could say it’s a square with a triangle on top, and store it as such internally (a `Square` object with an `origin` and `width` parameter and a `Triangle` object with some parameters: _Shape representation_). Alternatively we could say that it’s just a polyline (e.g. a list of `Line` objects, each with a `start` and `end` parameter; this latter method we call the Line representation.
 
@@ -108,11 +104,9 @@ Personally I do feel that possibly some of the issues we’re going to run into 
 
 Let’s go back to the 2.2D objects we discussed: polygons. From a programmers point of view it’s tempting to say that a polygon is just a list of points. Draw a line from point A to B to C etc and back to A and the area in between is your polygon. However life is not that simple. There are lots of different types of polygons, some we like, some we don’t (but have to live with) and some we can disallow.
 
-{{< figure
-    src="polygons.svg"
-    alt=""
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![](polygons.svg)
+{{< /figure-with-caption >}}
 
 *   **Convex polygon**: A polygon is convex if every corner is ≤ 180 degrees. Said differently, if I were to put a rubber band around the polygon, it would form exactly around the edges. Said even differently, any line I can draw between 2 points will either be on the edge or be completely inside the polygon.
 *   **Concave polygon**: A polygon is concave as soon as one of the corners is larger than 180 degrees — or, said differently, any non-convex polygon.
@@ -219,11 +213,9 @@ After all this introduction, we can _finally_ talk about what this all means for
 
 Let’s revisit the shapes we defined before in 2D space, and see what happens in 3D space.
 
-{{< figure
-    src="2d.svg"
-    alt="examples of different shapes"
-    caption="The shapes from space < 3 dimensions. It’s hard to visualise for 3D, so I’m leaving that to your imaginations (I'm actualling looking on embedding X3D in this blog, that would solve the 3D visualisation problem)."
->}}
+{{<figure-with-caption caption="The shapes from space < 3 dimensions. It’s hard to visualise for 3D, so I’m leaving that to your imaginations (I'm actualling looking on embedding X3D in this blog, that would solve the 3D visualisation problem).">}}
+  ![examples of different shapes](2d.svg)
+{{< /figure-with-caption >}}
 
 *   We can extend the 0D-0.1D-0.2D _point_/_pointline_/_pointmap_ with a 0.3D _pointcloud_. We should note that, just as previously we said that a pointline with more than 2 points may not be an exact line anymore due to floating point precision (and therefore becoma a pointmap), it’s true in this case than anything with more than 3 points may become a pointcloud due to precision rounding.
 *   Lines also get a 1.3D variant (for which I don’t have a good name right now; linecloud?). Just, multiple lines whose coordinates do not lie in 1 plane.
@@ -251,11 +243,9 @@ Note that the edge of a body (the faces) form a 2.3D object (_mesh_) by itself, 
 
 #### Manifoldness
 
-{{< figure
-    src="klein.png"
-    alt=""
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![](klein.png)
+{{< /figure-with-caption >}}
 
 Other programs seem to use the term “a manifold shape” to mean “a valid shape according to the rules I have”. Even though there is a good mathematical definition of what is a [manifold](https://en.wikipedia.org/wiki/Manifold), so far I have been unable to find a full description on what manifoldness means in different programs. Blender stack exchange has [many questions](https://blender.stackexchange.com/search?q=manifold) about error messages related to it. It feels to me that much confusion can be avoided by making manifoldness an explicit part of your product (or library) — and then having very clear rules about how something can become non-manifold and being able to show _exactly_ where that happens. So, for MacPy3D it should be clear: Any _body_ is manifold, since something is only a body if it adheres to the 3 rules above. Alternatively, one can have a _mesh_ object, a 2.3D object, in which case there are no rules whatsoever to adhere to. Obviously only some meshes can be upgraded to bodies (only when they are manifold).
 

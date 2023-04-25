@@ -958,11 +958,9 @@ Returning search result to JS callback | 1'173 (1'908) | - | 6'400 (416)
 Total | 8'685 (15'809) | - | 34'371 (15'310)
 
 
-{{< figure
-    src="results-js-and-go-speedup.svg"
-    alt="results chart"
-    caption="Go WebAssembly performs much better with the JSON patch, but GopherJS is much worse."
->}}
+{{<figure-with-caption caption="Go WebAssembly performs much better with the JSON patch, but GopherJS is much worse.">}}
+  ![results chart](results-js-and-go-speedup.svg)
+{{< /figure-with-caption >}}
 
 I did expect Go WebAssembly to perform a lot better, and I'm happy to see that it did.
 We managed with a small change to almost half the end-to-end execution time.

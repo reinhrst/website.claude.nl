@@ -15,11 +15,9 @@ UPDATE: I made a small [SVG speech bubble generator](/speechbubblegenerator/), b
 Have fun with it!
 {: .notice--warning}
 
-{{< figure
-    src="interface.svg"
-    alt="Javascript engines and Go Gopher talking"
-    caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/)."
->}}
+{{<figure-with-caption caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/).">}}
+  ![Javascript engines and Go Gopher talking](interface.svg)
+{{< /figure-with-caption >}}
 
 Here I show how to create speech bubbles.
 

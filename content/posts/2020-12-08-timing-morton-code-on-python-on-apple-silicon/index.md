@@ -21,11 +21,9 @@ As many other reviews have shown, the M1 Macbooks is _fast_. For this simple tas
 
 All said, I’m _very_ impressed.
 
-{{< figure
-    src="1__D8eRw8TXIFE7Zy8YRHNIWw.png"
-    alt="graphs showing timings for morton code on intel, rosetta/M1 and arm64/M1"
-    caption="The number of nanoseconds needed to calculate 1 Morton Code, if done in batches of 100, 10k and 1M. Speed with Rosetta seems to be comparable to my old intel macbook. Native speed is between 50% and 90% faster for python and numpy. Whether OpenCL speed is fair to compare, I don’t know; But it is more than 3 times faster!"
->}}
+{{<figure-with-caption caption="The number of nanoseconds needed to calculate 1 Morton Code, if done in batches of 100, 10k and 1M. Speed with Rosetta seems to be comparable to my old intel macbook. Native speed is between 50% and 90% faster for python and numpy. Whether OpenCL speed is fair to compare, I don’t know; But it is more than 3 times faster!">}}
+  ![graphs showing timings for morton code on intel, rosetta/M1 and arm64/M1](1__D8eRw8TXIFE7Zy8YRHNIWw.png)
+{{< /figure-with-caption >}}
 
 ### Setup
 
@@ -191,11 +189,9 @@ OpenCL 1M|7.4|3.6|2.4|3.08
 OpenCL 10M|7.3|3.7|2.2|3.32
 OpenCL 100M|---|3.6|2.1|---
 
-{{< figure
-    src="1__D8eRw8TXIFE7Zy8YRHNIWw.png"
-    alt="graphs showing timings for morton code on intel, rosetta/M1 and arm64/M1"
-    caption="The number of nanoseconds needed to calculate 1 Morton Code."
->}}
+{{<figure-with-caption caption="The number of nanoseconds needed to calculate 1 Morton Code.">}}
+  ![graphs showing timings for morton code on intel, rosetta/M1 and arm64/M1](1__D8eRw8TXIFE7Zy8YRHNIWw.png)
+{{< /figure-with-caption >}}
 
 Firstly, we see that the results are more or less what we would expect. Our naive solution is slowest, the python magic numbers takes between 1000 and 2000 nanoseconds (we estimated around 1000), whereas the numpy solution takes between 10 and 40 nanoseconds (the fact that larger batches actually take longer in numpy is probably because allocating large swabs of memory take considerably longer — possibly we could speed things up here by reusing memory).
 

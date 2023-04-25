@@ -15,11 +15,9 @@ Being Dutch, I was born on a bicycle. As a youngster, your bike is your only leg
 
 I do feel that many of the more general rules probably apply more widely to (at least South-Western) Poland, however I have no experience there.
 
-{{< figure
-    src="teaser.jpg"
-    alt="Sunset on field of beets"
-    caption="Cycling through Poland can lead to wonderful pictures :). However, also to the choice: do I ride straight through this field of beets, or do I go around."
->}}
+{{<figure-with-caption caption="Cycling through Poland can lead to wonderful pictures :). However, also to the choice: do I ride straight through this field of beets, or do I go around.">}}
+  ![Sunset on field of beets](teaser.jpg)
+{{< /figure-with-caption >}}
 
 The timing could have been better, but in autumn 2020, while all of Europe was going into its second Corona lockdown, I moved to Wrocław, Poland, for a two month stay. My girlfriend and I rented a very nice AirBnB in the outskirts in Szczodre, about 10km from the city. While my girlfriend was happy to take our car everywhere she went, I cycled around the place, doing shopping, going places, workouts. I had taken my [Idworx Easy Rohler Evo](https://www.idworx-bikes.de/product/easy_rohler_evo), a study bike with 45mm tyres (this is wider than a city bike, but less than a mountainbike).
 
@@ -33,32 +31,24 @@ It did take me a couple of weeks to find the ins and outs of cycling around here
 
 _Note: It’s your own responsibility to inform yourself of the rules and laws governing cycling; the following is just meant as anecdotal personal experience:_ As far as I have been able to attain, there seem to be very few rules on which roads can be used for cycling. In some cases it’s easy, if there is a dedicated cycling or shared cycling/pedestrian path on a road.
 
-{{< figure
-    src="shared-road-sign.jpg"
-    alt="A blue traffic sign with a bike and people walking"
-    caption="A shared cycle/pedestrian path"
->}}
-{{< figure
-    src="shared-road-floor.jpg"
-    alt="Bike and people walking painted on a pavement"
-    caption="Also a shared path"
->}}
+{{<figure-with-caption caption="A shared cycle/pedestrian path">}}
+  ![A blue traffic sign with a bike and people walking](shared-road-sign.jpg)
+{{< /figure-with-caption >}}
+{{<figure-with-caption caption="Also a shared path">}}
+  ![Bike and people walking painted on a pavement](shared-road-floor.jpg)
+{{< /figure-with-caption >}}
 
 However for the rest, little seems to have been arranged. In my time here, I’ve not seen any paths (including small forest trails, etc) that were off-limits to bicycles. Also, it seems that there are actually semi-highways, where cars are allowed to go 100km/h (and more often do 140), without shoulder, that seem to be legal to bike on. My advice: don’t do this latter, stay away from any multi-lane road without sidewalks. However for the rest, as long as you’re respectful, I’ve never run into any problems, or people that seemed upset with my cycling there (and this does include forest paths, sidewalks, and 80km inter-village roads).
 
-{{< figure
-    src="forest-road.jpg"
-    alt="A forrest path without any traffic signs"
-    caption="An unpaved forest track, that I (and many others, as can be seen from the tracks) are considering to be cycleable, even though there are no signs."
->}}
+{{<figure-with-caption caption="An unpaved forest track, that I (and many others, as can be seen from the tracks) are considering to be cycleable, even though there are no signs.">}}
+  ![A forrest path without any traffic signs](forest-road.jpg)
+{{< /figure-with-caption >}}
 
 Mostly: be respectful, don’t race when you’re on a road that has pedestrians on it, don’t cross any farmers fields, unless you’re sure you can do so without damaging any of the crops, and you see others already did so. And be aware that occasionally you’ll be stuck behind a family with a pram, on a road that is too small to pass.
 
-{{< figure
-    src="nonpublic-road.jpg"
-    alt="Traffic sign with &quot;Droga wewnętrzna&quot;"
-    caption="Some roads around Wrocław have this sign &quot;Droga wewnętrzna&quot;, which means as much as &quot;internal road&quot;. In my experience these are non-public (but traversable) roads. I would still enter such a road — only a sign or &quot;Droga Prywatna&quot; (private road) would make me consider a different route."
->}}
+{{<figure-with-caption caption="Some roads around Wrocław have this sign &quot;Droga wewnętrzna&quot;, which means as much as &quot;internal road&quot;. In my experience these are non-public (but traversable) roads. I would still enter such a road — only a sign or &quot;Droga Prywatna&quot; (private road) would make me consider a different route.">}}
+  ![Traffic sign with &quot;Droga wewnętrzna&quot;](nonpublic-road.jpg)
+{{< /figure-with-caption >}}
 
 ## Who is cycling in Poland
 
@@ -93,19 +83,15 @@ I found OpenStreetMaps to have a much better idea on where roads are. It doesn�
 
 There are many interfaces to use OpenStreetMaps. I’m personally using [WorkOutDoors](http://www.workoutdoors.net) on the Apple Watch; this app costs a couple of euros but been worth its price 100 times over.
 
-{{< figure
-    src="beets.jpg"
-    alt="Farm-field with beets"
-    caption="Here it seemed that many people (possibly including the farmer himself) goes straight through the field. This is also the path that OpenStreetMaps knows about. However, more than likely, after this field is plowed, it will be extremely difficult to go straight (and next year, possibly, the route through the field may be different). So probably it’s a huge challenge even for map makers to know all the roads. At least, in my experience, OpenStreetMap is much more up to date than Google Maps."
->}}
+{{<figure-with-caption caption="Here it seemed that many people (possibly including the farmer himself) goes straight through the field. This is also the path that OpenStreetMaps knows about. However, more than likely, after this field is plowed, it will be extremely difficult to go straight (and next year, possibly, the route through the field may be different). So probably it’s a huge challenge even for map makers to know all the roads. At least, in my experience, OpenStreetMap is much more up to date than Google Maps.">}}
+  ![Farm-field with beets](beets.jpg)
+{{< /figure-with-caption >}}
 
 ## Don’t trust overzealous local maps
 
-{{< figure
-    src="cycle-network-map.jpg"
-    alt="Picture of a map of cycle routes"
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![Picture of a map of cycle routes](cycle-network-map.jpg)
+{{< /figure-with-caption >}}
 
 In many places in Wrocław, you can see the map above. It looks absolutely great, however seems to be more of a "Wrocław biking group wishlist" than actual reality. And as much as I do appreciate optimistic thinking, a small disclaimer would have prevented me for looking for a bridge for 10 minutes that is not there (yet?).
 
@@ -123,11 +109,9 @@ If you travel a lot between 2 points, try different paths. Don’t trust the map
 
 For instance, sometimes there is a semi-highway between 2 places, however there is a small path (probably mostly used by people walking their dogs) next to it. Feel free to see where it leads you.
 
-{{< figure
-    src="bridge.jpg"
-    alt="Small wooden bridge over a stream"
-    caption="This small bridge, which I wouldn’t be surprised if it was built by an energetic individual without any sort of government approval, was not on any map (and the only dry way to get across this stream for quite some kilometers). You have to traverse a small trail next to a security fence and a farmer’s field to get there, but it seems to work :). Added it to OpenStreetMap since."
->}}
+{{<figure-with-caption caption="This small bridge, which I wouldn’t be surprised if it was built by an energetic individual without any sort of government approval, was not on any map (and the only dry way to get across this stream for quite some kilometers). You have to traverse a small trail next to a security fence and a farmer’s field to get there, but it seems to work :). Added it to OpenStreetMap since.">}}
+  ![Small wooden bridge over a stream](bridge.jpg)
+{{< /figure-with-caption >}}
 
 The quickest (and nicest) route between 2 points may actually be: follow the forest path, take the 20cm wide bridge across the stream, go under the viaduct, then up the stairs on the side, wiggle past the fence, walk 10 meters along the highway and follow the road into town (followed by a forest track that demands you carry your bike over a fallen tree twice). True story!
 
@@ -135,32 +119,24 @@ The quickest (and nicest) route between 2 points may actually be: follow the for
 
 Unless you want to adhere to the next rule, be ready to get dirty, wet, and possibly scratched by bushes. During my stay, we did have some rain, and some flood warnings, still some paths (or even normal, paved roads) had completely transformed into mud baths. In the best case, you get your bike very dirty; in a worse case, you slip and lose your balance.
 
-{{< figure
-    src="mud-road.jpg"
-    alt="Partially flooded muddy track"
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![Partially flooded muddy track](mud-road.jpg)
+{{< /figure-with-caption >}}
 
 Also, some paths may actually be under the water level…. It will clean your bike again to take them, but you better dress warmly…
 
-{{< figure
-    src="submarine.jpg"
-    alt="Me cycling through water, sometimes waist-deep"
-    caption="If you insist to follow your planned route, your shoes, socks, trousers and occasionally shirt may get wet. It does clean your bike though :)."
->}}
+{{<figure-with-caption caption="If you insist to follow your planned route, your shoes, socks, trousers and occasionally shirt may get wet. It does clean your bike though :).">}}
+  ![Me cycling through water, sometimes waist-deep](submarine.jpg)
+{{< /figure-with-caption >}}
 
 And some places are actually official fords (even labelled that way on OpenStreetMaps — although not everything labelled as a ford there also actually has water in it…)
 
-{{< figure
-    src="fake-ford.jpg"
-    alt="Path of dry mud, with water to either side"
-    caption="A ford (on OpenStreetMaps) however no need to get wet"
->}}
-{{< figure
-    src="real-ford.jpg"
-    alt="A proper ford through a river"
-    caption="A ford (on OpenStreetMaps); no way to get across except by getting wet"
->}}
+{{<figure-with-caption caption="A ford (on OpenStreetMaps) however no need to get wet">}}
+  ![Path of dry mud, with water to either side](fake-ford.jpg)
+{{< /figure-with-caption >}}
+{{<figure-with-caption caption="A ford (on OpenStreetMaps); no way to get across except by getting wet">}}
+  ![A proper ford through a river](real-ford.jpg)
+{{< /figure-with-caption >}}
 
 ## Be prepared to turn around
 
@@ -184,11 +160,9 @@ Having said this, I did also occasionally see people on racing bikes, without li
 
 OpenStreetMap is a map that is maintained by active members of the community. Even though it has lots of smaller paths and roads, you will still quite often stumble upon paths that are not in there yet (or, alternatively, you will find that paths that are on OpenStreetMap do not exist (anymore) in real life. In this case, please contribute!
 
-{{< figure
-    src="osm-edit.jpg"
-    alt="Editing on OpenStreetMaps"
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![Editing on OpenStreetMaps](osm-edit.jpg)
+{{< /figure-with-caption >}}
 
 After a cycle (or run in some cases), I overlay the GPX track of my workon on the OpenStreetMap edit page, and update the map with my findings. It’s hard to do so perfectly (in many cases, you’re left with questions, is this path next to the field actually an official path? Is the pavement "unpaved" or "dirt". Is a certain path open for bikes (officially), what about horses? Is the path that I couldn’t find actually gone, or just temporarily closed?), however just ask yourself if your edit is going to make life easier for the next person, even if it’s not perfect (probably the answer is "yes"). In that case, please make the edit and share the results.
 
@@ -202,19 +176,15 @@ After all the pitfalls mentioned above, I would like to share some of the great 
 
 I added GPX tracks to the routes — these can be used in the aforementioned WorkOutDoors app (or in most other apps).
 
-{{< figure
-    src="sunset-field.jpg"
-    alt="Fields with sunset"
-    caption="Cycling around Wrocław can be very rewarding indeed"
->}}
+{{<figure-with-caption caption="Cycling around Wrocław can be very rewarding indeed">}}
+  ![Fields with sunset](sunset-field.jpg)
+{{< /figure-with-caption >}}
 
 ## The left bank of the river Widawa
 
-{{< figure
-    src="map-widawa.jpg"
-    alt="Map of cycle tour"
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![Map of cycle tour](map-widawa.jpg)
+{{< /figure-with-caption >}}
 
 The Widawa river lies just north or the Odra, the main river through Wrocław. The south-east (left) bank has a very nice cycling route along it, right up the embankment all the way. Sometimes, right next to the water, sometimes a bit more inland (I expect that in these places, the river has some more space in case of high water). The route as drawn is about 14km long. During my stay, there were one or 2 spots where you need to take a short detour, unless you’re happy to cycle through 1m high water :).
 
@@ -224,11 +194,9 @@ Download [the gpx file here](/downloads/left%20bank%20Widawa.gpx).
 
 ## Around Wrocław, from Psie-Pole
 
-{{< figure
-    src="map-wroclaw.jpg"
-    alt="Map of cycle tour"
-    caption=""
->}}
+{{<figure-with-caption caption="">}}
+  ![Map of cycle tour](map-wroclaw.jpg)
+{{< /figure-with-caption >}}
 
 This 35km route (with 500 meters aggregated height difference) starts very nicely with a cycle along the Widawa river. However as we got to the Wyspa Opatowicka, in the west, the one bridge from the island was blocked, and we had to make a detour all the way to the zoo. When you come to the south part of Wrocław, you’re more or less forced to cycle along the main ring route (although, there does seem to be a nice alternative, which I plan to explore later). There are cycle lanes, but it is noisy and busy, not my favourite. Finally, however, as you return to the right (north) bank of the Odra, the path becomes a nice cycle and pedestrian path again.
 
@@ -238,8 +206,6 @@ I did the first (north/west) half of [a route posted on bikemap.net](https://www
 
 In general I have found that bikemap.net has some very nice routes, that let you explore a place you are much faster than on your own. On the other hand, some routes are also boring, or even dangerous, so, as always, be smart.
 
-{{< figure
-    src="szczodre-by-night.jpg"
-    alt="Szczodre lake at night"
-    caption="Safe cycling!"
->}}
+{{<figure-with-caption caption="Safe cycling!">}}
+  ![Szczodre lake at night](szczodre-by-night.jpg)
+{{< /figure-with-caption >}}

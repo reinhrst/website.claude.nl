@@ -259,11 +259,9 @@ _I ran into the "values as text in the sheet" issue myself, but i noticed someth
 _For Dutch users, don't forget to set the Sheet's document locale to Netherlands, so that understands that a comma is a decimal separator instead of a thousands-separator :)_
 </div>
 
-{{< figure
-    src="result.jpg"
-    alt="Google Sheets Graph of my homekit log"
-    caption="With the data logged to Google Sheets, I can now make graphs, and look for irregularities"
->}}
+{{<figure-with-caption caption="With the data logged to Google Sheets, I can now make graphs, and look for irregularities">}}
+  ![Google Sheets Graph of my homekit log](result.jpg)
+{{< /figure-with-caption >}}
 
 ## Troubleshooting
 - Check the description above, some steps have troubleshooting remarks in cursive.
@@ -306,11 +304,9 @@ Doing this is a 3 step job:
 1. Parse the data and select the item you want
 1. Send the result to Google Sheets.
 
-{{< figure
-    src="external-api.png"
-    alt="Screenshots of the steps to access an external API"
-    caption="Use an external API screenshots. Note that these screenshots only show step 1 and 2."
->}}
+{{<figure-with-caption caption="Use an external API screenshots. Note that these screenshots only show step 1 and 2.">}}
+  ![Screenshots of the steps to access an external API](external-api.png)
+{{< /figure-with-caption >}}
 
 ## Getting the data from an external API
 One can use the `Get contents of` action to get the data of a random web address.

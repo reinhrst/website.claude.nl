@@ -183,11 +183,9 @@ It creates a lambda function with an index.py with the string `# NOTE: this file
 
 Note that any update to the code will result in a new layer version being created, then the `TestLambda` function being updated to use the new layer version. In case of a single application consisting of 4 of 5 lambda functions, one could create a single layer with all the code, and each lambda function just pointing to a different entry point (`Handler`).
 
-{{< figure
-    src="functionlayer.svg"
-    alt="Schematic of function layer"
-    caption="Single layer of code contains everything necessary for multiple lambda functions"
->}}
+{{<figure-with-caption caption="Single layer of code contains everything necessary for multiple lambda functions">}}
+  ![Schematic of function layer](functionlayer.svg)
+{{< /figure-with-caption >}}
 
 
 The CloudFormation code to create the custom function is below (note that it uses the `__INCLUDE__:` syntax from the `getstack.py` file above; this is just for readability, and things will work just as well if you manually copy the `codelayer.py` code into the `codelayer.yaml` file (and indent it far enough). The code has the following features:

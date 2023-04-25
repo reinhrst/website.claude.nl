@@ -135,11 +135,9 @@ Note that in a browser, the output will appear in the JavaScript console, not on
 Go and JavaScript are different types of languages; an important difference in this case is that Go is statically typed, whereas JavaScript is dynamically typed.
 This means that "stuff" has to happen on the boundary (and we cannot just call an exposed Go function from JavaScript).
 
-{{< figure
-    src="interface.svg"
-    alt="Javascript engines and Go Gopher talking"
-    caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/)."
->}}
+{{<figure-with-caption caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/).">}}
+  ![Javascript engines and Go Gopher talking](interface.svg)
+{{< /figure-with-caption >}}
 
 ## A simple example
 The workhorse of the boundary is the [`syscall/js`](https://pkg.go.dev/syscall/js) module, part of the Go standard library.

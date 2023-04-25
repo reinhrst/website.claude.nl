@@ -10,6 +10,8 @@ tags:
     - embed
 series: Scalar Vector Graphics (SVG)
 original_post_medium_url: https://claude-e-e.medium.com/ways-to-use-svg-in-your-html-page-dd504660cb37
+toc:
+  enable: true
 ---
 
 Lately I’ve rekindled my interest in SVG. Using SVG I can declaratively create icons / diagrams / etc, in such a way that both I and the computer can read the sourcecode, and that version control systems, such as github, can easily show me the differences between files. The coverimage for this post was created as a 20 line SVG image (and then converted to PNG since Medium doesn’t support SVG images) — _it also shows you that great technology such as SVG is no match for poor design skills._ If you have never played with SVG, I can definitely advise you to start!
@@ -31,23 +33,19 @@ Since the blog moved since then, not all sidenotes below apply or make sense (no
 
 > Before going any further, I should also note that SVG support among browsers certainly still contains differences. Especially if you’re using more advanced SVG features, not all browsers may support them, or react the same. If you’re using advanced SVG features, and you want to make sure that your audience experiences it the way you intended, just export to PNG and include that, unfortunately…
 
-{{< figure
-    src="differences-between-browsers.jpg"
-    alt="SVG render differences between browsers"
-    caption="Rendering differences for the same SVG file between Firefox and Chrome (using perspective and rotateX)"
->}}
+{{<figure-with-caption caption="Rendering differences for the same SVG file between Firefox and Chrome (using perspective and rotateX)">}}
+  ![SVG render differences between browsers](differences-between-browsers.jpg)
+{{< /figure-with-caption >}}
 
 #### Side note 3: Converting SVGs to PNGs — free and _with all bells and whistles that a browser supports_
 
-> I’ve been looking for a good way to export SVGs into PNGs, for those cases that SVGs just don’t cut it (i.e. complex non-cross-browser compatible SVGs, Medium posts, etc). It turns out that pretty much anyone who says they can do this (websites, commandline tools, etc), cannot actually deal with slightly more complex SVGs. After many a complex tool (of which [svgexport](https://www.npmjs.com/package/svgexport) is possibly the best, however it is based on Chromium and therefore was unable to properly render the image above), and building some myself (especially: having an HTML page that loads an SVG file, then renders it into a canvas objects, and then use `canvas.toDataURL()` to convert it to PNG), as well as simple ones (just take a screenshot on your mac, and manually trim it to the dimensions you want), the solution as as simple as can be: FireFox has a [built in screenshot](https://support.mozilla.org/en-US/kb/firefox-screenshots) tool. This tool actually allows you to select the region you want to screenshot _based on DOM elements_, so you can easily select just the SVG — presto! Note that you should (obviously) make sure your SVGs are displayed on 100%, and on 2⨉ retina screens, your PNG will have 4 pixels for each SVG "pixel".
+> I’ve been looking for a good way to export SVGs into PNGs, for those cases that SVGs just don’t cut it (i.e. complex non-cross-browser compatible SVGs, Medium posts, etc). It turns out that pretty much anyone who says they can do this (websites, commandline tools, etc), cannot actually deal with slightly more complex SVGs. After many a complex tool (of which [svgexport](https://www.npmjs.com/package/svgexport) is possibly the best, however it is based on Chromium and therefore was unable to properly render the image above), and building some myself (especially: having an HTML page that loads an SVG file, then renders it into a canvas objects, and then use `canvas.toDataURL()` to convert it to PNG), as well as simple ones (just take a screenshot on your mac, and manually trim it to the dimensions you want), the solution as as simple as can be: FireFox has a [built in screenshot](https://support.mozilla.org/en-US/kb/firefox-screenshots) tool. This tool actually allows you to select the region you want to screenshot _based on DOM elements_, so you can easily select just the SVG — presto! Note that you should (obviously) make sure your SVGs are displayed on 100%, and on 2&times; retina screens, your PNG will have 4 pixels for each SVG "pixel".
 
 > **UPDATE:** I‘m back to searching for a good tool for this; it seem that with more complex SVGs, the screenshot tool does not match the screen 1-to-1 :(.
 
-{{< figure
-    src="firefox-screenshot-tool.jpg"
-    alt="Showing firefox screenshot tool in action"
-    caption="Firefox built in Screenshot tool allows grabbing of regions based on DOM elements — hence it’s trivial to grab exactly the SVG element. Make sure you’re opening an HTML file that contains an SVG file; it doesn’t work on just the SVG file."
->}}
+{{<figure-with-caption caption="Firefox built in Screenshot tool allows grabbing of regions based on DOM elements — hence it’s trivial to grab exactly the SVG element. Make sure you’re opening an HTML file that contains an SVG file; it doesn’t work on just the SVG file.">}}
+  ![Showing firefox screenshot tool in action](firefox-screenshot-tool.jpg)
+{{< /figure-with-caption >}}
 
 ### Main story: Embedding SVGs into HTML, the basics
 
@@ -92,19 +90,15 @@ Another difference that peeps up between embedding methods, is how SVGs scale in
 
 In the table below I try to make make clear what embedding methods support what properties. It should be noted that this is a table with lots of (foot)notes, which I describe below.
 
-{{< figure
-    src="results.png"
-    alt="Result table"
-    caption="SVG \"features\" supported in different embedding methods. Note that the white areas at “export as PNG” mean that this depends on the tools you use to export — however any effects will be exported into the PNG, not applied by the browser when viewing. Also it should be noted that all embeds were done on the same domain (see below for cross domain), and that we used the simplest way to embed, without resorting to extra polyfills/javascript libraries."
->}}
+{{<figure-with-caption caption="SVG \"features\" supported in different embedding methods. Note that the white areas at “export as PNG” mean that this depends on the tools you use to export — however any effects will be exported into the PNG, not applied by the browser when viewing. Also it should be noted that all embeds were done on the same domain (see below for cross domain), and that we used the simplest way to embed, without resorting to extra polyfills/javascript libraries.">}}
+  ![Result table](results.png)
+{{< /figure-with-caption >}}
 
 I made a test page, testing all the numbered properties — each number is only shown through the property that it describes; e.g., the ① is being shown by a scheduled animation changing the opacity. Every embed method I tried three times, in one the SVG is hosted on the same domain; in the second batch the svg is hosted on a different domain from the hosting page (note that in this case any external resources loaded _within_ the svg are from the same domain as the svg). In the final run the SVG is expressed as a data url: `data:image/svg+xml;charset=utf-8;base64,PD94bW...`. The code used for these tests can be [found on github](https://github.com/reinhrst/svgtest).
 
-{{< figure
-    src="results-page.png"
-    alt="Screenshot of page of results"
-    caption="Test page on Firefox 85.0.1. As far as I can tell, the results are the same on Safari/Chrome — with small rendering differences. Note that svg doesn’t make sense for cross domain and data url"
->}}
+{{<figure-with-caption caption="Test page on Firefox 85.0.1. As far as I can tell, the results are the same on Safari/Chrome — with small rendering differences. Note that svg doesn’t make sense for cross domain and data url">}}
+  ![Screenshot of page of results](results-page.png)
+{{< /figure-with-caption >}}
 
 ### The results (all the small details)
 
@@ -116,10 +110,7 @@ In general, we can distinguish 4 ways of hosting an SVG:
     An svg loaded from another domain can be drawn into a canvas, however it’s impossible then to get any data out of the canvas through javascript — this is the same behaviour as you would get when loading a PNG from another domain.
 *   Hosting it as an image, either through the `<img>` tag or as a css `background-image:` command. Note that this mode is also used if hosting an external svg image inside an svg through the `<image href="..." />` tag. W3C [describes what we can expect an image to be](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element) (see screenhot below), and this is exactly what we find an image to be: static image, animation allowed however no interactive stuff or anything else fancy.
 
-{{< figure
-    src="image-specification.png"
-    alt="Excerpt from the img element page"
->}}
+![Excerpt from the img element page](image-specification.png)
 
 *   Embedding through `<embed>`, `<object>` or `<iframe>`. All three allow exactly the same access from outside into the SVG as well as from the SVG to outside, while at the same time having separation (no interference of style sheets), and allowing using an external SVG file as source.  
     As expected, when the svg is served from a domain that is different from the HTML file, any calls from HTML to SVG and reverse fail (i.e. ⑦, ⑧), due to cross domain protection. Note that a data URI is also treated as another domain.  
