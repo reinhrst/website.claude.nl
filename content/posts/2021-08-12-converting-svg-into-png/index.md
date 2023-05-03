@@ -38,9 +38,9 @@ As a small example, the following SVG:
 
 :---:|:---:
 SVG file (depends on your browser what you'll see):|What Firefox users see (correct):
-![Example SVG](/assets/images/2021/08/12/example.svg)|![Example PNG](/assets/images/2021/08/12/example.png)
+![Example SVG](example.svg)|![Example PNG](example.png)
 What Safari/Chrome users see:|What pixelmator pro SVG importer makes of things (not sure what it's thinking):
-![Example PNG](/assets/images/2021/08/12/example-wrong.png) |![Example PNG](/assets/images/2021/08/12/example-pixelmator.png)
+![Example PNG](example-wrong.png) |![Example PNG](example-pixelmator.png)
 
 <figcaption>The same SVG image, in different renderers</figcaption>
 </figure>

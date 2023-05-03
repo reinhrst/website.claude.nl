@@ -84,7 +84,7 @@ I found OpenStreetMaps to have a much better idea on where roads are. It doesn�
 There are many interfaces to use OpenStreetMaps. I’m personally using [WorkOutDoors](http://www.workoutdoors.net) on the Apple Watch; this app costs a couple of euros but been worth its price 100 times over.
 
 {{<figure-with-caption caption="Here it seemed that many people (possibly including the farmer himself) goes straight through the field. This is also the path that OpenStreetMaps knows about. However, more than likely, after this field is plowed, it will be extremely difficult to go straight (and next year, possibly, the route through the field may be different). So probably it’s a huge challenge even for map makers to know all the roads. At least, in my experience, OpenStreetMap is much more up to date than Google Maps.">}}
-  ![Farm-field with beets](beets.jpg)
+  ![Farm-field with beets](teaser.jpg)
 {{< /figure-with-caption >}}
 
 ## Don’t trust overzealous local maps
