@@ -6,6 +6,8 @@ tags:
     - hugo
 toc:
   enable: true
+aliases:
+  - /how-to/hugo-recurring-events-with-icalendar-support/
 ---
 
 

@@ -8,8 +8,8 @@ tags:
     - apple silicon
 toc:
   enable: true
-header:
-    image: /assets/images/2023/01/07/header.jpg
+aliases:
+  - /tech/docker-on-m1-mac-performance/
 ---
 
 Just a quick note to describe what [some others had already found before][1].

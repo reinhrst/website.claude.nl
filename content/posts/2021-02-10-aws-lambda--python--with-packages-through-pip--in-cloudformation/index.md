@@ -12,6 +12,8 @@ tags:
   - python
   - pip
 original_post_medium_url: https://claude-e-e.medium.com/aws-lambda-python-with-packages-through-pip-in-cloudformation-e8d92bba17b9
+aliases:
+  - /tech/howto/aws-lambda-python-with-packages-through-pip-in-cloudformation/
 ---
 I absolutely love CloudFormation as a tool for creating small and large items on AWS. Having code-based infrastructure, of easily maintaining your system in git, seeing differences, etc is pure joy. There are however (many) times when CloudFormation (or AWS in general) seems to miss some things. In such cases, blogs like this one should help you :).
 

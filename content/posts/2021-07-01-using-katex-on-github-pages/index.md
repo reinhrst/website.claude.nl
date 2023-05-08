@@ -7,6 +7,8 @@ categories:
 tags:
     - katex
     - math
+aliases:
+  - /tech/github pages/using-katex-on-github-pages/
 ---
 
 Every now and then I write a blog post with some math in it.

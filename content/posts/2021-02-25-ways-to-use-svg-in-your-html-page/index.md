@@ -12,6 +12,8 @@ series: Scalar Vector Graphics (SVG)
 original_post_medium_url: https://claude-e-e.medium.com/ways-to-use-svg-in-your-html-page-dd504660cb37
 toc:
   enable: true
+aliases:
+  - /tech/deepdive/ways-to-use-svg-in-your-html-page/
 ---
 
 Lately I’ve rekindled my interest in SVG. Using SVG I can declaratively create icons / diagrams / etc, in such a way that both I and the computer can read the sourcecode, and that version control systems, such as github, can easily show me the differences between files. The coverimage for this post was created as a 20 line SVG image (and then converted to PNG since Medium doesn’t support SVG images) — _it also shows you that great technology such as SVG is no match for poor design skills._ If you have never played with SVG, I can definitely advise you to start!

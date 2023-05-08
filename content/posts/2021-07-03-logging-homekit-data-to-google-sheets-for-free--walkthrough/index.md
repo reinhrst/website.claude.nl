@@ -10,6 +10,8 @@ tags:
   - Google Sheets
 toc:
   enable: true
+aliases:
+  - /tech/howto/logging-homekit-data-to-google-sheets-for-free-walkthrough/
 ---
 
 My home is smart!

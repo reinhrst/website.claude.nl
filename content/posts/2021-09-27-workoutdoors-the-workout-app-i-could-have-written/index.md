@@ -5,9 +5,8 @@ categories:
 tags:
     - apple watch
     - workouts
-
-header:
-    image: running.jpg
+aliases:
+  - /review/workoutdoors-the-workout-app-i-could-have-written/
 ---
 
 Ever since I got my first Apple Watch, I looked for apps to track workouts.

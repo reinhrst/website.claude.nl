@@ -10,9 +10,8 @@ tags:
 series: Making fzf available in the browser
 toc:
   enable: true
-header:
-    image: surfing.svg
-    og_image: surfing.png
+aliases:
+  - /tech/performance-of-a-go-library-fzf-in-the-browser/
 ---
 
 In past posts in this series, I looked at how to convert a Go library in order for it to work in the browser.

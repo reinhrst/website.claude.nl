@@ -6,6 +6,8 @@ categories:
 tags:
     - svg
 series: Scalar Vector Graphics (SVG)
+aliases:
+  - /tech/converting-svg-into-png/
 ---
 In one of my previous posts I mentioned that I was still looking for the best way to convert SVG into PNG.
 If you just Google "Convert SVG to PNG" you will get hundreds of hits, from Inkscape, to online tools, to photo editors that can import SVGs (I know Pixelmator Pro claims to support SVG imports).

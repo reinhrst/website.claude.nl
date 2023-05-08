@@ -11,6 +11,8 @@ tags:
 original_post_medium_url: https://medium.com/analytics-vidhya/timing-morton-code-on-python-on-apple-silicon-767567094ed6
 toc:
   enable: true
+aliases:
+  - /tech/timing-morton-code-on-python-on-apple-silicon/
 ---
 
 Last week I got my new Apple Silicon Macbook Pro M1. I was very excited to do some very simple tests to see how fast python could calculate the [Morton Code](https://en.wikipedia.org/wiki/Z-order_curve) for a 3D case. I need this for a small project I’m working on, and I found out in a previous iteration that this is taking quite some CPU time. My previous MacBook is a 13" with 2.7GHz Quad Core i7 — the top of the 13" line in 2019; the promises out there suggest that the M1 should be faster. Let’s see.

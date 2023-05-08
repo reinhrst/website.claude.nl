@@ -11,8 +11,8 @@ tags:
 series: Making fzf available in the browser
 toc:
   enable: true
-header:
-    image: header.svg
+aliases:
+  - /tech/using-a-go-library-fzf-lib-in-the-browser/
 ---
 
 In this post I will describe how to compile a Go library for use in the browser.

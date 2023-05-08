@@ -12,6 +12,8 @@ tags:
   - python
   - pip
 original_post_medium_url: https://claude-e-e.medium.com/better-lambdas-with-pip-packages-in-cloudformation-7ef92b2c793c
+aliases:
+  - /tech/howto/better-lambdas-with-pip-packages-in-cloudformation/
 ---
 
 After writing about how to [create AWS Lambda Layers based on pip packages](./2021-02-10-aws-lambda--python--with-packages-through-pip--in-cloudformation.md), I set out to make writing lambda functions in CloudFormation a bit easier. In the official CloudFormation `AWS::Lambda::Function` you either must upload your functions as zipfile to S3 and reference them from there, or, if you want them inline, you run into 3 large issues

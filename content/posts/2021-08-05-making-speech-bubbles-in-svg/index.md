@@ -6,6 +6,8 @@ categories:
 tags:
     - svg
 series: Scalar Vector Graphics (SVG)
+aliases:
+  - /tech/making-speech-bubbles-in-svg/
 ---
 Earlier today I wanted to make some speech bubbles for an SVG image I was working on.
 They're not hard to make, but getting them right takes a bit of fiddling.

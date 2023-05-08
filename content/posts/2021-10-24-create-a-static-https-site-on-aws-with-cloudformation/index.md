@@ -7,6 +7,8 @@ tags:
     - howto
     - aws
     - cloudformation
+aliases:
+  - /tech/manual/create-a-static-https-site-on-aws-with-cloudformation/
 ---
 
 Every now and then I find myself with the need to quickly create a small website, for instance as a static backend or a help page to [one](https://sks.claude-apps.com/) of my apps.

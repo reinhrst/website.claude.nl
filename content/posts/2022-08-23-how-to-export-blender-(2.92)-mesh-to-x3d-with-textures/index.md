@@ -5,6 +5,9 @@ categories:
 tags:
     - blender
     - 3D
+slug: how-to-export-blender-(2.92)-mesh-to-x3d-with-textures
+aliases:
+  - /how-to/how-to-export-blender-(2.92)-mesh-to-x3d-with-textures/
 ---
 This document is to describe the 3D Scanner App -> Blender -> X3D conversion. 3D Scanner App is a great app for making 3d scans. It can scan large areas, however on my iPhone 13 Pro it crashes when a single scan is more than 4GB large (note: this is not a hard limit; sometimes it crashes with 3.5GB, sometimes I have seen it succeed with 4.5GB scans). In the best case the scan is retained, however in my experience you should consider the scan lost in this case. It seems to hit the 4GB mark after 15 minutes of scanning. In order to be on the safe side, and have a bit of leeway, I like to plan the scans so that they take 10 minutes each. In theory you could make two scans with only 10cm overlap, and still align them later, however it depends on how distinct and changing the scene is; you will need to find the same object in both scans in order to align. I was scanning a rocky field, and I certainly needed 5 meter overlap in order to match different scans. After doing all this, the scans need to be stiched back together, this is what we use Blender for (and obviously, while we're here, we might do any number of things; simplifying meshes, adding things, etc). Finally I want to export the scan to a X3D file, so I may use it on the web.
 It took me a good amount of time to get the textures correctly included in the final result, so I'm writing myself this little note on how to do this :).

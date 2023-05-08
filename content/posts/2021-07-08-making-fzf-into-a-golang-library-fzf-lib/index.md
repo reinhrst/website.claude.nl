@@ -9,6 +9,8 @@ tags:
 series: Making fzf available in the browser
 toc:
   enable: true
+aliases:
+  - /tech/making-fzf-into-a-golang-library-fzf-lib/
 ---
 Over the past coupe of weeks I converted fzf into a go library, to be used in other projects.
 
