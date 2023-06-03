@@ -215,10 +215,6 @@
     clip-path="url(#waveclip)" />
     <use href="#waveshape" class="water" style="fill: none;" />
 </g>
-<text id="copyright">
-<tspan x="1.6em">Gopher CC BY 3.0 Renee French</tspan>
-<tspan dy="1.2em" x="0">Surfing gopher created by Egon Elbre</tspan>
-</text>
 
   <g id="gopher">
       <defs

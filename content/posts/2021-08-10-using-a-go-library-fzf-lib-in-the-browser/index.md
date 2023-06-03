@@ -15,6 +15,7 @@ aliases:
   - /tech/using-a-go-library-fzf-lib-in-the-browser/
 header:
   image: header-low.svg
+  message: Gopher CC BY 3.0 Renee French; Surfing gopher created by Egon Elbre
 ---
 
 In this post I will describe how to compile a Go library for use in the browser.
