@@ -6,12 +6,27 @@ theme = 'ConciseShortStyle'
 [markup]
   _merge = "deep"
 
+[params]
+  [params.comments.giscus]
+    enabled = 1
+    repo = "reinhrst/website.claude.nl"
+    data-repo-id = "R_kgDOGpOc7Q"
+    data-category = "Giscus"
+    data-category-id = "DIC_kwDOGpOc7c4CWO_y"
+    mapping = "pathname"
+    strict = "1"
+    reactions-enabled = "1"
+    emit-metadata = "1"
+    input-position = "bottom"
+    theme = "preferred_color_scheme"
+    lang = "en"
+    loading = "lazy"
 
-[params.footer]
-    hugo = false
-    copyright = false
-    author = true
-    license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+  [params.footer]
+      hugo = false
+      copyright = false
+      author = true
+      license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
     
 
 [menu]
@@ -46,3 +61,4 @@ theme = 'ConciseShortStyle'
 [frontmatter]
   date = ['date', ':filename', ':default']
   publishDate = ['publishDate', 'date', ':filename', ':default']
+
