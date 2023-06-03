@@ -7,6 +7,7 @@ theme = 'ConciseShortStyle'
   _merge = "deep"
 
 [params]
+    custom_css = ["scss/custom.scss"]
   [params.comments.giscus]
     enabled = 1
     repo = "reinhrst/website.claude.nl"
