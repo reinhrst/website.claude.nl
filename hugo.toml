@@ -23,6 +23,10 @@ theme = 'ConciseShortStyle'
     lang = "en"
     loading = "lazy"
 
+  [params.analytics.getinsights]
+    enabled = 1
+    tracking_id = "h1khfarqCIVoXjwC"
+
   [params.footer]
       hugo = false
       copyright = false
