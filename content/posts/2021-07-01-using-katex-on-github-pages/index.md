@@ -18,13 +18,15 @@ Math is hard enough as it is, without the added frustration of having to do a lo
 Luckily there are tools such as [<katex-inline>{\KaTeX}</katex-inline>](https://katex.org/) that make math look good: <katex-inline>F = G \times \frac{m_1 \times m_2}{r^2}</katex-inline>.
 This post explains how to get it working on your github pages (or any html page) through the use of javascript and client-side rendering.
 
+{{< note >}}
 **TL;DR** See [this section](#bringing-it-all-together) for the code that you need to add to the top of your page, and the [example section](#examples) for examples.
-{: .notice}
+{{< /note >}}
 
+{{< note type=info >}}
 There are other math rendering engines out there as well; during my search I also came by [MathJax](https://www.mathjax.org).
 Supposedly MathJax is supported out of the box in github pages, but I couldn't find a clear description on how to do it.
 Since I prefer <katex-inline>\KaTeX</katex-inline>'s way of doing things (rending everything to HTML rather than to a png image), I quickly decided to go for that.
-{: .notice--info}
+{{< /note >}}
 
 There is a [<katex-inline>\KaTeX</katex-inline> jekyll plugin](https://github.com/linjer/jekyll-katex), however since github pages doesn’t allow custom plugins, this will not work.
 The solution is to render the <katex-inline>\KaTeX</katex-inline> expressions on the client, through the use of javascript.
@@ -135,9 +137,11 @@ The full code therefore to be added to the header of your page is (if you want, 
 ```
 
 ### Fonts
+
+{{< note >}}
 This section was written when I still had a sans-serif as my main blog font.
 Leaving it here, because it's still interesting, but some of the information may not make sense anymore.
-{: .notice}
+{{< /note >}}
 
 The <katex-inline>\KaTeX</katex-inline> library uses a serif-font by default (and makes it 20% larger).
 This may or may not be ideal for your use.

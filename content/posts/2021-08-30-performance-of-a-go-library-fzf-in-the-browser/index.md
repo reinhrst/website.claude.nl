@@ -34,28 +34,30 @@ When I first started looking at compiling the Go code a couple of months ago, I 
 Back then I had obviously checked if someone had already done this, and nobody had. So I was very surprised when a couple of weeks ago I ran into [`fzf-for-js`](https://github.com/ajitid/fzf-for-js).
 This project aims to port the `fzf` code (or at least the same part that I called the core, when deciding what to include in `fzf-lib`) to TypeScript -- so unlike some of the other efforts out there (including my own ill-conceived-now-discontinued one), he didn't try to reverse engineer the `fzf` code from example inputs and outputs, and then rebuild it in JavaScript (trust me, getting 95% to work, is no problem. The last 5% is hell!), but rather tries to port the Go code file by file.
 
+{{< note >}}
 In order to be accurate, I have to clarify something.
 `fzf-for-js` is, like many large JavaScript projects, not actually written in JavaScript, but in TypeScript.
 So technically it could look as if we're comparing a Go → JavaScript compiler with a TypeScript to JavaScript compiler.
 This is not the right way to look at it though; Go and JavaScript are hugely different languages and compiling from one to the other is far from trivial.
 TypeScript on the other hand is just a wrapper around JavaScript; one writes JavaScript, with JavaScript standard libraries, just with types and some additional syntax to make the programmer's life easier.
 So, from performance point of view it makes no difference if something is written in JavaScript or TypeScript, and I will treat them as similar in this post.
-{: .notice}
+{{< /note >}}
 
 The project is very new, and being actively developed (there were a dozen commits in just the last week).
 Not everything is possible yet (for instance, at the time of writing caching is not yet included; I wouldn't be surprised if it is by the time you read this), however the hard part, getting the exact same behaviour as Fzf algorithm v2, is working.
 I am running the tests here with [revision `e8a150d`](https://github.com/ajitid/fzf-for-js/tree/e8a150db6d2e452a93799f79b627eddf78897809), which is [version `v0.4.1`](https://github.com/ajitid/fzf-for-js/releases/tag/v0.4.1) with a small bug fix.
 
+{{< note >}}
 The author of this project asked me not to include this port yet in any performance-metric, since most of the work in the past couple of months has gone into getting the features to work, and no focus has been put yet on performance improvements 
 I do think it's fair though to include it, with this disclaimer that no special focus has been put on performance yet.
 I think that for others who contemplate different ways to get their Go code to run in the browser, it is extremely valuable to see as many options as possible, even if they are not yet fully developed, luckily the author agreed, and so I can include this now.
-{: .notice}
+{{< /note >}}
 
 As we saw in the [last post](./2021-08-10-using-a-go-library-fzf-lib-in-the-browser.md), one of the potential drawbacks of compiling code from Go to WebAssembly/JavaScript is the size of the output file.
 In that post I explained more about how we measure this for the different projects.
 It's obvious that `fzf-for-js` takes home the crown for smallest library size (even if we take into account that maybe a small code increase is needed to gain full feature parity).
 
-<div class="notice" markdown="1">
+{{< note >}}
 **UPDATE -- tinygo compilation size**
 
 *2021-09-20* After publication I was in contact with one of the TinyGo authors.
@@ -71,7 +73,7 @@ Trying to do the Go --> WebAssembly compilation without debug symbols (using `-l
 The data below has been updated (old numbers stricken through, new numbers inserted) to reflect these nem numbers.
 
 It should be noted that the performance data throughout the rest of the article has been collected using the TinyGo compiled without the `-no-debug` flag; the `-no-debug` flag has also not be added to the code in the repo.
-</div>
+{{< /note >}}
 
 <figure markdown="1">
 
@@ -580,7 +582,7 @@ TinyGo with Garbage Collection also chocked (for all practical purposes) on a ha
 There is [an interesting article](https://aykevl.nl/2020/09/gc-tinygo) about the TinyGo Garbage Collector; the conclusion is that TinyGo has a very simple GC, which has some advantages (it's small) and disadvantages (it's slow); please read the whole article for nuance.
 Also, GC gets slower with the amount of allocated memory; this is fine when used on 64kB RAM on a microcontroller, but (as we see) a large problem on WebAssembly with multiple gigabytes allocated.
 
-<div class="notice" markdown="1">
+{{< note >}}
 **Update**
 
 *2021-09-20* Before publication I reached out to Ayke van Laethem, the author of [the article linked above](https://aykevl.nl/2020/09/gc-tinygo) (and as it turned out the person who wrote the GC for TinyGo :)) for a comment.
@@ -595,7 +597,7 @@ Because of different reasons I unfortunately only manage to include the reply to
 
 
 As I mentioned before, I would be very interested to see how TinyGo will perform with a faster GC implementation!
-</div>
+{{< /note >}}
 
 ### Memory usage and garbage collection
 It's obviously interesting to see what happens to the memory footprint if we switch off Garbage Collection.

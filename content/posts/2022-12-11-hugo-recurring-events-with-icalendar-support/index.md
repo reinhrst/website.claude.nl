@@ -31,8 +31,10 @@ On this page we want to show all the dates for the event, and allow someone to d
 To give you an idea of the structure, visit [the events-list here](https://hs3.pl/en/events/).
 Note that, depending on when you're reading this, the system as described in this post may not be live yet.
 
+{{< note >}}
 Obviously on the `/events` list page we also have a calendar of all events (so the dates for all event-types together), with the same iCalendar support, as well as on the `tags`-pages, but this is outside the scope of this post.
-{: .notice}
+{{< /note >}}
+
 {{<figure-with-caption caption="Demo of an event page (note that most dates here are for demo purposes only ;))">}}
   ![Example of events on hugo page](events.png)
 {{< /figure-with-caption >}}
@@ -40,9 +42,10 @@ Obviously on the `/events` list page we also have a calendar of all events (so t
 Above you see what we want to display at the top of an event-page (note: for real-life use you probably want to limit which part of the list you show, make it scrollable, choose a different format or colours, etc).
 Final makeup is independent of the code generating the events (and so 100% custom).
 
+{{< note type=warning >}}
 When it comes to displaying the events on your webpage in a user-friendly way, you have to keep in mind that Hugo is a *static* site generator. It means that whenever in your Hugo code, you refer to `time.now`, this is the *generation time* of the website, not when the user will view it.
 As a result you should never filter the events by "future events only" or "next 3 events" within Hugo (unless you regenerate your site every day or every hour or something); always write all events to the HTML, and then  create some javascript to show exactly what you want.
-{: .notice--warning}
+{{< /note >}}
 
 ## Existing standards we considered
 The first thing we did was define the format in which we would create the event-dates.
@@ -132,9 +135,10 @@ The whole structure is quite unforgiving by design (meaning that if you make a t
 Also if you try to cancel an event on `2022-05-05`, even though there is no rule that generates an event for that day, compilation will fail.
 All this should mean that typos in the structure should be easy to catch and fix.
 
+{{< note >}}
 Note that all crashing will happen during *building* of the site.
 The end user will only ever see the static HTML, so will never see the error.
-{: .notice}
+{{< /note >}}
 
 In this system each `periodic` always has a start and end date.
 This may feel not-ideal with events that last "forever" (such as the picnic, every last Friday of the month, until (at least) the [heat death of the Universe](https://en.wikipedia.org/wiki/Heat_death_of_the_universe)).
@@ -144,17 +148,19 @@ Be advised though that if you set the `end` to `31-12-9999`, it will slow down t
 I would personally advise to set this date to the end of next year (e.g. in 2023, you set it to `2025-01-01`).
 Then once a year you search through your code for `2025-01-01`, and update all those that need another year.
 
+{{< note >}}
 A future version of this code might take a global "enddate" variable, and allow you to set `end` to something like `$global.calendar_enddate`, meaning you would only have to change this in one spot.
 For now though, you will have to do this manually.
-{: .notice--info}
+{{< /note >}}
 
 The `eventDates` dictionary can be put in the front-matter of the page in question, or any other spot you like to keep it (e.g. in `/data` if that works in your case).
 
 Hugo doesn't have custom functions, so in order to isolate the code that deals with this dictionary, we have to write code in (a definitely less developer-friendly) Go Template format, and save it in a *partial* (in our case, it's in `/layouts/partials/GetEventsFromEventsDates.html`, so this path will be used in the examples).
 At the bottom of this post, you will find this *partial* code.
 
+{{< note >}}
 NOTE: all code shown in this article works on Hugo 0.106.0; it will probably work on other versions, but this has not been tested.
-{: .notice--warning}
+{{< /note >}}
 
 A *partial* can only be called in a *template* (not from markdown); which is (in our case) also exactly where we want it. In `/layouts/events/single.html` we include the following line (getting the `eventDates` from the page's front-matter):
 ```go-html-template
@@ -203,8 +209,9 @@ Actually, when you get to this part, you get the bonus for free :).
 Rather that just downloading and importing the `.ics` file, you can also *subscribe to the calendar*.
 This means that not only you get all events in your calendar app, but any change will also sync to the app (usually the app allows you to select how often you want to sync; since a user will just download a static file at this time from your webserver, it shouldn't be too much load, but you're response to do the math (e.g. 10k users, downloading every 15 minutes a 1MB `.ics` file (which is huge, but easily creatable using rules), *will be* 30TB of data transfer per month).
 
+{{< note >}}
 There is actually a [`REFRESH-INTERVAL` property](https://icalendar.org/New-Properties-for-iCalendar-RFC-7986/5-7-refresh-interval-property.html) in RFC 7986, which supposedly one could use to make a suggestion on how often the calendar should be re-downloaded, but this property was ignored by Apple Calendar.
-{: .notice}
+{{< /note >}}
 
 In Apple Calendar (version 11.0), you can subscribe to a calendar using `File -> New Calendar Subscription...`.
 If on this point you fill in the url of the `.ics` file, and on the next page choose a name and a refresh interval for the calendar (I have been unable to fill these with default values from the `.ics` file, if you have better luck, please leave a comment!), you will see a new calendar in your side-bar, both on your mac, and (after a small wait) on your iPhone/iPad.
@@ -214,8 +221,9 @@ A link to the `.ics` file on the webpage, opens the calendar events for import i
 When I change the protocol for the download link to `webcal://` instead of `http(s)://`, it opens the "Subscribe" dialog in Apple Calendar, but will then try to talk the webcal protocol to my server (which doesn't work).
 If someone finds a solution for this, I would love to hear it!
 
+{{< note >}}
 Subscribing to a calendar is (afaik) also possible in Outlook and Google Calendar, as well as in most other calendar software; it should be easy enough to search for instructions for your favourite tool.
-{: .notice}
+{{< /note >}}
 
 ## Sneak peek: `list` and `taxonomy` pages
 

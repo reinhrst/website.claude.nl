@@ -24,7 +24,7 @@ So as I good nerd, I decided to create [a solution](https://show-on-map.claude-a
 
 Last year I created [my first Safari Web Extension](https://apps.apple.com/nl/app/smart-keyword-search/id1541221580), Smart Keyword Search. Safari Web Extensions were launched at WWDC 2020 for Safari 14. Before this there were only Safari App Extensions (and before this Safari Extensions; this naming makes for great Googling, especially since sometimes even Apple doesn't use these names consistently).
 
-<div class="notice" markdown="1">
+{{< note >}}
 It turns out that so far that either the need for this Safari Extension is not so large, or people don't know how to find it.
 In the first month of it being online, it has been downloaded a grand total of 5 times from the App Store (including once me installing it myself), and it has not seen much use either.
 All installations were in the first week; which may have had something to do with me starting to ask &euro;1 for it starting the second week.
@@ -32,16 +32,16 @@ This was just for fun; this app is never going to make serious money, however I 
 In hindsight, I should probably be happy that nobody downloaded the paid-for version; I'd hate to have to figure out tax stuff because of a handful of euros....
 
 I just changed the settings back to make the app free again.
-</div>
+{{< /note >}}
 
-<div class="notice--success" markdown="1">
+{{< note type=success >}}
 This post is one of those that I write mostly as a note to future-me.
 I include a lot of stuff that I learned over the process of doing something, and I know myself well enough to realise that I will forget some of the details.
 It does not mean at all it's not useful for other people; actually [the most-read and most-appreciated post on this blog](./2020-10-01-Setup-Neovim-as-Python-IDE-with-virtualenvs.md) is one that I wrote mostly with future Claude in mind.
 
 If you came to this page looking for a walk-through of how to build an extension step by step, I'm sorry, this is not it.
 On the other hand, it is meant to be a more or less story from start to end (rather than just random statements) and there are many (I think useful) tidbits of information on this page, which I hope Google will serve up to those looking for it.
-</div>
+{{< /note >}}
 
 
 # Safari Web Extensions - the basics
@@ -50,8 +50,9 @@ Safari Web Extensions (as launched at WWDC 2020) are based on the Browsers Exten
 Note that in this context it might also be useful to read the [MDN description of the anatomy of a Web Extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), which explains how the part that we call the HTML/JS/etc part of a web extension looks.
 A certain knowledge of this is expected later in this post.
 
+{{< note >}}
 I should mention that this description is true for Safari Web Extensions for MacOS. At WWDC 2021 Apple announced Safari Web Extensions for iOS 15; quite some things in this blog should apply to that as well, but I don't know (yet) exactly what is the same and what is different.
-{: .notice}
+{{< /note >}}
 
 ## Parts of a Safari Web Extension
 
@@ -74,11 +75,11 @@ To me it's a bit unclear when it's starting and ending, however it's always ther
 ## Messages
 We just discussed the possibility of sending messages between the parts. It took me some time to understand how this works exactly.
 
-<div markdown="1" class="notice">
+{{< note >}}
 There seems to be a difference in how Chrome/Firefox does native messaging and how Safari does it. I don't have experience doing this in Chrome/Firefox, but it seems that you can connect to an arbitrary other application defined in some JSON file (obviously this application needs to accept and understand your messages or else the connection is useless).
 
 In Safari you can connect to one native app, and one only: the one that the extension shipped with. This is nice in that you can trust that messages you send are not eavesdropped on, and that messages you receive are from your own app/extension. (I'm sure there are also use cases where this restriction is problematic, I'm not claiming one method is better than the other, just pointing out a large advantage).
-</div>
+{{< /note >}}
 
 There are 2 ways of messaging native apps; [on MDN these are called connection-based and connectionless](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native_messaging); on Safari there is a large difference between these two methods (unlike what is suggested by MDN, making me think that this is not true for other browsers). Note that if you want to use either, you must have the `nativeMessaging` permission set in your `manifest.json`.
 
@@ -88,14 +89,14 @@ The connectionless method (`browser.runtime.sendNativeMessage`) on the other han
 
 Supposedly (but out of scope for this post) the native part of the extension and the native app can also communicate with each other.
 
-<div markdown="1" class="notice">
+{{< note >}}
 Right here we only discuss communication between HTML/JS and native parts. I'm addition there are `browser.runtime.postMessage` (send messages between different parts of the HTML/JS part, such as the background page and the browser action (small pop-up page)), `browser.tabs.sendMessage` (talking between the HTML/JS part and a ContentScript that the extension inserted into the page), and `window.postMessage` (sending messages between different iframes or windows). For every `postMessage` there is also a `Connect` for connection-based communication.
 
 As long as I'm here, a word of warning (something that took me many many hours to find out myself). The `onMessage` event handlers that receive the messages can, [according to MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener_syntax) return a Promise which, when fulfilled, will send a response back to the sender of the message.
 As shown in the [Browser Compatibility Matrix](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#browser_compatibility), Safari doesn't allow for this, and needs to use the `sendResponse` argument (yes, I know, RTFM, but still, it took me forever to debug why I was not getting a reply).
 
 It's unfortunately not the only time that Safari seems to not implement small parts of the spec; just beware when you're writing your code.
-</div>
+{{< /note >}}
 
 ## Interaction
 An extension is obviously only useful when it does anything, when it has some sort of interaction with the system and/or the user.
@@ -115,7 +116,7 @@ Opening Apple Maps from the browser is easy (just follow <a href="http://maps.ap
 
 From a native app however you can open the Apple Maps App without an extra warning or opening a new tab in Safari, so the solution was to have the native part of the extension open the Apple Maps App.
 
-<div class="notice" markdown="1">
+{{< note >}}
 Two side notes. Firstly, it's probably a good idea that webpages can not just open a location in the Apple Maps app without your permission, you don't want a browsing session to leave you with some random address in Apple Maps.
 
 
@@ -124,7 +125,7 @@ Even though I like Apple Maps better from a privacy standpoint (DuckDuckGo used 
 In version 0.5 I wanted to open a map in-page; both Apple and Google require you to use an API with API key to do just that; I found it easier to get an Apple API key (since I already have an Apple developer account) than a Google one.
 
 There was always an idea that if the extension proved a success, different maps providers could be built in; that would be even easier in version 1.0, since adding Google would just mean opening a new tab with a Google Maps URL (no API key is necessary in that case).
-</div>
+{{< /note >}}
 
 
 # The Show on Map app
@@ -234,7 +235,7 @@ So adding the ContentScript to the page works, altering the DOM to add a layer w
 So if the ContentScript asks for a script to be loaded from `https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js`, the CSP will block it.
 We could get one step further by bundling this script into our extension, but then, as soon as the MapKit JavaScript wants to contact Apple's Map servers (to check the key, so the GeoSearch and retrieve the map tiles), it's blocked again.
 
-<div class="notice" markdown="1">
+{{< note >}}
 I should admit that I didn't test this theory to see what exactly is and is not possible;
 It seems that the ContentScript runs in a different sandbox from the rest of the JavaScript on the page.
 I know the ContentScript cannot add `<script>` tags to the HTML and have them be executed outside of CSP rules, but maybe it could load another script into its own sandbox.
@@ -243,7 +244,7 @@ If not, I guess one could even go a step further and proxy all calls through the
 
 It might definitely be something that could be a whole blog post by itself: how does CSP work with Extensions, and what can we do from within an extension to work around the restrictions.
 I'll leave it as an exercise for the reader :).
-</div>
+{{< /note >}}
 
 There is a way to break out of the CSP: if you have an `<iframe>`, the _content_ of the iframe can set its own CSP which is not limited by the parent's CSP.
 It may feel like a bug, but it's actually [part of the HTML specification](https://stackoverflow.com/a/43237443/1207489) (so people thought long and hard about it, I'm sure!).
@@ -1297,7 +1298,7 @@ All the BackgroundScript does is set up the context menu item and once it's clic
 
 Finally I send a ping to my tracking system so that I can know how much the extension is being used, and whether there was an error.
 
-<div class="notice" markdown="1">
+{{< note >}}
 In my first extension I did not build any tracking, because I believe the web should be free (as in speech) and people should not be tracked.
 The result was that after a couple of months I had quite some downloads, but no idea if people are actually using the extension, which makes it hard for me to decide if I should spend time on updates.
 When I moved this blog from Medium to GitHub, I wanted some way of tracking use (because of the same reason; I'm more excited to write blog posts if I know people are reading them :)).
@@ -1307,7 +1308,7 @@ I ended up selecting [`https://getinsights.io/`](https://getinsights.io/); they 
 Anyways, so far I'm getting useful data from them, even though I sometimes wish for more graphs and visualisations; but I can have 3000 events for free a month, and I will not complain!
 
 I have to say that I'm still struggling with the ethics of releasing an update of the other extension which counts use; I feel I betray those people that installed the extension after reading the promise that I was not tracking them (and not reading through all the changes at an app update, as none of us do).
-</div>
+{{< /note >}}
 
 
 {{< details summary="Finally, the manifest" >}}

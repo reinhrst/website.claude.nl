@@ -15,9 +15,10 @@ Earlier today I wanted to make some speech bubbles for an SVG image I was workin
 They're not hard to make, but getting them right takes a bit of fiddling.
 So I wrote down some examples, for later reference.
 
+{{< note >}}
 UPDATE: I made a small [SVG speech bubble generator](/speechbubblegenerator/), based on the method described on this post.
 Have fun with it!
-{: .notice--warning}
+{{< /note >}}
 
 {{<figure-with-caption caption="Go can talk to Browsers and Node. The (svg) Go Gopher above is licensed under the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/), and was drawn in SVG by [Renee French](http://reneefrench.blogspot.com/).">}}
   ![Javascript engines and Go Gopher talking](interface.svg)

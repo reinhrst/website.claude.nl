@@ -19,9 +19,10 @@ header:
 ---
 I absolutely love CloudFormation as a tool for creating small and large items on AWS. Having code-based infrastructure, of easily maintaining your system in git, seeing differences, etc is pure joy. There are however (many) times when CloudFormation (or AWS in general) seems to miss some things. In such cases, blogs like this one should help you :).
 
+{{< note type=danger >}}
 This document is here mostly for historical reference.
 There is a new and better method, that doesn't have [some of the security implications](./2021-02-15-aws-custom-resources-security--trap----or-why-it-s-bad-to-give-lambda-execute-rights-to-non-admin.md) present in this post.
-{: .notice--danger}
+{{< /note >}}
 
 **TL;DR** scroll down to find a CloudFormation custom resource that builds Lambda Layers based on a list of pip packages.
 

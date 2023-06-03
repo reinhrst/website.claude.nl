@@ -22,9 +22,10 @@ Lately I’ve rekindled my interest in SVG. Using SVG I can declaratively create
 
 In this blog post, I like to explain the different ways to embed an SVG image into an HTML page. There are different ways to do this, and it seems that different methods allow for different features to be active within the SVGs.
 
+{{< note >}}
 The original post was written on Medium, and therefore refers to some Medium specific features.
 Since the blog moved since then, not all sidenotes below apply or make sense (note: in Github Pages you can just use svg as you would in HTML... Jeh!
-{: .notice--info}
+{{< /note >}}
 
 #### Side note: embedding SVGs in Medium (update: possible since 2021–03–31)
 

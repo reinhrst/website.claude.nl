@@ -33,9 +33,10 @@ The following items are discussed in this post:
 
 [Accompanying code for this post is available on <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub](https://github.com/reinhrst/fzf-js){: .btn .btn--success}
 
-<div markdown="1" class="notice">
+{{< note >}}
 In this post I will compile Go code to WebAssembly (with two different tools) and to JavaScript code.
 We will look at performance later, but it's important to dispel some prejudices here (in as far as they exist).
+{{< /note >}}
 
 WebAssembly is (as the name suggests) assembly code, compiled code, whereas JavaScript is an interpreted language.
 "Traditional wisdom" is that compiled programs run many times faster than interpreted programs.
@@ -83,10 +84,11 @@ If you want to build everything by hand, this is how you get started:
 As I discussed in [my previous post](g2021-08-05-interface-between-go-1.16-and-javascript-syscall-js.md), one needs to create an interface for a Go library to be used in JavaScript.
 The interface exposes functions (and other things, like constants) to JavaScript.
 
+{{< note >}}
 As a side note: just today I ran into [this StackOverflow question/answer](https://stackoverflow.com/questions/68656435/how-to-get-all-headers-cookies-with-go-wasm) that suggests that at least in TinyGo it's possible to export Go functions to WebAssembly without the interface as described here.
 I have not looked into this any further, since it doesn't seem to be a portable method (that would be usable across Go/TinyGo/GopherJS.
 It would be interesting for a future post to look into this method.
-{: .notice}
+{{< /note >}}
 
 We'll create all the source-code in a `src` directory.
 Create this, and run `go mod init github.com/reinhrst/fzf-js` (or however you want to call your project).
@@ -163,7 +165,7 @@ We want a function that returns something that feels like an Fzf object (with an
 JavaScript has no concept of Channels; asynchronous results are usually returned through callback functions, so that's what we'll do to.
 We'll allow registering callback functions through `addResultListener()` (I don't see any reason to build a `removeResultListener()`, but this shouldn't be too hard).
 
-<div markdown="1" class="notice">
+{{< note >}}
 It may seem like a bit of over-engineering to have the `Search()` method return the result asynchronously via a `Channel()`, but there is a good reason for this.
 The original `fzf` is meant to be used interactively: the results update while you type.
 It's fully possible that someone types `hello wor`, and that before `fzf` is done searching the next letter `l` is typed.
@@ -172,13 +174,13 @@ In this case a new search command is given, automatically cancelling the old sea
 We probably want to have similar behaviour in our JavaScript.
 It feels very tempting to make `search()` an asynchronous function that `await`s the result; this would fit better with the tests we want to run later on.
 However in real life it's more likely that you just want to always update the result list when the latest search result comes in, so a callback function makes more sense in my opinion.
-</div>
+{{< /note >}}
 
 The way to make the `fzfNew` function return something that looks like an object instance, is by defining the returned methods as closures within the constructor.
 The constructor then returns a map (which is a JavaScript object) with the "methods" present.
 It should be noted that technically these things are not really like what we thing of as JavaScript instance variables, but they behave like them in all normal operations.
 
-<div markdown="1" class="notice">
+{{< note >}}
 A quick note on naming used in this blog: we'll end up with 3 fzf-type constructors soon, and this may lead to confusion...: 
 - `fzf.New` -- this refers to the `New` function in the `fzf-lib` package.
 - `fzfNew` (without dot) -- this is the `New` function in the `fzf-js.go` file that we're introducing below. We'll export this to JavaScript as `fzfNew`.
@@ -187,7 +189,7 @@ A quick note on naming used in this blog: we'll end up with 3 fzf-type construct
 Later, when we create the TypeScript interface, we also need a name (in `declarations.d.ts`) for the return type of the `fzfNew` function. We call this `GoFzf`, as to not interfere with the `Fzf` type, which is the class mentioned as the third point above.
 
 Sorry for all the naming confusion, where possible, I will try to be clear on what I mean.
-</div>
+{{< /note >}}
 
 
 ```go
@@ -440,8 +442,9 @@ tinygo build -target=wasm -opt 2 -o ../lib/tinygo/main.wasm
 cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js ../lib/tinygo/wasm_exec.js
 ```
 
+{{< note >}}
 It seems that TinyGo wants its Go modules in different spots than Go. Unfortunately my experience with Go and TinyGo is not big enough to comment on what exactly is going on; worst case you may need to copy around the `fzf-lib` code a bit.
-{: .notice}
+{{< /note >}}
 
 Now create exactly the same `main.mjs` file that we created in the previous section (or copy it from the `lib/go` directory), and we're ready to run `node main.mjs`:
 
@@ -474,7 +477,7 @@ compressed|212'423|3'768|216'191
 
 As you can see, TinyGo code is uncompressed about 4 times smaller than Go WebAssembly code, and compressed about 40% of the size.
 
-<div class="notice" markdown="1">
+{{< note >}}
 **UPDATE -- better compilation options for smaller size**
 
 *2021-09-20* After publication I was in contact with one of the TinyGo authors.
@@ -497,7 +500,7 @@ There are additional ways to compress the code even further (using `wasm-opt -Oz
 This would resportedly result in a small additional improvement, which might influence performance as well.
 
 Trying to do the Go --> WebAssembly compilation without debug symbols (using `-ldflags='-s -w'` only resulted in a minimal difference in file size).
-</div>
+{{< /note >}}
 
 ### Compile with GopherJS to JavaScript
 GopherJS differs from the other two methods, in that it compiles the Go code directly to JavaScript.
@@ -557,9 +560,10 @@ This is 35% of Go's WebAssembly size, and also 15% smaller than TinyGo's WebAsse
 
 Because the result is JavaScript rather than WebAssembly, we can make the size even smaller by first minifying the JavaScript. I used [the first DuckDuckGo result for "javascript minifier"](https://javascript-minifier.com); the result is even smaller, 160 kB when compressed!
 
+{{< note >}}
 Update: after writing this, I became aware that GopherJS actually contains a built-in minifier. If you compile with `-m` you get minified code.
 This code is 1.1 MB bytes uncompressed (so larger than the minified code generated by the DuckDuckGo's result), but it compresses down to less than 150 kB, the absolute winner.
-{: .notice--info}
+{{< /note >}}
 
 ## JavaScript (TypeScript) interface
 As mentioned in [the previous post in this series](g2021-08-05-interface-between-go-1.16-and-javascript-syscall-js.md), I like to create a TypeScript/JavaScript interface for a Go library.
@@ -705,13 +709,13 @@ In order to build all this, it's probably best to add some build-commands to `pa
 
 Now you just type `npm run build-all` to build.
 
-<div markdown="1" class="notice">
+{{< note >}}
 One small thing you may see in the build commands, is that we copy the `index.js` file, which contains our interface, to `index.mjs`.
 An `.mjs` file is interpreted by Node as a JavaScript module, meaning that things like `import {...} from ...`, `export {...}` and (in our case very importantly) top level `await ...` statements are possible.
 There is a [long running TypeScript issue](https://github.com/Microsoft/TypeScript/issues/18442) (which occasionally turns into a flame war about whether Node is JavaScript, etc....) whether TypeScript should be able to emit `.mjs` files directly. Four years into the ticket, there seems to be no agreement....
 
 In our case, the easiest thing is just to copy the `index.js` file to `index.mjs` -- we leave the `index.js` file so that we serve that in the browser later on (in the next article).
-</div>
+{{< /note >}}
 
 Let's see if it works!
 
@@ -985,7 +989,7 @@ Value for `process.memoryUsage().heapUsed` at the end of the script, in MB:
 Before "speedup" | 195 MB | 506 MB | 910 MB
 After "speedup" | 235 MB | - | 1'170 MB
 
-<div markdown="1" class="notice">
+{{< note >}}
 I would *love* to dive deeper into this, see how much more performance we can get from this code.
 Speeding up code is a bit of a hobby, and there is a serious challenge here.
 I will probably have to leave that to a future post, if I ever want to get this post "to press"....
@@ -996,5 +1000,5 @@ Some ideas that I have:
 - Converting []byte into string in Go makes a copy of the underlying memory, however there are some "hacky/unsafe" workarounds to do this without a copy (see [this issue](https://github.com/golang/go/issues/25484) for more info); that should be able to save a lot.
 - For the result, first thing one can wonder is if it makes sense to return the `key` (the hay straw that got matched) in the result; the index of the hay straw is already returned and one can assume that JavaScript still has the hay array lying around somewhere.
 - It's very unlikely anyone will find it useful to get all 74779 results returned. If we're showing a real time search box, we're probably interested in how many results fit on our screen; and after we scroll, we want to know about one more screen, etc. So we could return the results only when they're needed, although this would require a bit more effort.
+{{< /note >}}
 - See if we can speed up GopherJS's actual search performance; it's quite slow, the actual search takes 12 seconds for GopherJS, whereas Go WebAssembly does it in 4 seconds (and TinyGo even faster).
-</div>

@@ -38,7 +38,7 @@ This post comes with a [GitHub repository with examples](https://github.com/rein
 [Accompanying code on <i class="fab fa-fw fa-github" aria-hidden="true"></i> Github](https://github.com/reinhrst/go-js-interface){: .btn .btn--success}
 
 
-<div markdown="1" class="notice">
+{{< note >}}
 In this article I will consistently talk about Go code and JavaScript code as the two parts that we care about.
 Technically, no Go code is called from JavaScript; it's actually WebAssembly code being called from JavaScript (or, if we use a Go --> JavaScript compiler, it would even be JavaScript code being called from JavaScript).
 I do think however that it's clear what I mean.
@@ -48,7 +48,7 @@ Rather than write JavaScript, we will write that part of the code in TypeScript.
 TypeScript gets compiled into JavaScript, however there is a huge difference between a Go --> JavaScript compiler and a TypeScript --> JavaScript compiler.
 TypeScript is very close to JavaScript; it uses the same standard library, the same variable types, the same object structure.
 Therefore we consider TypeScript to be similar to JavaScript (we just need to take some extra care to expose some type declarations).
-</div>
+{{< /note >}}
 
 # How to compile and run
 Ideally this post would only talk about the interface, however it's unrewarding to not be able to play with things yourself.
@@ -66,10 +66,11 @@ If we want to see all this in the browser (as opposed to running in node), we al
 
 ## Walkthrough: Compiling Go "Hello World" into WebAssembly and running it
 
+{{< note >}}
 All commands below were tested in MacOs.
 They should work in Linux.
 On Windows, you probably need to make some small adjustments.
-{: .notice}
+{{< /note >}}
 
 Create a new directory; in the new directory init a new Go module:
 
@@ -144,10 +145,11 @@ This means that "stuff" has to happen on the boundary (and we cannot just call a
 ## A simple example
 The workhorse of the boundary is the [`syscall/js`](https://pkg.go.dev/syscall/js) module, part of the Go standard library.
 
+{{< note >}}
 The `syscall/js` package (in Go 1.16) is labelled EXPERIMENTAL, with the additional text *[this package] is exempt from the Go compatibility promise*.
 In good English: use at your own risk and we will not guarantee that it keeps working when we upgrade Go to a new version.
 It might be good to keep this in mind when writing production code that is meant to survive a long time.
-{: .notice}
+{{< /note >}}
 
 Let's create a small example to see how this package works:
 ```go
@@ -447,11 +449,12 @@ In order to fix this, we will need to add a `declarations.d.ts` file:
 declare function mylib__private__AddInts(a: number, b: number): number
 ```
 
+{{< note >}}
 One could argue that only this `declarations.d.ts` is already enough, without the wrapper.
 TypeScript will complain if the function is used any other way.
 Although this is correct, I still like to use the wrapper function; it's a nice single entrance point for this function, if we want we could add logging here, or further JavaScriptfy the function (see next example).
 It also takes the Go function out of the global context and into a nice JavaScript module.
-{: .notice}
+{{< /note >}}
 
 ## Bonus of the bonus: a proper async Go function
 Before I mentioned that there is no built-in way to make a Go function behave like an async/Promise JavaScript function.

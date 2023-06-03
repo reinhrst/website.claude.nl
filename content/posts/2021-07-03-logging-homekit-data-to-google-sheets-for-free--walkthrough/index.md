@@ -21,19 +21,21 @@ My home is smart enough to switch off the lights when I'm not there (and then sw
 My home is smart enough to warn me if the front door is left open, or when I should open the window because the level of CO<sub>2</sub> is getting too high.
 However, my home also is very forgetful...
 
+{{< note >}}
 Update December 2022: Last month the official [Matter smart home standard](https://csa-iot.org/all-solutions/matter/) was released, with support from (among others) Apple.
 I'm trying to understand exactly what is and what is not possible in this standard (the spec is only 1000 pages + another 2 documents of 300 pages each, so how hard can it be ;)), but by now I have a good feeling that it *may* be possible to do this kind of logging in an easier way. When I have an idea, I will write about it :).
-{: .notice}
+{{< /note >}}
 
 
 The centre of my home is Apple HomeKit (a long, often religious, discussion may follow on why -- and also on why I use VIM rather than Emacs.... but I'm leaving that for the comments; or `/dev/null`), but this is the way it is.
 The "brains" of Apple HomeKit can either be your iPhone/iPad when you are (or actually, when they are) at home; however if you want your home to remain smart when you take your devices, you should have a home hub (this can be either a [HomePod, HomePod mini, Apple TV or iPad (one you leave at home all the time)](https://support.apple.com/en-us/HT207057).
 These brains are good at doing stuff (if the CO<sub>2</sub> level goes over 800, switch the ventilation to a higher setting), but (for reasons beyond a mortal's understanding) apple does not provide a way to check historical data, log data over time, etc.
 
+{{< note >}}
 It should be noted that many HomeKit devices log data to their own clouds, which may or may not have an API interface.
 For instance, my Netatmo weather station logs to the Netatmo cloud -- this is something that I don't think I can even switch off.
 A programmer can obviously get data from those locations (or try to build IFTTT integrations); this blog is using the pure HomeKit solution, and should work for all HomeKit devices, regardless of brand or whether they have their own cloud or API or not.
-{: .notice--info}
+{{< /note >}}
 
 It is possible however, with a bit of creativity, to periodically log the data from your HomeKit devices.
 Personally I decided to log this to a Google Sheet, giving me an ideal location to create graphs from this data (and for free).
@@ -65,36 +67,38 @@ It turns out that you can set up HomeKit automations, which get run on the home 
 Setting them up is a bit convoluted; especially if you have many devices you want to log.
 However once it's setup, it seems to run quite stably.
 
+{{< note >}}
 A limited amount of technical expertise is necessary to follow these steps.
 If you've never looked at the developer tools in a browser, never used the macOS terminal, or never at least played around with the idea of using the Shortcuts app on your iPhone, you may run into some difficulties.
 On the other hand, I try to describe things step by step below; the idea is that you don't have to be a programmer to be able to follow this.
 The screenshots are from Safari on macOS.
 The descriptions below are also for Safari, however it should work on all browsers (just some data and buttons may be on slightly different places in the developer tools).
-{: .notice--info}
+{{< /note >}}
 
 ## Setup Google Sheets
 Before we can start logging data, we need to make sure we have a place to store the data.
 This article uses Google Sheets, because it's free, it's well known (and probably will be around for a while), and it can receive our data without too much effort.
 If you want to use something else than Google Sheets, it shouldn't be too hard to set it up; anything that can accept HTTPS posts of data will do.
 
-<div markdown="1" class="notice">
+{{< note >}}
 In this section, we will:
 - Create a Google Form with a single question for each metric that we want to log
 - Set the form to accept anonymous submissions
 - Find out the post URL and the field names that Google uses in this form
 - Connect the form to a Google Sheet
 - Test if we can post from the commandline to this Google Sheet
-</div>
+{{< /note >}}
 
 ----
 
 In order to get a Google Sheet to accept HTTPS posts, we create a form in front of it.
 There are other methods to allow HTTPS posts to Google Sheets (through Google Cloud for instance), but creating a form is by far the easiest.
 
+{{< note >}}
 Google Forms is a tool that allows one to quickly create a form which can then be sent to a group of people (or linked from a website).
 These people can fill in the form (you can determine if they have to log in, and if you record their log in names), and you can view the results in different formats.
 We make use of the fact that all responses get saved in a Google Sheets document.
-{: .notice--info}
+{{< /note >}}
 
 
 1. Before you start, you should make sure you have a Google/Gmail account; if you don't, [create one now](https://accounts.google.com/SignUp).
@@ -136,35 +140,37 @@ This means that your Google Sheet is ready to receive data!
 Ideally we would now make something that posts the data, test if this little program works, and then schedule it.
 Unfortunately, there are some restrictions (at least in iOS14) that make this impossible, so we have to hussle things around a bit -- we will _first_ schedule something, and _then_ adapt it to do what we want.
 
-<div markdown="1" class="notice">
+{{< note >}}
 In this section we will:
 - Create a trigger in the Eve app
 - Edit this trigger in the Home app to execute a Shortcut
 - Create (program) a Shortcut that gets the data and logs it to our Google Sheet
 - Test the Shortcut manually
 - Reschedule the shortcut to run automatically
-</div>
+{{< /note >}}
 
 The easiest way is to do this on an iOS device (I tested with iOS14).
 Even though the mac has a home app, there is a bug there that prevents it from working properly.
 You will need the URL and field names from the Google Sheet that we discovered above on your iOS device, either through shared clipboard (copy on mac, paste on iOS device), or some other way (e.g. create a note with them and share with your iOS device).
 
+{{< note >}}
 Although all setup work is done on your iOS device, it will run in your home (on the home hub) after it's scheduled.
 It should run regardless of whether you're there, you have internet access on your devices or if they are switched on.
 Since the system posts to the internet, it will obviously not work if the internet connection in your house goes down.
-{: .notice--info}
+{{< /note >}}
 
 ### Create the trigger
 Creating triggers (timers) on the iOS14 Home App is possible, however you can only have them repeat once a day at most.
 Since we would like to log our data more often, we need to create the trigger using a third party app (Eve).
 
+{{< note >}}
 As mentioned before, this has to happen _first_.
 If we make a Shortcut in the home app, we can schedule it to run once a day.
 In the Eve app this shortcut then shows up under the "Rules" tab (having a rule of running once a day), not under the "Timers" tab.
 This means we cannot add a timer to it later.
 So far, the only way I have found to have something run on a timer (which you can schedule to run every 5 minutes), is to _first_ make the timer in the Eve app, then use the Home app to create the action you want, and finally update the timer again in the Eve app.
 This is why the steps below maybe seem to jump all over the place; it's the only way I have gotten it to work!
-{: .notice--info}
+{{< /note >}}
 
 1. Download the [Eve app](https://apps.apple.com/us/app/eve-for-homekit/id917695792) for free.
 1. In the Eve app, go to the "Timers" tab and click "Add Timer".
@@ -176,11 +182,12 @@ This is why the steps below maybe seem to jump all over the place; it's the only
 
 ### Update the trigger, and create a shortcut to run
 
+{{< note >}}
 Shortcuts are small "programs" that you click together in a visual way.
 They have been around for a couple of years on iOS, and are the future of automation on the Apple platform.
 Just to be clear: they have no relation to a "shortcut" in Windows, which is a link (usually from the desktop) to a file or program somewhere else.
 See [below](#bonus-shortcuts) for more information on shortcuts.
-{: .notice--info}
+{{< /note >}}
 
 1. Open the Home app on your device. Click the automations tab on the left (iPad) or bottom (iPhone), and then click the automation you just created in the Eve app.
 1. Click the "Select Accessoires and Scenes..." button.
@@ -221,12 +228,13 @@ If we can manually run the automation and the data gets logged to our satisfacti
 ![Screenshot of fixing the timer](eve-fix-timer.jpg)
 1. Click "Done", walk to the fridge (slowly), get yourself a beer, and when you come back check if the 5 minute mark has passed. If so, you should see new data in your Google Sheet.
 
+{{< note >}}
 In my setup I'm logging 6 metrics to Google Sheets.
 The schedule is defined to run every 5 minutes; data consistently gets posted with a timestamp of 1 second later (for instance, the timestamps in Google Sheets are 10:00:01, 10:05:01, 10:10:01, etc).
 It seems to me that there is no delay in getting the HomeKit metrics themselves -- possibly they are already cached on the home hub.
 This is great news, because it means that even if you have 50 metrics you want to log, there should be no delay or timeout in getting the data.
 **Note that while _testing_ the shortcut from your iOS device, there may be more of a delay, since it will retrieve the metrics one by one from the home hub**
-{: .notice--info}
+{{< /note >}}
 
 ## Closing remarks; quirks & tips
 - I have this setup working stably at my house for a couple of months.
@@ -255,13 +263,13 @@ This means, for instance, that I have things like `18.4 °C` in the sheet; in or
 - In the back of my mind, I am thinking about a small project to make logging of this data a lot easier, without Google Sheets, without limitations, and with nice visualisations.
 Follow this blog to stay informed!
 
-<div markdown="1" class="notice--success clearfix">
+{{< note type=success >}}
 ![record measurement as a number](measurement-as-number.png){: .align-left .width-half}Update: <a href="https://github.com/bartramakers" target="_blank">Bart Ramakers</a> found a solution to the problem of HomeKit logging the items as text including the ` °C`, below in the comments:
 
 _I ran into the "values as text in the sheet" issue myself, but i noticed something you can do about it in the shortcut itself, without adding extra steps. In the form's Request body, where you specify the fields and values, if you tap the selected variable (i.e. where it says "Current Temperature", you will get a configuration sheet for that value. The type is specified as "Measurement" by default. When you change the value to "Number" this will send the value as a number into the Google Sheet._
 
 _For Dutch users, don't forget to set the Sheet's document locale to Netherlands, so that understands that a comma is a decimal separator instead of a thousands-separator :)_
-</div>
+{{< /note >}}
 
 {{<figure-with-caption caption="With the data logged to Google Sheets, I can now make graphs, and look for irregularities">}}
   ![Google Sheets Graph of my homekit log](result.jpg)
@@ -317,13 +325,15 @@ One can use the `Get contents of` action to get the data of a random web address
 In this example I get the data from [this gist](https://gist.github.com/reinhrst/ef1259ad01d1ff2607d0a6071a161440) ([this url](https://gist.githubusercontent.com/reinhrst/ef1259ad01d1ff2607d0a6071a161440/raw/3d78ec5495a033cb5145cfeddea808c2fe9496f4/reply.json) for the raw data.
 This is a copy of the example reply to `api.openweathermap.org/data/2.5/weather?q=London&appid={API key}` according to the [OpenWeatherMap API documentation](https://openweathermap.org/current).
 
+{{< note >}}
 If you're using a real API, you will have to register to receive an API key. Note that usually there is a limit to the number of calls you can make to the API (depending on how much you pay for it); obviously you should do the math to make sure you stay within your limit.
 It seems that the OpenWeatherMap API gives you 1M calls/month for free, which means that you could make a call every 3 seconds; but other APIs may be more restrictive (and may even require you to pay more if you accidentally use more than your current plan).
-{: .notice}
+{{< /note >}}
 
+{{< note >}}
 I found previously that if you use http addresses (rather than https addresses) the shortcut runs fine on your phone, however when you tell your HomeKit hub to run the action it fails (silently).
 So make sure to find an API that uses HTTPS (or at least test that it works with HTTP, it may be that Apple fixed this issue by the time you read this).
-{: .notice--warning}
+{{< /note >}}
 
 If necessary, you can add the headers or post variables by clicking the &#x29C1; symbol after the url in the shortcut.
 

@@ -12,6 +12,7 @@ aliases:
   - /tech/macpy3d/macpy3d-3d-model-as-code-for-python/
 header:
   image: header-low.jpg
+series: MacPy3D
 ---
 
 I’ve always been the kind of person who cannot resist a good challenge, especially in programming. In addition, I’m one who likes to know what is going on, not just one to accept magic, accept bugs, accept that the computer knows better than me.

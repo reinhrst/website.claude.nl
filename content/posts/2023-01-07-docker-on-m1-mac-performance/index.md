@@ -26,8 +26,9 @@ The incremental build used to take 13 minutes, now takes a bit over 5 minutes, m
 
 So, conclusion is, it's worth spending some time on obtaining / creating an `arm64` container if at all possible.
 
+{{< note >}}
 The terms `x86_64` and `amd64` are used interchangeably in this post. The same technology is also known as `x64`. The alternative `arm64` architecture is also known as `aarch64`. Personally I like the names `amd64` and `arm64` the most, if it wasn't for the fact that they are *so* similar (and I made mistakes by misreading them many times).
-{: .notice--info}
+{{< /note >}}
 
 **Update**: I checked in the code to generate the docker image in [this branch in my fork][4], (posted it [as pull request][5] to the orginal repo, but not sure what will happen to it (it's not really a PR, it needs more work).
 

@@ -45,11 +45,12 @@ Over the past years, whenever I wanted to use fzf in one of my own projects, I t
 I tended to start with writing a real simple fuzzy finder in whatever language I needed, then after a couple of hours realise that this is not so easy (or: only easy as long as you don't care too much about the details), then use the shell-spawn-option, right to the point where I ran into the limitations of that, after which I would spend a couple of more hours on the first option 😐.
 Sigh.
 
+{{< note >}}
 Note that I call this second option the "shell-spawn-option".
 It is actually not necessary to spawn a shell, it's enough to spawn an fzf-process without a shell.
 So while not technically correct, I do feel that shell-spawn intuitively gives a better feeling for what's happening.
 If you disagree, please read "fzf-process-spawning" where ever it says "shell-spawning".
-{: .notice}
+{{< /note >}}
 
 ## Limitations of the shell-spawn-option
 For most simple use cases, the shell spawn option works just fine.
@@ -222,11 +223,12 @@ Since only a single search is done, cache cannot be used; the results therefore 
 
 This benchmark can be run by typing `go test --bench=.`.
 
+{{< note >}}
 There is a second benchmark, which is exposed as a Go function `RunBasicBenchmark()`.
 The raison d'etre of this benchmark is that it's exported when the library is transpiled to different environments (something that I will be doing in a next blog post).
 It is then easy to compare performance of the code in different environments.
 (There is probably a better way to do this; I'm open to suggestions!)
-{: .notice}
+{{< /note >}}
 
 In this article we will compare the data of the first benchmark with performance data we get by running the following code (the `quotes.txt` file is the file from the testdata directory in the [fzf-lib repository][1]).
 

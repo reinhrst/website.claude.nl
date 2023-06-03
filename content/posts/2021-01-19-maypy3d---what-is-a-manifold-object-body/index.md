@@ -13,13 +13,11 @@ aliases:
   - /tech/macpy3d/maypy3d-what-is-a-manifold-object-body/
 header:
   image: header-low.png
+series: MacPy3D
 ---
 
 
 Generally when making things in 3D, we like to talk about objects. For instance a cube, or a pyramid. When making a 3D modelling library, it therefore pays to have a very good idea of what an object actually is, and what different kinds of objects one can have. Also, it seems that other programs use the term manifold object; I have done my best to explain what that means and what MacPy’s thoughts about this are.
-
-This is part 2 in the MacPy3D series. Check out the [MacPy3D tag](https://medium.com/tag/macpy3d) for all posts.
-{: .notice}
 
 ### Dimensions and object types
 

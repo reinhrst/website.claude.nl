@@ -18,11 +18,12 @@ header:
 
 As you may know, [I am a great fan of SVG](./2021-02-25-ways-to-use-svg-in-your-html-page.md). I don’t think that SVG gets enough credit on the web, as a small file size, infinite resolution, declarative, next gen image format. A reason why SVG is not so popular, may be that may places that allow image upload, don’t allow SVG; such is the case here at Medium as well. There may be good reasons for this (cross browser compatibility, security, SVGs [acting different based on how you embed them](./2021-02-25-ways-to-use-svg-in-your-html-page.md)). However, in the end, I would love to embed some SVGs in Medium.
 
+{{< note >}}
 Note: This post was originally written on Medium, when my blog still lived there.
 It makes more sense on Medium; it's just here for historical purposes.
 Note that on jekyll, SVGs can just be embedded the same as (other) images.
 The place in this text that supposedly shows an SVG embed is actually just an SVG image.
-{: .notice}
+{{< /note >}}
 
 Now obviously the foolproof way is to convert your SVG into a PNG image (you can even use just the OS level screenshot tool for this), however I’ve noticed multiple times that I was working on an article and I didn’t like having to repeatedly convert my SVG into PNG, and reupload the image. So time for a plan B. Also, any animation or interaction would get lost this way.
 

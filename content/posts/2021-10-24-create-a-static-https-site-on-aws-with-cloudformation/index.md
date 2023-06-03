@@ -20,10 +20,11 @@ I have a couple of requirements for this:
 - I want to be able to access the log files.
 - I don't want anything I didn't ask for (in the form of trackers, or advertisements, or pay walls, etc).
 
+{{< note type=warning >}}
 This howto assumes that you know your way around AWS.
 It will talk about CloudFormation, CloudFront and S3, and assume you know what they are (or are willing to find out by reading up on them).
 This is NOT a howto for people without any AWS experience.
-{: .notice--warning}
+{{< /note >}}
 
 The last option means that AWS is the target of choice (Note: I'm contrasting it here to "free" webhosting services; I'm sure that Azure and Google Cloud offer similar privacy, but this article is about AWS).
 It should be noted that AWS is not free; in my experience however, the only real cost I have is $12 a year for the domain name registration, and another $0.50 a month for the hosted-zone (the DNS).
@@ -42,17 +43,19 @@ This is because later we ask Amazon to create a certificate for your zone, and i
 
 Afterwards it's as simple as downloading the following stack template and creating a stack from it.
 
-NOTE: make sure to create the stack in the us-east-1 region.
+{{< note type=warning >}}
+Make sure to create the stack in the us-east-1 region.
 Since CloudFront only looks in the us-east-1 region to find the HTTPS certificate, that certificate needs to be created in that region.
 It does mean that your S3 buckets are in us-east-1 as well; if you really care about performance of your website that much, you probably should not be using this tutorial at all, and dive deeper into what you really want.
-{: .notice--warning}
+{{< /note >}}
 
+{{< note type=danger >}}
 Security warning: NEVER just download templates from the internet and run them in your AWS account, always check that they indeed do what you expect, and what they claim to do.
 Doing otherwise is a security risk, and may even rake up huge bills.
 So: download the template, read through it until you understand, and then run it.
-{: .notice--danger}
+{{< /note >}}
 
-{% gist 6c10b2da47bda52d7ced4e87c0f00681 >}}
+{{< gist reinhrst 6c10b2da47bda52d7ced4e87c0f00681 >}}
 
 If you run this from the command line, use the following format; obviously adjust the parameter values to your needs; my parameters below will not work for you since you don't have access to this parent zone (if you use the console, just upload the template and fill in the parameters there).
 
@@ -85,7 +88,7 @@ Next, create a `/website/` directory in your bucket and add 2 files `index.html`
 Now if you reload your browser, you should see the index.html page.
 If you request another (non existent) page, you will see the 404.html page.
 
-<div markdown="1" class="notice">
+{{< note >}}
 A note on CloudFront and caching.
 CloudFront is a CDN that allows one to easily serve content very fast from local locations around the globe.
 In that, it's just a huge distributed reverse proxy.
@@ -98,5 +101,5 @@ If you start getting a (real) lot of traffic, you may also consider not storing 
 S3 is cheap, but if your logfiles start to grow to terrabyte size, probably you want to (re)move them.
 
 As always, be aware that AWS is post-paid, and you could rake up enormous costs (allowing people to download files many gigabytes large from your website comes to mind); obviously, do things at your own risk, I can only share my experiences.
+{{< /note >}}
 AWS has tools to "lock" your account if you start raking up unexpected costs; I would advice you to look into them if you're unsure of what you're doing.
-</div>

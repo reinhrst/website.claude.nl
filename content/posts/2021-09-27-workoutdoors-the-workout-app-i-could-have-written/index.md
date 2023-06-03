@@ -30,7 +30,7 @@ I used to use iSmoothRun as the running app of choice, back in the days when App
 I settled on it after trying a couple of apps (RunGap, Nike), and liked it very much for many years.
 However I did note that after I started wearing an Apple Watch, I tended to use the built-in Workouts app more and more; the iSmoothRun app for Watch had problems with stability (not nice if 10k into your half marathon, your watch decides to freeze and loose the whole workout), and I feel the app never quite reached the level on the Watch that it had on the phone.
 
-<div class="notice" markdown="1">
+{{< note >}}
 As a quick side note: the apps I discuss here cost money.
 When I look around me, I see many friends that really have a problem with paying for apps; they happily buy €150 running shoes, a €30 water belt that they'll never wear and €100 in gels and running snacks.
 Without flinching they will buy a €3 bottle of water during their run (even though 200m further there is a free water fountain), but as soon as you suggest they pay €10 on a running app, they call you crazy.
@@ -43,7 +43,7 @@ I *like* apps that ask for a (reasonably small) payment.
 I understand them, I understand where they make their money, and I feel we join into a mutual agreement; I pay, they make sure the app keeps working (for a reasonable amount of time).
 
 The apps I discuss in this article, both iSmoothRun and WorkOutDoors, cost less than €10 each; completely negligible compared to the other stuff I buy for my sports (and just to be clear: I advise buying only the latter one).
-</div>
+{{< /note >}}
 
 At some point I started to think about what my ideal workout app would look like (maybe with somewhere in the back of my mind that I could build it one day, if necessary):
 - Obviously stability: nothing so frustrating as losing your progress halfway your run.
@@ -58,12 +58,12 @@ At some point I started to think about what my ideal workout app would look like
 After a run around a lake in Germany, where I ended up climbing over fences, going through fields and jumping over ditches after because I lost my way (Apple Maps only work when you have internet connection), I added one extremely important feature:
 - Support for maps that get cached on the Watch.
 
-<div class="notice" markdown="1">
+{{< note >}}
 Supposedly this year Apple will (finally) launch a 4G version of the Apple Watch that works in The Netherlands.
 In theory this should mean that the Apple Maps *will* work when running without your phone.
 There are however pitfalls.
 We will have to see if the internet connectivity will work abroad (where chances of getting lost are highest); and even then, you may end up in an area without 4G coverage (again, higher chance of getting lost in these kinds of areas).
-</div>
+{{< /note >}}
 
 # WorkOutDoors
 
@@ -110,9 +110,9 @@ If I had written a workout app for my own personal use, with all the features I 
 For the use that I'm getting from it, €5.99 is laughably little for this app; if the author would have any "donate" button anywhere on the site, I would be more than happy to buy him a beer or two!
 I guess that all I can do, is spread the word!
 
-<div class="notice" markdown="1">
+{{< note >}}
 I want to be clear that I'm in no way involved with WorkOutDoors.
 I'm in no way being paid to publish anything about them, nor will I get any kick-back if people buy the app.
 I just think it's an amazing app, I would like to spread the word so that more people get to enjoy it.
+{{< /note >}}
 And, being a independent software developer myself, I absolutely love when someone appreciates my work, and I'm more than happy to show others that I appreciate theirs!
-</div>
