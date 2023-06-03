@@ -12,6 +12,8 @@ toc:
   enable: true
 aliases:
   - /tech/manual/how-i-wrote-the-show-on-map-safari-extension-for-macos/
+header:
+  image: header.jpg
 ---
 
 A couple of weeks ago I had to look for a company to rent some Nerf guns from, for a long weekend in the Ardennes with friends. There are several companies in The Netherlands and Belgium doing just that, but I wanted to find one that was on the route. I found myself copy-pasting city and village names into Google Maps to find where all these places were located.

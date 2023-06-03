@@ -12,6 +12,8 @@ series: Scalar Vector Graphics (SVG)
 original_post_medium_url: https://claude-e-e.medium.com/how-to-embed-svg-images-on-medium-eb2aaaca69ad
 aliases:
   - /tech/manual/how-to-embed-svg-images-on-medium/
+header:
+  image: header-low.png
 ---
 
 As you may know, [I am a great fan of SVG](./2021-02-25-ways-to-use-svg-in-your-html-page.md). I don’t think that SVG gets enough credit on the web, as a small file size, infinite resolution, declarative, next gen image format. A reason why SVG is not so popular, may be that may places that allow image upload, don’t allow SVG; such is the case here at Medium as well. There may be good reasons for this (cross browser compatibility, security, SVGs [acting different based on how you embed them](./2021-02-25-ways-to-use-svg-in-your-html-page.md)). However, in the end, I would love to embed some SVGs in Medium.

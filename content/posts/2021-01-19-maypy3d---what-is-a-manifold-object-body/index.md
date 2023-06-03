@@ -11,6 +11,8 @@ tags:
 original_post_medium_url: https://claude-e-e.medium.com/macpy3d-what-is-a-manifold-object-body-cb38ebf42798
 aliases:
   - /tech/macpy3d/maypy3d-what-is-a-manifold-object-body/
+header:
+  image: header-low.png
 ---
 
 

@@ -13,6 +13,8 @@ toc:
   enable: true
 aliases:
   - /tech/using-a-go-library-fzf-lib-in-the-browser/
+header:
+  image: header-low.svg
 ---
 
 In this post I will describe how to compile a Go library for use in the browser.

@@ -15,6 +15,8 @@ toc:
 slug: interface-between-go-1.16-and-javascript-syscall-js
 aliases:
   - /tech/howto/interface-between-go-1.16-and-javascript-syscall-js/  
+header:
+  image: header-low.svg
 ---
 Last month I [posted a story](../_posts/2021-07-08-making-fzf-into-a-golang-library-fzf-lib.md) about creating a stand-alone library from [Junegunn Choi's fzf](https://github.com/junegunn/fzf).
 This was the first step in an effort to produce a version of fzf that runs in the browser.

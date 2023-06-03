@@ -8,6 +8,8 @@ toc:
   enable: true
 aliases:
   - /how-to/hugo-recurring-events-with-icalendar-support/
+header:
+  image: header-low.jpg
 ---
 
 

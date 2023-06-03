@@ -7,6 +7,8 @@ tags:
     - workouts
 aliases:
   - /review/workoutdoors-the-workout-app-i-could-have-written/
+header:
+  image: header-low.jpg
 ---
 
 Ever since I got my first Apple Watch, I looked for apps to track workouts.

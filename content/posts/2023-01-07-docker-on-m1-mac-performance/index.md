@@ -10,6 +10,8 @@ toc:
   enable: true
 aliases:
   - /tech/docker-on-m1-mac-performance/
+header:
+  image: header.jpg
 ---
 
 Just a quick note to describe what [some others had already found before][1].

@@ -12,6 +12,8 @@ toc:
   enable: true
 aliases:
   - /tech/howto/logging-homekit-data-to-google-sheets-for-free-walkthrough/
+header:
+  image: header-low.png
 ---
 
 My home is smart!

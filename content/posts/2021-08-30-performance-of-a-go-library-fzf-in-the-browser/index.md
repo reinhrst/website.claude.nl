@@ -12,6 +12,8 @@ toc:
   enable: true
 aliases:
   - /tech/performance-of-a-go-library-fzf-in-the-browser/
+header:
+  image: header-low.svg
 ---
 
 In past posts in this series, I looked at how to convert a Go library in order for it to work in the browser.
