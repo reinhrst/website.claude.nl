@@ -35,8 +35,9 @@ Luckily, the interface described below is supported by all three methods.
 Because examples work best when you can actually do them yourself, I will quickly describe how to compile from Go to WebAssembly, and integrate this in a javascript program; in a later post I will dive into this in more detail, and show multiple methods of doing this.
 This post comes with a [GitHub repository with examples](https://github.com/reinhrst/go-js-interface) containing all the code that is described in this post.
 
-[Accompanying code on <i class="fab fa-fw fa-github" aria-hidden="true"></i> Github](https://github.com/reinhrst/go-js-interface){: .btn .btn--success}
-
+{{< link-button href="https://github.com/reinhrst/go-js-interface" type="success" >}}
+Accompanying code on  {{< icon github-original >}} Github
+{{< /link-button >}}
 
 {{< note >}}
 In this article I will consistently talk about Go code and JavaScript code as the two parts that we care about.

@@ -9,3 +9,21 @@
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(189, 193, 196, 0.25);
 }
+
+a.button {
+  display: inline-block;
+  margin-bottom: 0.25em;
+  padding: 0.5em 1em;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-width: 0;
+  font-family: var(--header-font);
+  border-radius: 4px;
+  cursor: pointer;
+  &.success {
+    background-color: #3fa63f;
+    color: #fff !important;
+  }
+}

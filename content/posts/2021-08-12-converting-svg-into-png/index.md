@@ -16,7 +16,9 @@ Also, if you offer to convert an SVG to an PNG, you better (at least) offer me a
 
 Today I'm happy to announce that I found my way to do this: script Firefox to screenshot an SVG, with the exact boundaries I want, at the exact resolution I want.
 
-[SVG2PNG on <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub](https://github.com/reinhrst/svg2png){: .btn .btn--success}
+{{< link-button href="https://github.com/reinhrst/svg2png" type="success" >}}
+SVG2PNG on {{< icon github-original >}} GitHub
+{{< /link-button >}}
 
 The tool is also available as docker container, just build it from the GitHub repository.
 
@@ -111,7 +113,6 @@ I remember a couple of years ago struggling a lot to get an HTML page to convert
 With my new-found powers I wanted to see if this could be done through the same method.
 The [result](https://github.com/reinhrst/svg2png/tree/printpdf) is almost the same as the SVG2PNG exporter:
 
-
-
-[PrintPDF on <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub](https://github.com/reinhrst/svg2png/tree/printpdf){: .btn .btn--success}
-
+{{< link-button href="https://github.com/reinhrst/svg2png/tree/printpdf" type="success" >}}
+PrintPDF on {{< icon github-original >}} Github
+{{< /link-button >}}

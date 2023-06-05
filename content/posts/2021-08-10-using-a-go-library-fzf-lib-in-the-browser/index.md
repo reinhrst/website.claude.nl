@@ -31,7 +31,9 @@ The following items are discussed in this post:
 - Do some basic performance testing on the different solutions
 - Bonus: do a performance optimisation
 
-[Accompanying code for this post is available on <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub](https://github.com/reinhrst/fzf-js){: .btn .btn--success}
+{{< link-button href="https://github.com/reinhrst/fzf-js" type="success" >}}
+[Accompanying code for this post is available on {{< icon github-original >}} Github
+{{< /link-button >}}
 
 {{< note >}}
 In this post I will compile Go code to WebAssembly (with two different tools) and to JavaScript code.

@@ -14,7 +14,9 @@ aliases:
 ---
 Over the past coupe of weeks I converted fzf into a go library, to be used in other projects.
 
-[See fzf-lib on <i class="fab fa-fw fa-github" aria-hidden="true"></i> Github][1]{: .btn .btn--success}
+{{< link-button href="https://github.com/reinhrst/fzf-lib" type="success" >}}
+See fzf-lib on {{< icon github-original >}} Github
+{{< /link-button >}}
 
 # Introduction
 
