@@ -38,16 +38,13 @@ So I need a tool to convert it to PNG, preferably automatically.
 Over all my time with SVGs, Firefox has consistently been the best renderer.
 As a small example, the following SVG:
 
-<figure markdown="1">
+{{< figure-with-caption nr-items-horizontally=2 >}}
+    {{< child caption="Current browser rendering" >}} ![](example.svg) {{< /child >}}
+    {{< child caption="Firefox rendering (correct!)" >}} ![](example.png) {{< /child >}}
+    {{< child caption="Chrome rendering (wrong)" >}} ![](example-wrong.png) {{< /child >}}
+    {{< child caption="Pixelmator Pro SVG importer (???)" >}} ![](example-pixelmator.png) {{< /child >}}
+{{< /figure-with-caption >}}
 
-:---:|:---:
-SVG file (depends on your browser what you'll see):|What Firefox users see (correct):
-![Example SVG](example.svg)|![Example PNG](example.png)
-What Safari/Chrome users see:|What pixelmator pro SVG importer makes of things (not sure what it's thinking):
-![Example PNG](example-wrong.png) |![Example PNG](example-pixelmator.png)
-
-<figcaption>The same SVG image, in different renderers</figcaption>
-</figure>
 
 This is not a full comparison of all converters and which support which features; rather my point is: Firefox is in my experience the best.
 
