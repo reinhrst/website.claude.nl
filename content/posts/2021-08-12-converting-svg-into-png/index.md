@@ -42,11 +42,11 @@ As a small example, the following SVG:
     {{< child caption="Current browser rendering" >}} ![](example.svg) {{< /child >}}
     {{< child caption="Firefox rendering (correct!)" >}} ![](example.png) {{< /child >}}
     {{< child caption="Chrome rendering (wrong)" >}} ![](example-wrong.png) {{< /child >}}
-    {{< child caption="Pixelmator Pro SVG importer (???)" >}} ![](example-pixelmator.png) {{< /child >}}
+    {{< child caption="Pixelmator Pro SVG importer (what is it even thinking)" >}} ![](example-pixelmator.png) {{< /child >}}
 {{< /figure-with-caption >}}
 
 
-This is not a full comparison of all converters and which support which features; rather my point is: Firefox is in my experience the best.
+This is not a full comparison of all converters and which support which features (which would at least require me to mention exactly which versions I tested); rather my point is: Firefox is in my experience the best.
 
 ## Scripting Firefox
 
