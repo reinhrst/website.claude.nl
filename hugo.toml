@@ -11,13 +11,13 @@ theme = 'ConciseShortStyle'
   [params.comments.giscus]
     enabled = 1
     repo = "reinhrst/website.claude.nl"
-    data-repo-id = "R_kgDOGpOc7Q"
-    data-category = "Giscus"
-    data-category-id = "DIC_kwDOGpOc7c4CWO_y"
+    repo-id = "R_kgDOGpOc7Q"
+    category = "Giscus"
+    category-id = "DIC_kwDOGpOc7c4CWO_y"
     mapping = "pathname"
     strict = "1"
     reactions-enabled = "1"
-    emit-metadata = "1"
+    emit-metadata = "0"
     input-position = "bottom"
     theme = "preferred_color_scheme"
     lang = "en"
