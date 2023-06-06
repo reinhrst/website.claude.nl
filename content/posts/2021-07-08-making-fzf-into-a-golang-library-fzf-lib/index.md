@@ -26,10 +26,9 @@ Plus, once you get the hang of things, it _does_ have the power to use smartly c
 It does all this through a highly configurable terminal interface, with helpful previews, and a vim plugin.
 I think I use fzf hundreds of times a day, both during work and free time!
 
-<figure>
-  <script src="https://asciinema.org/a/QR18RAtqj3PlenWC5jS32T6Ez.js" id="asciicast-QR18RAtqj3PlenWC5jS32T6Ez" async data-autoplay="true" data-loop="1"></script>
-  <figcaption>Let's search for some magic and fruit in the fzf source code, using fzf in neovim.</figcaption>
-</figure>
+{{< figure-with-caption caption="Let's search for some magic and fruit in the fzf source code, using fzf in neovim." >}}
+  {{< child raw=true >}}<script src="https://asciinema.org/a/QR18RAtqj3PlenWC5jS32T6Ez.js" id="asciicast-QR18RAtqj3PlenWC5jS32T6Ez" async data-autoplay="true" data-loop="1"></script>{{< /child >}}
+{{< /figure-with-caption >}}
 
 I have used fzf in multiple small projects I worked on.
 Every time I somehow have a long (or even short) list of items, and I want to quickly use the keyboard to find the one I need, fzf is the way to go.
@@ -38,7 +37,7 @@ However there are moments when I wanted to integrate the functionality into some
 The [fzf suggested way](https://junegunn.kr/2016/02/using-fzf-in-your-program) to do this, is to spawn an fzf process, using `--filter`, and then piping in the input and getting back the result.
 There have been [multiple](https://github.com/junegunn/fzf/issues/2097) [github](https://github.com/junegunn/fzf/issues/1270) [requests](https://github.com/junegunn/fzf/pull/1053) to make fzf into a library, however the [main repository owner](https://github.com/junegunn) has declared no interest in this (mostly for the, _in my opinion completely valid_, reason that this is not the direction in which he wants to take the product, and it _would_ result in extra maintenance for him).
 
-<hr>
+---
 
 Over the past years, whenever I wanted to use fzf in one of my own projects, I tended to alternate between 2 solutions:
 - Rewrite the parts of fzf as a library
@@ -122,7 +121,7 @@ For better or worse, I will call this the "core of fzf" in the rest of the post.
 
 ### The non-core of fzf
 I never realised until I dove into the code, that fzf is so much more than just a fuzzy finder.
-I would say that about <katex-inline class="keepfont">\frac{2}{3}</katex-inline> of the code (and maybe 80% of the commandline options) deals with other things than what I consider "the core fzf".
+I would say that about {{< katex inline >}}\frac{2}{3} {{</katex>}} of the code (and maybe 80% of the commandline options) deals with other things than what I consider "the core fzf".
 In addition to the core, there is code for:
 - commandline interface, including options parsing, reading and parsing from `stdin`.
 - An ncurses/terminal integration, that allows real-time searching, selecting one of the options, showing (customizable) previews and allowing one to define hotkeys for special operations.
@@ -177,7 +176,7 @@ The results will come back through the result channel.
 If you send a new search request before the old one finishes, the old one gets cancelled.
 In the end, make sure to call `End()`, in order to clean up the resources used.
 
-<figure markdown="1">
+{{< figure-with-caption caption="Small example, showing lib-fzf in action" >}}
 ```go
 package main
 
@@ -204,8 +203,7 @@ func main() {
     myFzf.End()
 }
 ```
-<figcaption>Small example, showing lib-fzf in action</figcaption>
-</figure>
+{{< /figure-with-caption >}}
 
 The original fzf code has an assumption that only one search is running in the process, and that the process will end when the search ends.
 In the library it should be possible to make multiple `Fzf` objects, each with different options and different hay, and do the searches in parallel, or interleaved.
@@ -241,7 +239,7 @@ wc -l quotes2.txt
 for i in $(seq 10 25); do echo $((2 ** i)); head -n $((2**i)) quotes2.txt | time fzf --filter "hello world" > /dev/null;  done
 ```
 
-As you can see, we add 20000 copies of the `quotes.txt` file together, into `quotes2.txt` (so that the file has enough data when we ask for <katex-inline class="keepfont">2^{25}</katex-inline> lines of data).
+As you can see, we add 20000 copies of the `quotes.txt` file together, into `quotes2.txt` (so that the file has enough data when we ask for {{< katex inline >}}2^{25}{{< /katex >}} lines of data).
 We then pipe the first X lines of this file to `fzf --filter "hello world"`, and time how long it takes.
 
 All tests were done on my MacBook Pro M1 (all binaries are compiled for Apple Silicon).
@@ -269,11 +267,9 @@ items|time fzf-lib (ms)|time fzf cmdline (ms)
 16777216|6588|28500
 33554432|33098|58230
 
-{%include figure
-    src="results.svg"
-    alt="results chart"
-    caption="Results in double-log chart. `lib-fzf` seems faster than commandline fzf (although as mentioned before, it's not really fair to compare them). Performance scales linearly until 1at least 16.8M."
->}}
+{{< figure-with-caption caption="Results in double-log chart. `lib-fzf` seems faster than commandline fzf (although as mentioned before, it's not really fair to compare them). Performance scales linearly until 1at least 16.8M." >}}
+  ![results chart](results.svg)
+{{< /figure-with-caption >}}
 
 In the table and chart above, one can easily see that fzf-lib is faster than piping data into a spawned fzf process; usually by a factor 4.
 Again I like to stress that it's not a fair comparison of raw performance and many factors may influence the result, however it does show that lib-fzf should not be slower than the suggested way to include fzf in third party software by piping into a spawned process.
