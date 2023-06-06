@@ -1,0 +1,3 @@
+[submodule "themes/ConciseShortStyle"]
+	path = themes/ConciseShortStyle
+	url = git@github.com:reinhrst/ConciseShortStyle
