@@ -6,8 +6,6 @@ tags:
     - docker
     - performance
     - apple silicon
-toc:
-  enable: true
 aliases:
   - /tech/docker-on-m1-mac-performance/
 header:
