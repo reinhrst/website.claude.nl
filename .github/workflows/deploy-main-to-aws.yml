@@ -40,4 +40,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy
-        run: aws s3 sync --delete --exclude=beta/\* --content-encoding utf8 public s3://blog2.claude.nl/website/
+        run: (cd public && for i in **/*; do if [ -f "$i" ]; then aws s3api put-object --body $i --bucket blog2.claude.nl --key "website/${i%index.html}" --content-type "$(file -b --mime-type "$i")"; fi; done)
