@@ -8,6 +8,24 @@ aliases:
   - /tech/manual/create-a-static-https-site-on-aws-with-cloudformation/
 ---
 
+{{< note type=update >}}
+
+Starting April 2023 AWS did some update, which means that the method described below does not work verbatim anymore.
+
+The fix is easy enough (also [see my stackoverflow post on this][1]), just add the following lines to the Bucket config:
+
+```yaml
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+```
+
+I will try to soon write a new post with the full new config (and some extra things I've been using recently 😊)
+
+[1]: https://stackoverflow.com/questions/70645117/enable-s3-acl-access-for-cloudfront-logs/76417890#76417890
+
+{{< /note >}}
+
 Every now and then I find myself with the need to quickly create a small website, for instance as a static backend or a help page to [one](https://sks.claude-apps.com/) of my apps.
 I have a couple of requirements for this:
 
@@ -100,3 +118,4 @@ S3 is cheap, but if your logfiles start to grow to terrabyte size, probably you 
 As always, be aware that AWS is post-paid, and you could rake up enormous costs (allowing people to download files many gigabytes large from your website comes to mind); obviously, do things at your own risk, I can only share my experiences.
 {{< /note >}}
 AWS has tools to "lock" your account if you start raking up unexpected costs; I would advice you to look into them if you're unsure of what you're doing.
+
