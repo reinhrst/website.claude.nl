@@ -1,13 +1,9 @@
 ---
 title: 'How I wrote the Show on Map Safari Extension (for MacOS)'
-categories:
-    - tech
-    - manual
 tags:
+    - tech
     - howto
-    - safari web extensions
     - safari
-    - xcode
 toc:
   enable: true
 aliases:

@@ -1,9 +1,8 @@
 ---
 title: 'Using a Go library (fzf-lib) in the browser'
 description: I'm compiling the fzf-lib go library for use in the browser
-categories:
-    - tech
 tags:
+    - tech
     - fzf
     - go
     - wasm

@@ -1,12 +1,9 @@
 ---
 title: 'Create a static HTTPS site on your custom domain using Cloud Formation'
-categories:
-    - tech
-    - manual
 tags:
+    - tech
     - howto
     - aws
-    - cloudformation
 aliases:
   - /tech/manual/create-a-static-https-site-on-aws-with-cloudformation/
 ---

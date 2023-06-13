@@ -1,12 +1,8 @@
 ---
 title: 'Cycling in Wrocław, Poland'
 description: Practical advise and tips on cycling in Poland, Wroclaw in particular.
-categories:
-    - travel
 tags:
-    - travel
-    - cycling
-    - poland
+    - sports
 original_post_medium_url: https://claude-e-e.medium.com/cycling-in-wrocław-poland-8c354972121d
 toc:
   enable: true

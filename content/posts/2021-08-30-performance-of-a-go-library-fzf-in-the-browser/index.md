@@ -1,8 +1,7 @@
 ---
 title: 'Performance of a Go library (fzf-lib) in the browser'
-categories:
-    - tech
 tags:
+    - tech
     - fzf
     - go
     - wasm

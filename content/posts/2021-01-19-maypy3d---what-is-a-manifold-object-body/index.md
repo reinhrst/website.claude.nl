@@ -1,13 +1,9 @@
 ---
 title: 'MacPy3D: What is a (manifold) object/body'
 description: Create definitions on what is a body
-categories:
-    - tech
-    - macpy3d
 tags:
-    - python
+    - tech
     - 3d
-    - manifoldness
 original_post_medium_url: https://claude-e-e.medium.com/macpy3d-what-is-a-manifold-object-body-cb38ebf42798
 aliases:
   - /tech/macpy3d/maypy3d-what-is-a-manifold-object-body/

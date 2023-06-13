@@ -1,9 +1,7 @@
 ---
 title: "How to export from Blender to X3D with textures"
-categories:
-    - how-to
 tags:
-    - blender
+    - howto
     - 3D
 slug: how-to-export-blender-(2.92)-mesh-to-x3d-with-textures
 aliases:

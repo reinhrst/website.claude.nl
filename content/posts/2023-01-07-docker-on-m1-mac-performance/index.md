@@ -1,10 +1,7 @@
 ---
 title: "Docker on M1/M2 macbook performance"
-categories:
-    - tech
 tags:
-    - docker
-    - performance
+    - tech
     - apple silicon
 aliases:
   - /tech/docker-on-m1-mac-performance/

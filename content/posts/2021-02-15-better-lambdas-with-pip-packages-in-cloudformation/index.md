@@ -1,16 +1,10 @@
 ---
 title: Better Lambdas with pip packages in CloudFormation
 description: An easy way to use CloudFormation to AWS Lambda python functions with packages through pip.
-categories:
+tags:
   - tech
   - howto
-tags:
   - aws
-  - cloudformation
-  - lambda
-  - layers
-  - python
-  - pip
 original_post_medium_url: https://claude-e-e.medium.com/better-lambdas-with-pip-packages-in-cloudformation-7ef92b2c793c
 aliases:
   - /tech/howto/better-lambdas-with-pip-packages-in-cloudformation/

@@ -1,9 +1,8 @@
 ---
 title: 'Converting SVG into PNG'
 except: Scripting Firefox to create a command line interface for the best SVG renderer out there, and allowing saving to PNG
-categories:
-    - tech
 tags:
+    - tech
     - svg
 series: Scalar Vector Graphics (SVG)
 aliases:

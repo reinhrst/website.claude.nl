@@ -1,16 +1,9 @@
 ---
 title: AWS Custom Resources security "trap" — or why it’s bad to give lambda execute rights to non-admin
 description: Quick description of the security problems you run into if non-admins have lambda execution rights.
-categories:
-  - tech
-  - howto
 tags:
+  - tech
   - aws
-  - cloudformation
-  - lambda
-  - python
-  - pip
-  - security
 original_post_medium_url: https://claude-e-e.medium.com/aws-custom-resources-security-trap-or-why-its-bad-to-give-lambda-execute-rights-to-non-admin-10f3fd2ddbe7
 aliases:
   - /tech/howto/aws-custom-resources-security-trap-or-why-it-s-bad-to-give-lambda-execute-rights-to-non-admin/

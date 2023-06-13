@@ -1,9 +1,8 @@
 ---
 title: 'Making speech bubbles in SVG'
 description: TODO
-categories:
-    - tech
 tags:
+    - tech
     - svg
 series: Scalar Vector Graphics (SVG)
 aliases:

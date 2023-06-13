@@ -1,9 +1,8 @@
 ---
 title: 'Creating Fzf into a library: fzf-lib'
 description: Why and how of creating Fzf into a library
-categories:
-    - tech
 tags:
+    - tech
     - fzf
     - go
 series: Making fzf available in the browser

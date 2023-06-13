@@ -1,12 +1,8 @@
 ---
 title: Using KaTeX on github pages
 description: Howto on using KaTex for math on your github pages page
-categories:
-    - tech
-    - github pages
 tags:
-    - katex
-    - math
+  - tech
 aliases:
   - /tech/github pages/using-katex-on-github-pages/
 header:

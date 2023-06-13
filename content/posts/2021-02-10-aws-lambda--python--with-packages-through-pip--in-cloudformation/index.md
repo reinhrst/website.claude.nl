@@ -1,16 +1,10 @@
 ---
 title: AWS Lambda (python) with packages through pip (in CloudFormation)
 description: An easy way to use CloudFormation to AWS Lambda python functions with packages through pip.
-categories:
+tags:
   - tech
   - howto
-tags:
   - aws
-  - cloudformation
-  - lambda
-  - layers
-  - python
-  - pip
 original_post_medium_url: https://claude-e-e.medium.com/aws-lambda-python-with-packages-through-pip-in-cloudformation-e8d92bba17b9
 aliases:
   - /tech/howto/aws-lambda-python-with-packages-through-pip-in-cloudformation/

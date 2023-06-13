@@ -1,13 +1,10 @@
 ---
 title: How to embed SVG images on Medium
 description: Guide how to embed SVG imaged on Medium
-categories:
-  - tech
-  - manual
 tags:
+  - tech
   - howto
   - svg
-  - medium
 series: Scalar Vector Graphics (SVG)
 original_post_medium_url: https://claude-e-e.medium.com/how-to-embed-svg-images-on-medium-eb2aaaca69ad
 aliases:

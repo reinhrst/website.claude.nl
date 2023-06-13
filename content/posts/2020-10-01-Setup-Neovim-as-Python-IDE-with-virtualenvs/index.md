@@ -3,14 +3,10 @@ title: Setup Neovim as Python IDE with virtualenvs -- Explanation of the steps n
 description: Explanation of the steps necessary to install Neovim as a Python IDE (end of 2020)
 aliases: 
     - /tech/howto/Setup-Neovim-as-Python-IDE-with-virtualenvs
-categories:
+tags:
     - tech
     - howto
-tags:
     - neovim
-    - vim
-    - python
-    - ide
 original_post_medium_url: https://claude-e-e.medium.com/setup-neovim-as-python-ide-with-virtualenvs-e507190d2655
 aliases:
   - /tech/howto/Setup-Neovim-as-Python-IDE-with-virtualenvs/

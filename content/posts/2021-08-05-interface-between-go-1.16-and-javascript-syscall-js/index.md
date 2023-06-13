@@ -1,10 +1,9 @@
 ---
 title: 'Interface between Go 1.16 (compiled to WebAssembly) and JavaScript (syscall/js)'
 description: A howto (with lots of examples) for making Go code available in the browser and how to have it interface with JavaScript.
-categories:
+tags:
     - tech
     - howto
-tags:
     - fzf
     - go
     - wasm

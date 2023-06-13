@@ -1,10 +1,7 @@
 ---
 title: 'WorkOutDoors: The workout app I would have written for myself'
-categories:
-    - review
 tags:
-    - apple watch
-    - workouts
+    - review
 aliases:
   - /review/workoutdoors-the-workout-app-i-could-have-written/
 header:

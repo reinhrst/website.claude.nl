@@ -1,11 +1,8 @@
 ---
 title: MacPy3D — 3D Model As Code for Python
 description: 'Announcment of my new project: a python library to create 3d models as code'
-categories:
-    - tech
-    - macpy3d
 tags:
-    - python
+    - tech
     - 3d
 original_post_medium_url: https://claude-e-e.medium.com/macpy3d-3d-model-as-code-for-python-58df4557036
 aliases:

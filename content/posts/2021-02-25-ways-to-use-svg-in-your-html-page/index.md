@@ -1,13 +1,9 @@
 ---
 title: Ways to use SVG in your html page
 description: Different embed methods for SVGs in HTML pages
-categories:
-    - tech
-    - deepdive
 tags:
+    - tech
     - svg
-    - html
-    - embed
 series: Scalar Vector Graphics (SVG)
 original_post_medium_url: https://claude-e-e.medium.com/ways-to-use-svg-in-your-html-page-dd504660cb37
 toc:

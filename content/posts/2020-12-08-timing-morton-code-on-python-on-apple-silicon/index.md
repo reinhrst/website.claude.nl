@@ -1,13 +1,9 @@
 ---
 title: Timing Morton code on Python on Apple Silicon
 description: Checking how fast the MacBook M1 really is, compared to intel, and in Rosetta mode
-categories:
-    - tech
 tags:
-    - arm64
-    - M1
-    - macbook
-    - benchmarking
+    - tech
+    - apple silicon
 original_post_medium_url: https://medium.com/analytics-vidhya/timing-morton-code-on-python-on-apple-silicon-767567094ed6
 toc:
   enable: true

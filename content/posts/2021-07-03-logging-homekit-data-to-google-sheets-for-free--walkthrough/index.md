@@ -1,13 +1,9 @@
 ---
 title: 'Logging HomeKit data to Google Sheets for free: walkthrough'
 description: A trick that allows logging of HomeKit data to Google Sheets (or other locations), for free
-categories:
+tags:
   - tech
   - howto
-tags:
-  - homekit
-  - smart home
-  - Google Sheets
 toc:
   enable: true
 aliases:
