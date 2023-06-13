@@ -73,6 +73,37 @@ Resources:
             Principal:
               CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
 
+  NormalizeAndRetrieveIndexHTMLForDirectoryLambda:
+    # makes sure that a request for /bla/ will return /bla/index.html
+    # However a request for /bla/index.html will be REDIRECTED to /bla/ (and then return index.html)
+    Type: AWS::CloudFront::Function
+    Properties:
+      AutoPublish: true
+      FunctionCode: |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+          
+          if (uri.endsWith('/index.html')) {
+              var newuri = uri.substring(0, uri.length - '/index.html'.length) + "/"
+              return {
+                statusCode: 301,
+                statusDescription: "Moved",
+                headers: {"location": { "value": newuri }},
+              }
+          } 
+          // Check whether the URI is missing a file name.
+          if (uri.endsWith('/')) {
+              request.uri += 'index.html';
+          } 
+
+          return request;
+        }
+      FunctionConfig:
+        Comment: makes sure that a request for /bla/ will return /bla/index.html
+        Runtime: cloudfront-js-1.0
+      Name: !Sub "${AWS::StackName}-normalize-and-retrieve-index-html"
+
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
@@ -86,7 +117,9 @@ Resources:
             QueryString: false
           TargetOriginId: !Sub "S3-${Hostname}.${HostedZoneName}"
           ViewerProtocolPolicy: redirect-to-https
-        DefaultRootObject: index.html
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt NormalizeAndRetrieveIndexHTMLForDirectoryLambda.FunctionMetadata.FunctionARN
         CustomErrorResponses:
           - ErrorCachingMinTTL: 10
             ErrorCode: 403
