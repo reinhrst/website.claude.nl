@@ -26,6 +26,7 @@ I will try to soon write a new post with the full new config (and some extra thi
 
 {{< /note >}}
 
+<!--begin-summary-->
 Every now and then I find myself with the need to quickly create a small website, for instance as a static backend or a help page to [one](https://sks.claude-apps.com/) of my apps.
 I have a couple of requirements for this:
 
@@ -34,6 +35,7 @@ I have a couple of requirements for this:
 - I want the website to be securely setup, in a minimal number of clicks.
 - I want to be able to access the log files.
 - I don't want anything I didn't ask for (in the form of trackers, or advertisements, or pay walls, etc).
+<!--end-summary-->
 
 {{< note type=warning >}}
 This howto assumes that you know your way around AWS.
