@@ -29,6 +29,4 @@ number-of-posts: 999999
 
 Coding, crazy projects, modelling, leisure, the occasional travel info or product review. It’s all inclusive here; just bring your own coffee.
 
-Or maybe: bring your own cookies; this website contains no cookies. It uses [getinsights.io](https://getinsights.io)'s privacy-first cookie-free analytics.
-
-(note: if you leave comments, you need to log in through Github, which is not cookie-free).
+You can read [more about me here](/about/).

@@ -9,6 +9,13 @@ I have a super wide interest (admittedly much focussed on technology) and really
 I keep asking myself "why" and "how" and "is there a better way".
 Whenever I discover something, I try to share it here on the blog; the blog posts are for me, but certainly also meant for the rest of the world.
 
+What generally happens is that I'm looking for some information.
+When I cannot find it, I spend some time finding out what I was looking for.
+Then I spend some more time and some more time and then some more, understanding what I just did, and how it works.
+Finally, I write it all down.
+With the intention that I can find it back later, while also hoping that it will be useful for someone else.
+
+
 I like my privacy and I like to read articles withouty constantly being interrupted by advertisements. That's why you don't see any advertisements on this blog, nor will you be tracked.
 Did you notice the cookie banner when you first arrived? That's because you can bring your own cookies (if you want), we don't serve any[^cookies].
 
