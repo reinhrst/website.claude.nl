@@ -11,6 +11,7 @@ toc:
   enable: true
 aliases:
   - /tech/performance-of-a-go-library-fzf-in-the-browser/
+  - /tech/performance-of-a-go-library-fzf-in-the-browser
 header:
   image: header-low.svg
 ---
@@ -110,8 +111,7 @@ Obviously `fzf` in a browser could be used in any number of situations, however 
 Each test consists of searching for the fuzzy string "h", then "he" then "hel", until we search for "hello world" (needle) in a number of lines (the haystack).
 The haystack will consist of the top `X` lines from the Linux kernel source code (gotten by running `rg --line-number --no-heading . | head -n X` in the Linux `5.14 rc 6` code tree.
 
-<details markdown="1">
-<summary>See an example of the lines we search in.</summary>
+{{<figure-with-caption caption="An example of the lines we search in.">}}
 ```
 sound/last.c:22:		}
 sound/last.c:23:	}
@@ -214,7 +214,7 @@ block/blk-core.c:24:#include <linux/pagemap.h>
 block/blk-core.c:25:#include <linux/kernel_stat.h>
 block/blk-core.c:26:#include <linux/string.h>
 ```
-</details>
+{{</figure-with-caption>}}
 
 All tests are run in node (v16.4.2).
 We increase the haystack in steps of factor 2 from 1024 until 16.4M lines.
@@ -223,9 +223,7 @@ I run the code used in the [last post](./2021-08-10-using-a-go-library-fzf-lib-i
 
 The `main.mjs` file is pretty much the same as in the [last post](./2021-08-10-using-a-go-library-fzf-lib-in-the-browser.md), however with some small changes to do multiple searches, and output the output that we need.
 
-<details markdown="1">
-<summary>See the main.mjs file</summary>
-The version compatible with the Go interface
+{{< figure-with-caption caption="The version compatible with the Go interface (`main.mjs`)" >}}
 ```javascript
 import {createReadStream} from "fs"
 import {Writable} from "stream"
@@ -346,12 +344,11 @@ for (const needle of needles) {
 }
 console.log(memoryUsageInMiB())
 ```
-</details>
+{{</figure-with-caption>}}
 
 In order to have a base-line to compare to, I also wrote a small Go program using `lib-fzf` directly.
 
-<details markdown="1">
-<summary>See the Go code</summary>
+{{< figure-with-caption caption="The `go` code">}}
 ```go
 package main
 
@@ -424,7 +421,7 @@ func main() {
 
 }
 ```
-</details>
+{{< /figure-with-caption >}}
 
 ## Memory
 Let's start by seeing how much memory each process uses.
@@ -436,23 +433,33 @@ Below are the results.
 Obviously memory increases with haystack size.
 In order to get meaningful plots, we will plot memory and execution time in this article always divided by haystack size.
 
-Data is also available in table-format (but hidden), click the "See memory usage table" message below to see the table data.
+{{<figure-with-caption caption="Memory usage" nr-items-horizontally=1 >}}
 
-<details markdown="1">
-<summary>See memory usage table</summary>
-<figure markdown="1">
+{{<child caption="Memory in MiB (Memory divided by haystack size in kiB)">}}
+Haystack size|Go (native)|Go (WebAssembly)|TinyGo|fzf-for-js|GopherJS
+---|---|---|---|---|---
+2{^10} = 1024|6.94 (6.9)|112.96 (113.0)|62.09 (62.1)|50.81 (50.8)|71.29 (71.3)
+2{^11} = 2048|8.92 (4.5)|116.20 (58.1)|66.49 (33.2)|54.62 (27.3)|83.58 (41.8)
+2{^12} = 4096|10.93 (2.7)|120.96 (30.2)|74.32 (18.6)|54.93 (13.7)|86.14 (21.5)
+2{^13} = 8192|13.48 (1.7)|129.34 (16.2)|82.61 (10.3)|68.07 (8.5)|112.92 (14.1)
+2{^14} = 16384|24.45 (1.5)|175.42 (11.0)|142.64 (8.9)|95.54 (6.0)|174.61 (10.9)
+2{^15} = 32768|32.00 (1.0)|196.18 (6.1)|162.82 (5.1)|109.09 (3.4)|235.14 (7.3)
+2{^16} = 65536|46.45 (0.7)|236.04 (3.7)|228.76 (3.6)|134.79 (2.1)|283.41 (4.4)
+2{^17} = 131072|69.66 (0.5)|298.89 (2.3)|328.17 (2.6)|194.71 (1.5)|460.04 (3.6)
+2{^18} = 262144|129.75 (0.5)|477.62 (1.9)|674.63 (2.6)|338.79 (1.3)|1018.97 (4.0)
+2{^19} = 524288|239.64 (0.5)|847.96 (1.7)|1158.42 (2.3)|576.29 (1.1)|1461.43 (2.9)
+2{^20} = 1048576|435.13 (0.4)|1469.63 (1.4)|2220.80 (2.2)|1013.85 (1.0)|3776.07 (3.7)
+2{^21} = 2097152|856.67 (0.4)|2751.17 (1.3)|4079.39 (2.0)|1998.93 (1.0)|4862.28 (2.4)
+2{^22} = 4194304|2010.77 (0.5)|---|---|4637.65 (1.1)|---
+2{^23} = 8388608|4501.73 (0.5)|---|---|6413.72 (0.8)|---
+2{^24} = 16777216|7982.35 (0.5)|---|---|---|---
+{{</child>}}
 
-{% include_relative tables/images/2021/08/30/memory_per_straw.md >}}
+{{<child caption="Memory in MiB (Memory divided by haystack size)">}}
+![Graph of memory usage](memory_per_straw.svg)
+{{</child>}}
 
-<figcaption>Memory in MiB (Memory divided by haystack size in kiB)</figcaption>
-</figure>
-</details>
-
-{%include figure
-    src="memory_per_straw.svg"
-    alt="graph of memory usage"
-    caption="Memory divided by haystack size (obviously) decreases with increasing haystack (since overhead is smaller percentage). Relative differences are interesting."
->}}
+{{</figure-with-caption>}}
 
 Note that I'm pushing the system to the limit, and not all compilation methods deal well with large input files (they give out-of-memory errors), hence the gaps.
 Only native Go and `fzf-for-js` manage to deal with a haystack size of 2M and 4M, and only native Go is able to do 16M.
@@ -465,20 +472,34 @@ In the graph I show how the time is used: the lowest (darker) block is the time 
 The blocks above are each for 1 extra typed letter; so the second block from the bottom is for searching "h", the third is for "he", the fourth for "hel", etc.
 The lighter blocks on top are for when the needle starts to be 2 words, so "hello ", "hello w", "hello wo", etc.
 
-<details markdown="1">
-<summary>See execution time table</summary>
-<figure markdown="1">
-{% include_relative tables/images/2021/08/30/performance.md >}}
+{{<figure-with-caption caption="Execution time" nr-items-horizontally=1 >}}
 
-<figcaption>Total time in seconds (time divided by haystack size in microseconds). Note that this is the time for the init plus 11 searches combined, not the time for a single search.</figcaption>
-</figure>
-</details>
+{{<child caption="Total time in seconds (time divided by haystack size in microseconds). Note that this is the time for the init plus 11 searches combined, not the time for a single search.">}}
+Haystack size|Go (native)|Go (WebAssembly)|TinyGo|fzf-for-js|GopherJS
+---|---|---|---|---|---
+2{^10} = 1024|0.00 (1.8)|0.02 (23.6)|0.03 (28.0)|0.07 (66.4)|0.10 (100.1)
+2{^11} = 2048|0.00 (1.2)|0.05 (26.7)|0.06 (27.8)|0.08 (40.4)|0.16 (76.8)
+2{^12} = 4096|0.00 (1.2)|0.09 (22.0)|0.09 (22.6)|0.11 (26.3)|0.22 (53.7)
+2{^13} = 8192|0.01 (1.0)|0.20 (23.9)|0.29 (35.9)|0.17 (20.5)|0.39 (47.1)
+2{^14} = 16384|0.03 (1.6)|0.83 (50.6)|0.72 (44.1)|0.37 (22.6)|1.32 (80.7)
+2{^15} = 32768|0.04 (1.3)|1.27 (38.8)|1.10 (33.7)|0.54 (16.4)|1.98 (60.3)
+2{^16} = 65536|0.06 (1.0)|1.93 (29.5)|1.71 (26.1)|0.85 (13.0)|2.92 (44.5)
+2{^17} = 131072|0.11 (0.9)|3.75 (28.6)|3.32 (25.4)|1.62 (12.3)|5.45 (41.6)
+2{^18} = 262144|0.31 (1.2)|10.78 (41.1)|10.50 (40.0)|3.76 (14.3)|15.22 (58.1)
+2{^19} = 524288|0.56 (1.1)|23.41 (44.6)|21.21 (40.4)|7.13 (13.6)|28.88 (55.1)
+2{^20} = 1048576|1.01 (1.0)|52.67 (50.2)|660.39 (629.8)|14.73 (14.1)|55.48 (52.9)
+2{^21} = 2097152|1.91 (0.9)|138.78 (66.2)|24559.47 (11710.9)|34.53 (16.5)|119.62 (57.0)
+2{^22} = 4194304|5.25 (1.3)|---|---|134.69 (32.1)|---
+2{^23} = 8388608|16.35 (1.9)|---|---|574.59 (68.5)|---
+2{^24} = 16777216|28.19 (1.7)|---|---|---|---
 
-{%include figure
-    src="performance.svg"
-    alt="graph of execution time"
-    caption="Execution time divided by haystack size. The Go (native) bars are so small as to be almost invisible."
->}}
+{{</child>}}
+{{<child caption="Run time divided by size of the haystack">}}
+![Graph of run time](performance.svg)
+
+{{</child>}}
+{{</figure-with-caption>}}
+
 
 There are a number of interesting observations in this graph.
 
@@ -509,23 +530,34 @@ Rather than looking for specific speedups now, it may be interesting to take the
 This will obviously not influence the go-native timings, or `fzf-for-js`.
 GopherJS may see a very small speedup, but the WebAssembly code should benefit a lot from this.
 
-<details markdown="1">
-<summary>See algorithm execution time table</summary>
-<figure markdown="1">
+{{<figure-with-caption caption="Execution time" nr-items-horizontally=1 >}}
 
-{% include_relative tables/images/2021/08/30/performance-per-straw-no-interface.md >}}
+{{<child caption="Total time in seconds (time divided by haystack size in microseconds)">}}
+Haystack size|Go (native)|Go (WebAssembly)|TinyGo|fzf-for-js|GopherJS
+---|---|---|---|---|---
+2{^10} = 1024|0.00 (1.4)|0.00 (4.5)|0.01 (6.3)|0.07 (64.2)|0.08 (78.4)
+2{^11} = 2048|0.00 (1.2)|0.01 (5.1)|0.02 (8.4)|0.08 (38.5)|0.13 (61.5)
+2{^12} = 4096|0.00 (1.0)|0.02 (4.1)|0.03 (6.2)|0.10 (24.9)|0.17 (41.9)
+2{^13} = 8192|0.01 (1.0)|0.04 (4.9)|0.16 (19.0)|0.16 (19.6)|0.29 (35.7)
+2{^14} = 16384|0.03 (1.6)|0.20 (12.3)|0.25 (15.4)|0.36 (21.9)|1.14 (69.5)
+2{^15} = 32768|0.04 (1.2)|0.29 (8.9)|0.34 (10.3)|0.51 (15.6)|1.68 (51.3)
+2{^16} = 65536|0.06 (0.9)|0.45 (6.9)|0.32 (4.9)|0.80 (12.3)|2.52 (38.5)
+2{^17} = 131072|0.10 (0.8)|0.73 (5.6)|0.87 (6.6)|1.53 (11.7)|4.72 (36.0)
+2{^18} = 262144|0.29 (1.1)|2.48 (9.5)|2.71 (10.3)|3.57 (13.6)|13.51 (51.6)
+2{^19} = 524288|0.53 (1.0)|3.91 (7.5)|7.39 (14.1)|6.73 (12.8)|25.70 (49.0)
+2{^20} = 1048576|0.94 (0.9)|8.54 (8.1)|316.78 (302.1)|13.95 (13.3)|49.02 (46.8)
+2{^21} = 2097152|1.77 (0.8)|19.39 (9.2)|12293.82 (5862.1)|32.65 (15.6)|105.34 (50.2)
+2{^22} = 4194304|4.96 (1.2)|---|---|129.14 (30.8)|---
+2{^23} = 8388608|15.81 (1.9)|---|---|560.40 (66.8)|---
+2{^24} = 16777216|27.09 (1.6)|---|---|---|---
+{{</child>}}
+{{<child caption="Run time divided by size of the haystack">}}
+![Graph of run time](performance-per-straw-no-interface.svg)
 
-<figcaption>Total time in seconds (time divided by haystack size in microseconds)</figcaption>
-</figure>
-</details>
+{{</child>}}
+{{</figure-with-caption>}}
 
-{%include figure
-    src="performance-per-straw-no-interface.svg"
-    alt="graph of execution time for the core algorithm"
-    caption="Execution time divided by haystack size (only the algorithm)"
->}}
-
-Both Go and TinyGo now perform better than `fzf-for-js` up until 2<sup>18</sup> = 250k items in the haystack; however at closer inspection one can see that searching the first five strings ("h", "he", "hel", "hell", and "hello") the three methods are pretty similar.
+Both Go and TinyGo now perform better than `fzf-for-js` up until 2{^18} = 250k items in the haystack; however at closer inspection one can see that searching the first five strings ("h", "he", "hel", "hell", and "hello") the three methods are pretty similar.
 Only in the light part of the bar does `fzf-for-js` spend much more time than the WebAssembly methods.
 This is due to the fact that `lib-fzf` relies heavily on caching here; it only searches in the (cached) subset of lines that match "hello".
 As I mentioned before, caching is on the roadmap for `fzf-for-js`, which should make it just as fast as the two WebAssembly based methods.
@@ -533,7 +565,7 @@ As I mentioned before, caching is on the roadmap for `fzf-for-js`, which should 
 I should stress again that this test is only on the pure algorithm, without returning the data to JavaScript; returning data to JavaScript is instantaneous for `fzf-for-js`, where for the other 2 methods there is overhead, no matter how many smart tricks one uses there.
 
 From careful inspection of the graph, another interesting thing can be observed.
-(Especially) TinyGo sometimes has long delays in places where one would not expect them; for instance at 2<sup>17</sup> and 2<sup>18</sup> we see pink blocks that are much taller than the ones below them, meaning that a search for a longer string too much longer (there are even long light-pink blocks, for searches that should have been near instantaneous).
+(Especially) TinyGo sometimes has long delays in places where one would not expect them; for instance at 2{^17</sup> and 2<sup>18} we see pink blocks that are much taller than the ones below them, meaning that a search for a longer string too much longer (there are even long light-pink blocks, for searches that should have been near instantaneous).
 
 Obviously the system is doing more work than it needs to during that time, so there is possibility for further optimisation.
 I have a strong hunch that this is due to the garbage collector ([also due to Surma's experience with this](https://surma.dev/things/js-to-asc/index.html)); we'll look at this in the next section.
@@ -554,22 +586,25 @@ GopherJS (and `fzf-forjs`) use JavaScript Garbage Collection, and this is not so
 Below you can see the results with GC on vs GC off; GopherJS and `fzf-for-js` are not present since we cannot control GC there.
 We again show only the time in the algorithm itself, not the time used for communicating with JavaScript.
 
-<details markdown="1">
-<summary>See algorithm execution time table</summary>
-<figure markdown="1">
+{{<figure-with-caption caption="Execution time (divided by haystack size); with and without garbage collection" nr-items-horizontally=1 >}}
 
-{% include_relative tables/images/2021/08/30/performance-no-gc.md >}}
+{{<child caption="Total time in seconds (time divided by haystack size in microseconds)">}}
+Haystack size|Go (native)|Go (native; no GC)|Go (WebAssembly)|Go (WebAssembly; no GC)|TinyGo|TinyGo (no GC)
+---|---|---|---|---|---|---
+2{^15} = 32768|0.04 (1.2)|0.04 (1.1)|0.29 (8.9)|0.23 (7.0)|0.34 (10.3)|0.06 (2.0)
+2{^16} = 65536|0.06 (0.9)|0.06 (0.9)|0.45 (6.9)|0.33 (5.0)|0.32 (4.9)|0.10 (1.5)
+2{^17} = 131072|0.10 (0.8)|0.11 (0.9)|0.73 (5.6)|0.62 (4.8)|0.87 (6.6)|0.19 (1.5)
+2{^18} = 262144|0.29 (1.1)|0.28 (1.1)|2.48 (9.5)|2.09 (8.0)|2.71 (10.3)|0.54 (2.1)
+2{^19} = 524288|0.53 (1.0)|0.50 (1.0)|3.91 (7.5)|4.57 (8.7)|7.39 (14.1)|1.06 (2.0)
+2{^20} = 1048576|0.94 (0.9)|0.90 (0.9)|8.54 (8.1)|13.81 (13.2)|316.78 (302.1)|2.28 (2.2)
+2{^21} = 2097152|1.77 (0.8)|1.66 (0.8)|19.39 (9.2)|---|12293.82 (5862.1)|6.30 (3.0)
 
-<figcaption>Total time in seconds (time divided by haystack size in microseconds)</figcaption>
-</figure>
-</details>
+{{</child>}}
+{{<child caption="Run time divided by size of the haystack">}}
+![Graph of run time](performance-no-gc.svg)
 
-{%include figure
-    src="performance-no-gc.svg"
-    alt="graph of execution time for the core algorithm"
-    caption="Execution time divided by haystack size (only the algorithm)"
->}}
-
+{{</child>}}
+{{</figure-with-caption>}}
 
 For native Go, there is only a small speed-up from switching off the GC.
 Go WebAssembly is a slightly more complex story: for relatively small hay stack sizes, the version without GC performs 10-20% better, however at larger sizes (from 500k items), when the memory pressure is larger, the non-GC version performs worse, and it runs out of memory at 2M items (whereas the version with GC still manages to complete).
@@ -607,21 +642,24 @@ As a result, there is little memory that can be cleared are reused.
 
 If we were (for instance) to do many more searches (especially many with large result sets), or we were to create and destroy multiple Fzf() objects in a row, we should see real differences here.
 
-<details markdown="1">
-<summary>See memory usage table</summary>
-<figure markdown="1">
+{{<figure-with-caption caption="Memory usage (divided by haystack size); with and without garbage collection" nr-items-horizontally=1 >}}
 
-{% include_relative tables/images/2021/08/30/memory-no-gc.md >}}
+{{<child caption="Total memory use in MB (memory usage divided by haystack size in kB)">}}
+Haystack size|Go (native)|Go (native; no GC)|Go (WebAssembly)|Go (WebAssembly; no GC)|TinyGo|TinyGo (no GC)
+---|---|---|---|---|---|---
+2{^15} = 32768|32.00 (1.0)|56.13 (1.8)|196.18 (6.1)|221.46 (6.9)|162.82 (5.1)|172.71 (5.4)
+2{^16} = 65536|46.45 (0.7)|82.79 (1.3)|236.04 (3.7)|285.46 (4.5)|228.76 (3.6)|234.90 (3.7)
+2{^17} = 131072|69.66 (0.5)|148.22 (1.2)|298.89 (2.3)|422.62 (3.3)|328.17 (2.6)|337.15 (2.6)
+2{^18} = 262144|129.75 (0.5)|375.89 (1.5)|477.62 (1.9)|917.14 (3.6)|674.63 (2.6)|674.08 (2.6)
+2{^19} = 524288|239.64 (0.5)|683.75 (1.3)|847.96 (1.7)|1542.49 (3.0)|1158.42 (2.3)|1174.35 (2.3)
+2{^20} = 1048576|435.13 (0.4)|1234.18 (1.2)|1469.63 (1.4)|2676.19 (2.6)|2220.80 (2.2)|2258.52 (2.2)
+2{^21} = 2097152|856.67 (0.4)|2391.60 (1.2)|2751.17 (1.3)|---|4079.39 (2.0)|4383.14 (2.1)
+{{</child>}}
+{{<child caption="Memory usage divided by size of the haystack">}}
+![Graph of memory usage](memory-no-gc.svg)
 
-<figcaption>Memory in MiB (Memory divided by haystack size in kiB)</figcaption>
-</figure>
-</details>
-
-{%include figure
-    src="memory-no-gc.svg"
-    alt="graph of memory usage"
-    caption="Memory divided by haystack size"
->}}
+{{</child>}}
+{{</figure-with-caption>}}
 
 ### Conclusion (of non-GC work)
 It is very impressive that TinyGo (without GC) is almost as fast as native Go.
@@ -669,25 +707,28 @@ curl -s -X DELETE "localhost:$PORT/session/"$SESSION_ID -H "Content-Type: applic
 
 This obviously results in a whole lot of data, which I've tried to make understandable in different formats; I fear I only succeeded up to a point.
 
-<details markdown="1">
-<summary>See browser performance table</summary>
-<figure markdown="1">
+{{<figure-with-caption caption="Execution time divided by haystack size for Node and browsers" nr-items-horizontally=1 >}}
 
-{% include_relative tables/images/2021/08/30/performance-browsers.md >}}
+{{<child caption="Total time in seconds (time divided by haystack size in microseconds).">}}
+Haystack size|Go (WebAssembly)|Go (WebAssembly) - Firefox|Go (WebAssembly) - Chrome|Go (WebAssembly) - Safari|Go (WebAssembly) - Edge|TinyGo|TinyGo - Firefox|TinyGo - Chrome|TinyGo - Safari|TinyGo - Edge|fzf-for-js|fzf-for-js - Firefox|fzf-for-js - Chrome|fzf-for-js - Safari|fzf-for-js - Edge|GopherJS|GopherJS - Firefox|GopherJS - Chrome|GopherJS - Safari|GopherJS - Edge
+---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+2{^17} = 131072|3.75 (28.6)|3.24 (24.7)|3.55 (27.1)|2.83 (21.6)|6.90 (52.6)|3.32 (25.4)|4.68 (35.7)|9.66 (73.7)|3.06 (23.3)|18.68 (142.5)|1.62 (12.3)|4.43 (33.8)|1.53 (11.7)|3.12 (23.8)|3.49 (26.6)|5.45 (41.6)|17.27 (131.8)|5.27 (40.2)|6.30 (48.1)|10.93 (83.4)
+2{^18} = 262144|10.78 (41.1)|8.78 (33.5)|9.76 (37.2)|7.35 (28.0)|18.35 (70.0)|10.50 (40.0)|18.78 (71.6)|28.06 (107.1)|10.60 (40.4)|47.18 (180.0)|3.76 (14.3)|10.80 (41.2)|3.55 (13.6)|7.01 (26.7)|6.33 (24.1)|15.22 (58.1)|49.35 (188.3)|14.32 (54.6)|14.87 (56.7)|25.66 (97.9)
+2{^19} = 524288|23.41 (44.6)|16.20 (30.9)|20.23 (38.6)|13.22 (25.2)|32.18 (61.4)|21.21 (40.4)|29.72 (56.7)|47.41 (90.4)|32.54 (62.1)|83.51 (159.3)|7.13 (13.6)|19.82 (37.8)|6.67 (12.7)|12.80 (24.4)|10.53 (20.1)|28.88 (55.1)|89.80 (171.3)|26.40 (50.4)|26.95 (51.4)|43.11 (82.2)
+2{^20} = 1048576|52.67 (50.2)|30.26 (28.9)|44.43 (42.4)|81.95 (78.2)|73.01 (69.6)|660.39 (629.8)|611.23 (582.9)|---|951.48 (907.4)|---|14.73 (14.1)|37.37 (35.6)|12.44 (11.9)|24.99 (23.8)|18.20 (17.4)|55.48 (52.9)|159.99 (152.6)|84.29 (80.4)|47.20 (45.0)|80.94 (77.2)
+2{^21} = 2097152|138.78 (66.2)|59.62 (28.4)|132.74 (63.3)|---|207.65 (99.0)|24559.47 (11710.9)|---|---|---|---|34.53 (16.5)|75.27 (35.9)|25.31 (12.1)|45.73 (21.8)|36.52 (17.4)|119.62 (57.0)|317.19 (151.2)|103.63 (49.4)|89.86 (42.8)|195.06 (93.0)
 
-<figcaption>Total time in seconds (time divided by haystack size in microseconds)</figcaption>
-</figure>
-</details>
+{{</child>}}
+{{<child caption="Run time divided by size of the haystack">}}
+![Graph of run time](performance-browsers.svg)
 
-{%include figure
-    src="performance-browsers.svg"
-    alt="graph of performance in browsers"
-    caption="Execution time divided by haystack size for Node and browsers"
->}}
+{{</child>}}
+{{</figure-with-caption>}}
+
 
 In the graph above we look at different haystack sizes (x axis), different methods (colours) and then each element has 5 bars, from dark to light.
 From left to right (dark to light) these stand for running the code in Node, Firefox, Chrome, Safari and Edge.
-So for instance the pink data at 2<sup>17</sup> show that Safari (the fourth bar) ran TinyGo with a haystack size of 128k items the fastest, then Node (1st), then Firefox(2nd), then Chrome (3rd) and finally Edge (the 5th bar).
+So for instance the pink data at 2{^17} show that Safari (the fourth bar) ran TinyGo with a haystack size of 128k items the fastest, then Node (1st), then Firefox(2nd), then Chrome (3rd) and finally Edge (the 5th bar).
 
 Even though this data is a bit hard to interpret, we can see some patterns:
 - `fzf-for-js` performs best across all browsers
