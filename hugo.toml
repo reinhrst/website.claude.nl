@@ -3,6 +3,11 @@ languageCode = 'en-uk'
 title = 'BYOC'
 theme = 'ConciseShortStyle'
 
+[outputFormats]
+[outputFormats.RSS]
+mediatype = "application/rss"
+baseName = "feed"
+
 [markup]
   _merge = "deep"
 
