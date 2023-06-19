@@ -8,8 +8,6 @@ theme = 'ConciseShortStyle'
 
 [params]
     custom_css = ["scss/custom.scss"]
-  [params.homepage]
-    number-of-posts = "unlimited"
   [params.comments.giscus]
     enabled = 1
     repo = "reinhrst/website.claude.nl"
