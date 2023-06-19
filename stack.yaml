@@ -75,6 +75,7 @@ Resources:
 
   NormalizeAndRetrieveIndexHTMLForDirectoryLambda:
     # makes sure that a request for /bla/ will return /bla/index.html
+    # also make sure that a request for /bla (path without dot) will return /bla/index.html
     # However a request for /bla/index.html will be REDIRECTED to /bla/ (and then return index.html)
     Type: AWS::CloudFront::Function
     Properties:
@@ -95,6 +96,9 @@ Resources:
           // Check whether the URI is missing a file name.
           if (uri.endsWith('/')) {
               request.uri += 'index.html';
+          } 
+          else if (uri.split('/').slice(-1)[0].indexOf(".") === -1) {
+              request.uri += '/index.html';
           } 
 
           return request;
