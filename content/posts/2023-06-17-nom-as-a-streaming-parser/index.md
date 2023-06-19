@@ -287,7 +287,6 @@ pub fn create_rewound_file(iterations: usize) -> Result<File, Box<dyn Error>> {
     file.rewind()?;
     return Ok(file);
 }
-}
 ```
 {{< /figure-with-caption >}}
 
