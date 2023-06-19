@@ -11,6 +11,7 @@
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}
 {{- end -}}
+{{/* cutoff rss list to not annoy subscribed people with old posts */}}
 {{- $pages = (where $pages ".Date" "gt" (time "2023-06-01")) -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
