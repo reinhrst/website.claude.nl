@@ -24,6 +24,7 @@ bio:
       href: https://www.linkedin.com/in/reinoudelhorst/
       icon: linkedin-original
 
+number-of-posts: 999999
 ---
 
 Coding, crazy projects, modelling, leisure, the occasional travel info or product review. It’s all inclusive here; just bring your own coffee.

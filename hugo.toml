@@ -8,6 +8,8 @@ theme = 'ConciseShortStyle'
 
 [params]
     custom_css = ["scss/custom.scss"]
+  [params.homepage]
+    number-of-posts = "unlimited"
   [params.comments.giscus]
     enabled = 1
     repo = "reinhrst/website.claude.nl"
@@ -36,30 +38,19 @@ theme = 'ConciseShortStyle'
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    # you can add extra information before the name (HTML format is supported), such as icons
+    identifier = "About"
     pre = ""
-    # you can add extra information after the name (HTML format is supported), such as icons
     post = ""
-    name = "Posts"
-    url = "/posts/"
-    # title will be shown when you hover on this menu link
+    name = "About"
+    url = "/about/"
     title = ""
-    weight = 1
+    weight = 3
   [[menu.main]]
-    identifier = "tags"
+    identifier = "Privacy"
     pre = ""
     post = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
-    weight = 2
-  [[menu.main]]
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categories"
-    url = "/categories/"
+    name = "Privacy"
+    url = "/about/"
     title = ""
     weight = 3
 
