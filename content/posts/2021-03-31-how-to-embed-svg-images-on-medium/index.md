@@ -43,10 +43,11 @@ Note2: Upon first embedding an SVG, Medium (or embedly) caches the height of the
 
 Note3: You can actually also directly use the gist embed system:
 
-<figure>
-  {% gist cbc33f2325d548ace4e375a02b3d5233 >}}
-  <figcaption>This is what happens if you just embed https://gist.github.com/reinhrst/cbc33f2325d548ace4e375a02b3d5233. This works better for some SVGs, and is less nice for others.</figcaption>
-</figure>
+{{<figure-with-caption caption="This is what happens if you just embed https://gist.github.com/reinhrst/cbc33f2325d548ace4e375a02b3d5233. This works better for some SVGs, and is less nice for others." >}}
+{{<child raw=true >}}
+  {{<gist reinhrst cbc33f2325d548ace4e375a02b3d5233 >}}
+{{</child>}}
+{{</figure-with-caption>}}
 
 #### How did you create this functionality
 

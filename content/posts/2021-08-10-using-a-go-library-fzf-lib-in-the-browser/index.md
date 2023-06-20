@@ -894,11 +894,9 @@ Load `/tmp/lines.txt` | 225 | 222 | 218
 `search()` until callback | 6'144 | 2'772 | 12'547
 Total | 15'809 | 14'673 | 15'310
 
-{%include figure
-    src="results-from-javascript.svg"
-    alt="results chart"
-    caption="It's clear to see that each method uses time in different parts of the code."
->}}
+{{<figure-with-caption caption="It's clear to see that each method uses time in different parts of the code." >}}
+  ![results chart](results-from-javascript.svg)
+{{</figure-with-caption >}}
 
 So interestingly, all three methods need about 15 seconds from cold start to a result (this is about 10 times as much as native Go on a single core).
 There is however a huge difference in *where* they spend their time.
@@ -917,10 +915,9 @@ return from `fzfNew()` function | 358 | 7 | 0
 Returning search result to JS callback | 1'908 | 1'378 | 416
 
 
-{%include figure
-    src="results-js-and-go.svg"
-    alt="results chart"
->}}
+{{<figure-with-caption caption="Timing split out." >}}
+  ![results chart](results-js-and-go.svg)
+{{</figure-with-caption >}}
 
 In this second figure, it's clear to see that for Go and TinyGo, a large amount of time is spent in moving data from JavaScript to Go (the green block) and from Go back to JavaScript (the pink block).
 In the Bonus section we will see if we can do something to improve this.

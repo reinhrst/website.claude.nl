@@ -45,7 +45,6 @@ MyLambda:
 
 Note that this tool is far from perfect, however it allows me to reuse code and write the python in `.py` files, which means that the editor helps me:
 
-{% capture code >}}
 ```python
 # Run as "python getstack.py #filename#", it prints a filename on stdout that contains
 # the stack in #filename# with some edits
@@ -119,11 +118,6 @@ if __name__ == "__main__":
     logger.info("Wrote %s", tmpfile.name)
     print(tmpfile.name)
 ```
-{% endcapture >}}
-{% include details
-  summary="Expand to see code"
-  body=code
->}}
 
 
 Now, using the example before, as soon as `testlambda.py` gets larger than 4096 bytes (which is about 2 pages of code, not that much), the stack update will fail.
@@ -193,4 +187,4 @@ The CloudFormation code to create the custom function is below (note that it use
 *   Allows creation of python and non-python files. Python files are syntax-checked, and deploy fails if `python -m py_compile #filename#` fails for a file with extension `.py`. Obviously it’s easy to remove this check below. Non-python files are limited to text-files for now.
 *   Note: Security was not a big design requirement here; it’s assumed that only admins can run this function. I don’t see any obvious ways how a bad actor can do something bad within the lambda environment while running this, but sanity checking all the code in a way that I would like to do, makes the lambda (much) bigger than 4096 bytes.
 
-{% gist 0d0db326631e509fa8ba31b78b98dc9b >}}
+{{< gist reinhrst 0d0db326631e509fa8ba31b78b98dc9b >}}

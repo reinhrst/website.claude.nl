@@ -172,8 +172,7 @@ Modern desktop 3d printers claim to have a 100_μm_ (0.1 _mm_) resolution. There
 
 And if people want smaller design resolution, or larger structures, they can always choose different units for now.
 
-<figure>
-  {% capture table >}}
+{{<figure-with-caption caption="I would really, really hope that the people designing space elevators and dyson spheres do not think in imperial units... [We’ve been there...](https://www.simscale.com/blog/2017/12/nasa-mars-climate-orbiter-metric/)">}}
   chosen unit|smallest details (design resolution)|maximum model size
   ----|-------|------
   mm (normal people)|10nm|10 thousand km (bridge from Ireland to New York)
@@ -181,15 +180,7 @@ And if people want smaller design resolution, or larger structures, they can alw
   nanometers (chip engineers?)|10 femtometre (12 protons)|10 metres
   inches (imperials)|250nm|250 thousand km (space elevator)
   feet (weird imperials)| 3μm| 3 million km (dyson sphere)
-  {% endcapture >}}
-  {{table | markdownify}}
-  <figcaption>
-  {% capture tablecaption>}}
-    I would really, really hope that the people designing space elevators and dyson spheres do not think in imperial units... [We’ve been there...](https://www.simscale.com/blog/2017/12/nasa-mars-climate-orbiter-metric/)
-  {% endcapture >}}
-  {{ tablecaption | strip | markdownify }}
-  </figcaption>
-</figure>
+{{</figure-with-caption>}}
 
 #### Side note: what if we would want to use float32
 
