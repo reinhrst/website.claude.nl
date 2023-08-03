@@ -2,6 +2,7 @@
 title: "Hugo: Recurring events with iCalendar support"
 tags:
     - howto
+    - hugo
 toc:
   enable: true
 aliases:
