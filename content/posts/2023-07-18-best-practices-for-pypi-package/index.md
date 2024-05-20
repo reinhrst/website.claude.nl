@@ -128,7 +128,7 @@ Until `tox` fixes this, I advise keeping a separate `tox.ini` file.
 [tox]
 requires =
     tox>=4
-env_list = lint, type, py{310,311}
+env_list = lint, types, py{310,311}
 
 [testenv]
 description = run unit tests
@@ -142,7 +142,7 @@ deps =
     black==22.12
 commands = black --check {posargs:.}
 
-[testenv:type]
+[testenv:types]
 description = run type checks
 deps =
     mypy>=1.4.1
