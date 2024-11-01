@@ -10,7 +10,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.111.3
+      HUGO_VERSION: 0.136.5
     steps:
       - name: Set local timezone
         uses: szenius/set-timezone@v1.2
